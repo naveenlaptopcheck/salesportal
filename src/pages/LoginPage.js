@@ -81,7 +81,7 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
               onChange={onCaptchaChange}
             />
           </div>
-          <div className="forgot-pw">
+          {/* <div className="forgot-pw">
             <button
               className="fp-btn"
               type="button"
@@ -92,7 +92,7 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
             >
               <p>Forgot Password?</p>
             </button>
-          </div>
+          </div> */}
           <button
             className="login-btn"
             disabled={!captchaFilled}
