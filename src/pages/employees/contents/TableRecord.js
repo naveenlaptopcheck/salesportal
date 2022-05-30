@@ -81,7 +81,7 @@ function TableRecord({ records, editContactId, apiRec, searchChangeValue }) {
               );
             })}
 
-            <tr>
+            {/* <tr>
               <td></td>
               <td></td>
               <td></td>
@@ -89,7 +89,7 @@ function TableRecord({ records, editContactId, apiRec, searchChangeValue }) {
               <td></td>
               <td></td>
               <td></td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </>

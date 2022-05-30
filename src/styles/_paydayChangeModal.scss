@@ -1,0 +1,36 @@
+.show-payday-change {
+  //background: lightblue;
+  height: 90%;
+  width: 100%;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .delete-text {
+    font-size: 1.7rem;
+    text-align: center;
+    font-weight: 600;
+    padding: 1rem;
+    color: #00394d;
+  }
+  .user-delete-btns {
+    display: flex;
+    gap: 1rem;
+    button {
+      background: none;
+
+      width: 8rem;
+      padding: 0.3rem 1rem;
+      font-size: 1.5rem;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      border: none;
+      background: #00394d;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+}

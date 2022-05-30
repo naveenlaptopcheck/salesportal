@@ -1,0 +1,124 @@
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  // margin-left: 13vw;
+  position: absolute;
+  z-index: -1;
+  right: 0px;
+  // min-height: 4.8rem;
+  height: 8vh;
+  width: 100vw;
+  background: white;
+  // border-width: 0px 0px 1px 0px;
+  // border-style: solid;
+  // border-color: rgba(0,0,0,0.2);
+  box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.1);
+
+  .logo {
+    .page-link {
+      margin-left: 50px;
+      text-decoration: none;
+      font-family: "Lato", sans-serif;
+      font-size: 2rem;
+      color: #00394d;
+      padding: 1rem;
+    }
+
+  }
+
+  .page-link1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 15vw;
+    font-family: "Lato", sans-serif;
+    font-size: 0.7rem;
+    color: #00394d;
+    margin-left: 80px;
+    gap: 2.4rem;
+
+
+
+  }
+
+  .log-out {
+
+
+    font-family: "Lato", sans-serif;
+    font-size: 1.5rem;
+    position: absolute;
+    color: #00394d;
+    cursor: grab;
+
+    right: 20px;
+  }
+
+  .log-out:hover {
+    border-bottom: 2px solid green;
+
+  }
+
+
+  .nav-icons {
+    // color: white;
+    color: #00394d;
+    // font-size: 1.5rem;
+    margin-right: 12rem;
+    display: flex;
+    gap: 1.5rem;
+
+    .nav-payday {
+      display: flex;
+      align-items: center;
+      margin-right: 2rem;
+
+      p {
+        font-size: 1.7rem;
+      }
+
+      .nav-payday-btn {
+        margin-left: 1rem;
+        display: flex;
+        align-items: center;
+
+        // border: 1px solid #00394d;
+        p {
+          font-size: 1.5rem;
+          margin-left: 1rem;
+        }
+
+        .nav-payday-icon {
+          // font-size: 2.5rem;
+          margin-top: 5px;
+          cursor: pointer;
+        }
+      }
+
+      .nav-payday-calendar {
+        margin-left: 1.5rem;
+      }
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    .nav-icon {
+      font-size: 25px;
+      margin: 0.5rem 1rem;
+      cursor: pointer;
+    }
+  }
+}
+
+//Media queries
+@media screen and (min-width: 1600px) {
+  .navbar {
+    width: 69vw;
+    margin-right: 10vw;
+  }
+}

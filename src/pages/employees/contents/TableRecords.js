@@ -5,13 +5,17 @@ import ReadOnlyRows from "./ReadOnlyRows";
 import TableLoader from "./TableLoader";
 import Pagination from '../../../components/Pagination';
 import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
+import Checkbox from '@mui/material/Checkbox';
+import Divider from '@mui/material/Divider';
 
-function TableRecords({ records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue }) {
-  let PageSize = apiRecLength;
+function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
+  let PageSize =5;
+  const [check,setcheck]=useState(false)
+  const [v,setv]=useState(0)
+  
+ 
 
-  const [currentPage, setCurrentPage] = useState(1);
-
-  //console.log(apiRec.length);
+ 
   let dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
@@ -20,9 +24,18 @@ function TableRecords({ records, editContactId, apiRec, apiRecLength, apiRecTota
   };
 
   useEffect(() => {
+   
+    const {type,search}=searchChangeValue1
+
+  if(search===""){
+   
     axios
-      .get(`${process.env.REACT_APP_URL}/console/employee?page=${currentPage}`, config)
+      .get(`${process.env.REACT_APP_URL}/sales/employee?page=${currentPage}`, config)
       .then(response => {
+        tot(response.data.total_entries)
+            
+        
+       
         return dispatch({
           type: EMPLOYEES_DATA_FETCHED,
           payload: {
@@ -31,10 +44,36 @@ function TableRecords({ records, editContactId, apiRec, apiRecLength, apiRecTota
           }
         })
       });
-  }, [currentPage]);
+    }
+    
+    else{
+      
+      
+      axios
+      .post(`${process.env.REACT_APP_URL}/sales/employee/search`,{
+        "search_field": type,
+        "search_term": search,
+        "page":currentPage
+    }, config)
+      .then(response => {
+        tot(response.data.total_entries)
+        
+     
+     
+        return dispatch({
+          type: EMPLOYEES_DATA_FETCHED,
+          payload: {
+            dataEmployee: response.data.employee,
+            dataTotalPages: response.data.total_pages,
+          }
+        })
+      }).catch(err=>console.log(err));
+    }
+  }, [currentPage,searchChangeValue1,v]);
 
 
-  apiRec?.sort((a, b) => a.name.localeCompare(b.name));
+
+  // apiRec?.sort((a, b) => a.name.localeCompare(b.name));
 
   const currentData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -43,47 +82,72 @@ function TableRecords({ records, editContactId, apiRec, apiRecLength, apiRecTota
     return apiRec;
   }, [currentPage, apiRec]);
 
-  let currentTableData = currentData?.filter((user) => {
-    let { name } = user;
-    return name
-      .toLowerCase()
-      .includes(searchChangeValue.trim().toLowerCase());
-  });
-
-  return (
+  // let currentTableData = currentData?.filter((user) => {
+  //   let { name } = user;
+  //   return name
+  //     .toLowerCase()
+  //     .includes(searchChangeValue.trim().toLowerCase());
+  // });
+  let currentTableData=currentData
+ return (
     <>
       <div className="employees-table-box">
         <div className="employees-table">
           <table className="records-table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Salary</th>
-                <th>Access Amount</th>
-                <th>Status</th>
-                <th>Date Joined</th>
-                <th>Actions</th>
+            <thead >
+              <tr >
+            
+                 <div className="rec1"> 
+                  <div className="rec2">
+                <Checkbox size="large"  onChange={(e)=>setcheck(e.target.checked)}></Checkbox>
+               
+                {/* <th>Id</th> */}
+                </div>
+                {/* <th style={{position:"absolute",left:"155px",}} >Company </th> */}
+                <th style={{position:"absolute",left:"14%",}}>Name </th>
+
+
+                <th style={{position:"absolute",left:"25%",}}>Phonenumber </th>
+                
+
+                <th style={{position:"absolute",left:"43.8%",}}>Email ID </th>
+                <th style={{position:"absolute",left:"59.9%",}}>Salary </th>
+               
+
+                {/* <th style={{position:"absolute",left:"575px",}}>Aadhar </th>
+
+                <th style={{position:"absolute",left:"720px",}}>PAN ID </th> */}
+
+                <th style={{position:"absolute",left:"69.2%",}}>Status </th>
+
+                <th style={{position:"absolute",left:"80%",}}>KYC</th>
+                <th style={{position:"absolute",left:"90%",}}>Actions</th>
+
+           </div>
               </tr>
             </thead>
             <tbody>
               {currentTableData.map((record) => {
+              
                 const { id } = record;
                 return (
                   <>
-                    <ReadOnlyRows key={id} className="read-only" record={record} />
+                    <ReadOnlyRows key={id}  className="read-only"  record={record} check={check} v={v} up={(x)=>setv(x)}/>
                   </>
                 );
               })}
             </tbody>
           </table>
         </div>
-        <div className="employees-table-pagination">
+      <Divider ></Divider>
+      
+        <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",position:"absolute",bottom:"10px",left:"50%",right:"50%"}}>
           {apiRec.length !== 0 &&
             <Pagination
               className="employees-pagination"
               currentPage={currentPage}
-              // totalCount={PageSize * apiRecTotalPages}
-              totalCount={apiRecTotalPages}
+              //totalCount={Math.ceil(apiRec.length/PageSize)}
+             totalCount={apiRecTotalPages}
               pageSize={PageSize}
               onPageChange={page => setCurrentPage(page)}
             />}
@@ -96,9 +160,11 @@ function TableRecords({ records, editContactId, apiRec, apiRecLength, apiRecTota
 
 //Redux
 const mapStateToProps = (state) => {
-  const { records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue } =
+  const { records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue1 } =
     state.recordReducer;
-  return { records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue };
+   
+    
+  return { records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue1 };
 };
 // const mapDispatchToProps = (dispatch) => {};
 export default connect(mapStateToProps)(TableRecords);

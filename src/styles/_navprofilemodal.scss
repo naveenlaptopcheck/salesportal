@@ -1,0 +1,40 @@
+.drop-items {
+  height: 100%;
+  width: 100%;
+
+  ul {
+    li {
+      list-style: none;
+
+      .drop-link {
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        //justify-content: space-between;
+        gap: 0.7rem;
+        padding: 1rem 2rem 1rem 1rem;
+
+        p {
+          text-align: left;
+          font-size: 1.5rem;
+        }
+      }
+
+      button {
+        background: none;
+        border: none;
+        color: white;
+        display: flex;
+        gap: 0.7rem;
+        padding: 1rem 2rem 1rem 1rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.drop-icon-profile {
+  font-size: 1.8rem;
+}

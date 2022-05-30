@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "Poppins", sans-serif;
+  // font-family: "Inter", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #005371;
+  height: 0px;
+  border-radius: 7px;
+}
+
+.main-loading {
+  width: 100vw;
+  height: 100vh;
+  background: #00394d;
+
+  .loading-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    h1 {
+      //margin: 1rem;
+      //padding: 1rem;
+      font-size: 6rem;
+      color: #8aff58;
+      font-family: "Darker Grotesque", sans-serif;
+      font-weight: 800;
+    }
+  }
+}
+
+.profile {
+  position: fixed;
+  right: 0;
+  top: 7.5vh;
+  bottom: 0;
+  overflow-y: scroll;
+  min-width: 87vw;
+  min-height: 94vh;
+}
+
+
+// @media screen and (min-width: 1600px) {
+//   //For Projectors or Higher Resolution Screens (Full HD)
+//   html {
+//     font-size: 70%;
+//   }
+// }
+
+@media screen and (min-width: 1600px) {
+  //For Projectors or Higher Resolution Screens (Full HD)
+  html {
+    // width: 70%;
+    background-color: rgb(243, 237, 237);
+  }
+}
+
+@import "./navbar";
+@import "./alerts";
+@import "./newFeatures";
+@import "./employees";
+@import "./sideDrawer";
+@import "./dashboard";
+@import "./workspace";
+@import "./paydayChangeModal";
+// @import "./records";
+@import "./pagination";
+@import "./actionItems";
+@import "./refer";
+@import "./loginPage.scss";
+@import "./settings";
+@import "./profie";
+@import "./navprofilemodal";
+@import "./mySwitchBtn";
+@import "./whatsNew";
+@import "./tableLoader";
+@import "./dropNotifications";
+@import "./defaulterModal";
+@import "./inputAddTodo";
+@import "./changePassword";
+@import "./todoDesc";
+@import "./adminlogin";
+@import "./onboardemp";
+// @import "../pages/SalesCalculator/Styles/SwitchCalc";
+// @import "../pages/SalesCalculator/Styles/SalesNav";
+// @import "../pages/SalesCalculator/Styles/EmployerCalc";
+// @import "../pages/SignUp/Styles/signupPage";
+// @import "../pages/SalesCalculator/Styles/EmployerRes";
+// @import "../pages/SalesCalculator/Styles/EmployeeCalc";
+// @import "../pages/SalesCalculator/Styles/EmployeeRes";

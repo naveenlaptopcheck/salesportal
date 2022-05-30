@@ -1,0 +1,689 @@
+.dashboard {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  height: 92vh;
+  width: 87vw;
+  background: #fff;
+  border-width: 1px 0px 0px 0px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.2);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  
+  .quick-stats {
+    //display: inline-block;
+    font-size: 1.25rem;
+    margin: 0 auto;
+    width: 94rem;
+    border-radius: 3px;
+    // background: lightblue;
+    padding: 1rem 0 0 0;
+    h2 {
+      //margin-top: 1.6rem;
+      padding: 0.6rem;
+      margin-bottom: 0rem;
+
+      font-weight: 550;
+    }
+  }
+
+  .top-notifications {
+    width: 94rem;
+    height: 8rem;
+    border-radius: 5px;
+    margin: 0 auto;
+    background-color: #00394d;
+
+    .top-notif-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 84rem;
+      height: 9rem;
+      margin: 1rem auto;
+
+      button {
+        background: none;
+        border: none;
+        .top-notif-logo {
+          color: white;
+          font-size: 1.8rem;
+          font-weight: 600;
+          cursor: pointer;
+        }
+      }
+
+      .single-notif-top {
+        .defaulter-wrap {
+          display: flex;
+
+          .def-btn {
+            background: red;
+            display: flex;
+            align-items: center;
+            height: 20px;
+            margin: 0 1rem;
+            padding: 1rem 0.6rem 1rem 0.3rem;
+            text-align: center;
+            border-radius: 2px;
+            cursor: pointer;
+
+            p {
+              text-align: left;
+              padding: 0.5rem;
+            }
+
+            .def-logo {
+              color: white;
+              font-size: 1.2rem;
+            }
+          }
+        }
+        p {
+          font-size: 1.6rem;
+          padding-left: 1rem;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .workflow {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .tiles {
+      // width: 75rem;
+      width: 64%;
+      flex-wrap: wrap;
+      // margin: 1rem auto;
+      margin: 2rem 4rem;
+      padding: 0.3rem 0;
+      border-radius: 5px;
+      background: white;
+      // background: red;
+      // box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.25);
+      box-shadow: 0px 6px 32px rgba(0, 0, 0, 0.12);
+
+      .tiles-stats{
+        color: #00394d;
+        margin-left: 3rem;
+        margin-top: 1rem;
+      }
+
+      .tiles-header{
+        // background-color: red;
+        width: 90%;
+        margin-top: 2rem;
+        margin-left: auto;
+        margin-right: 2%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2{
+          font-size: 2rem;
+          color: #00394D;
+        }
+        .tiles-header-btns{
+          gap: 1rem;
+          display: flex;
+          // background-color: pink;
+          .header-btn{
+            background-color: white;
+            border: 1px solid lightgray;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #00394D;
+            padding: 0.3rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+          .header-btn-active{
+            border: 2px solid #00C805;
+          }
+        }
+      }
+
+      .tiles-body-datatiles{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .tiles-body-weekdata{
+        // background-color: palegoldenrod;
+        .week-tile-bar {
+          // min-height: 20rem;
+          width: 85%;
+          margin-top: 2rem;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 3rem;
+          // margin: 1rem;
+          // background: pink;
+          // border-radius: 5px;
+          // box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.25);
+        }
+        .tiles-footer{
+          // background-color: palegoldenrod;
+          margin-top: 2.5rem;
+          margin-bottom: 2rem;
+          display: flex;
+          gap: 2rem;
+          color: #00394D;
+          .tiles-footer-left{
+            margin-left: auto;
+            // justify-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h1{
+              font-size: 1.8rem;
+              font-weight: 450;
+            }
+            p{
+              font-size: 1.5rem;
+              font-weight: 450;
+            }
+          }
+          .tiles-footer-right{
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            .tiles-footer-right-rupee{
+              font-size: 3rem;
+              font-weight: 400;
+            }
+            .tiles-footer-right-amount{
+              font-size: 2.5rem;
+              font-weight: 400;
+              margin-left: 0.9rem;
+            }
+          }
+        }
+      }      
+  }
+
+  .todos-attend {
+    min-height: 70vh;
+    //background: lightblue;
+    width: 80vw;
+    margin: auto;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    .todos,
+    .monthly-data,
+    .messages {
+      height: 68vh;
+      width: 25vw;
+      background: #dfdfdf;
+      border-radius: 5px;
+      padding: 1rem 0;
+    }
+
+    .todos {
+      .no-todos {
+        //background: lightblue;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  .savings-tile {
+    min-height: 25rem;
+    width: 45rem;
+    margin: 1rem;
+    display: flex;
+    //flex-direction: column;
+    font-size: 1.2rem;
+    gap: 2rem;
+
+    .monthly-wrap {
+      width: 22rem;
+      color: #00394d;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.25);
+      .date-wrap-save {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        p {
+          font-size: 1.1rem;
+          margin: 1rem;
+          padding: 0.1rem 0.6rem;
+          //background: red;
+          border: 1.5px solid #00394d;
+          color: #00394d;
+          font-weight: 550;
+          border-radius: 10px;
+        }
+      }
+      .monthly-savings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        h1 {
+          margin-top: 1rem;
+          padding: 1rem;
+          font-size: 4rem;
+          color: #00394d;
+        }
+        h2 {
+          font-size: 1.8rem;
+          color: #00394d;
+        }
+      }
+    }
+
+    .charts {
+      .donut-chart {
+        //background: lightblue;
+        height: 15rem;
+        width: 15rem;
+      }
+      height: 25rem;
+      width: 23rem;
+      color: #00394d;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        padding: 0.5rem;
+        color: #00394d;
+      }
+      h2 {
+        padding-top: 1rem;
+        font-size: 1.8rem;
+        color: #00394d;
+      }
+    }
+  }
+}
+
+.data-tile {
+  min-height: 5rem;
+  // width: 45rem;
+  width: 100%;
+  margin: 1rem;
+  display: flex;
+  font-size: 1.2rem;
+  gap: 2rem;
+
+  .employee-count {
+    background: white;
+    border-radius: 5px;
+    // box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+    justify-content: space-between;
+    h1 {
+      font-size: 23px;
+      font-weight: 500;
+      padding: 0 2rem;
+      margin-right: 1rem;
+      color: #00394d;
+      text-align: center;
+    }
+    h2 {
+      // font-size: 1.9rem;
+      font-size: 16px;
+      font-weight: 400;
+      padding: 0 2rem;
+      text-align: center;
+      color: #00394d;
+    }
+
+    .employee-total{
+      margin-left: 20px;
+    }
+    .employee-withdrawal{
+      margin-right: 20px;
+    }
+    .vertical {
+      border-left: 1px solid #B0B2B3;
+      height: 85%;
+    }
+  }
+
+  .withdraw-wrap {
+    height: 25rem;
+    width: 27rem;
+    color: #00394d;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.25);
+    .date-wrap-withd {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      p {
+        font-size: 1.1rem;
+        margin: 1.6rem 1rem;
+        padding: 0.1rem 0.6rem;
+        //background: red;
+        border: 1.5px solid #00394d;
+        color: #00394d;
+        font-weight: 550;
+        border-radius: 10px;
+      }
+    }
+    .withdrawal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      h1 {
+        font-size: 4rem;
+        padding: 1rem;
+        margin-right: 1rem;
+      }
+      h2 {
+        font-size: 1.9rem;
+        padding: 0.5rem;
+      }
+    }
+  }
+}
+
+.week-tile {
+  .bar-chart {
+    margin: 0 auto;
+    height: 16rem;
+    //background: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 43rem;
+  }
+  .weeks {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    li {
+      list-style: none;
+      h2 {
+        font-size: 2rem;
+        text-align: center;
+        color: #00394d;
+      }
+    }
+  }
+  h1 {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 2.5rem;
+    color: #00394d;
+  }
+}
+
+.stats-tile {
+  width: 85%;
+  // min-height: 25rem;
+  // width: 45rem;
+  background: white;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  // border-radius: 5px;
+  // box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.25);
+  .line-chart {
+    //background: lightblue;
+    height: 25rem;
+  }
+  padding: 0 2rem;
+  padding-top: 2rem;
+  h1 {
+    text-align: center;
+    color: #00394d;
+  }
+}
+
+//Todo list stylings
+// .todo-wrap {
+//   min-height: 82vh;
+//   .todo-logo {
+//     color: #00394d;
+//     display: flex;
+//     gap: 1rem;
+//     font-size: 1.2rem;
+//     align-items: center;
+//     margin-bottom: 1.4rem;
+//     .todo-icon {
+//       font-size: 2.5rem;
+//     }
+//     .add-todo-btn {
+//       background: none;
+//       border: none;
+//       width: 4rem;
+//       display: flex;
+//       align-items: center;
+//       color: #00394d;
+//       cursor: pointer;
+
+//       .add-todo-icon {
+//         font-size: 2.5rem;
+//         font-weight: 700;
+//       }
+//     }
+
+//     h3 {
+//       padding: 0.8rem;
+//       margin: 0.5rem;
+
+//       margin-left: 0.3rem;
+//       margin-right: 0.1rem;
+//       background: #dfdfdf;
+//       border-radius: 18px;
+//     }
+//   }
+  
+// }
+
+//Monthly Withdrawal style
+
+.monthly-wrap {
+  .month-logo {
+    color: #00394d;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+    align-items: center;
+    margin-bottom: 1.4rem;
+    .month-icon {
+      font-size: 2.5rem;
+    }
+    h3 {
+      padding: 0.8rem;
+      margin: 0.5rem;
+
+      margin-left: 0.3rem;
+      margin-right: 0.1rem;
+      background: #dfdfdf;
+      border-radius: 18px;
+    }
+  }
+  .monthly-data {
+    .monthly-loading {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .monthly-withd {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        //gap: 4rem;
+        list-style: none;
+        font-size: 1.5rem;
+        background: #00394d;
+        font-weight: 400;
+        color: #ffffff;
+        margin: 0.8rem 0;
+        border-radius: 5px;
+        width: 95%;
+        padding: 1rem;
+        box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+}
+
+.messages-wrap {
+  .message-logo {
+    color: #00394d;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+    align-items: center;
+    margin-bottom: 1.4rem;
+
+    .message-icon {
+      font-size: 2.5rem;
+    }
+    h3 {
+      padding: 0.8rem;
+      margin: 0.5rem;
+
+      margin-left: 0.3rem;
+      margin-right: 0.1rem;
+      background: #dfdfdf;
+      border-radius: 18px;
+    }
+  }
+  .messages {
+    .message-ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      li {
+        list-style: none;
+        font-size: 1.5rem;
+        background: #00394d;
+        font-weight: 400;
+        color: #ffffff;
+        margin: 0.8rem 0;
+        border-radius: 5px;
+        width: 95%;
+        padding: 1rem;
+        box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+}
+
+// @media screen and (min-width: 1600px) {
+//   .dashboard {
+//     top: 4.8rem;
+
+//     .quick-stats {
+//       width: 110rem;
+//     }
+
+//     .tiles {
+//       width: 110rem;
+
+//       .week-tile {
+//         width: 50rem;
+//       }
+
+//       .stats-tile {
+//         width: 85%;
+//       }
+
+//       .week-tile {
+//         .bar-chart {
+//           margin: 0 auto;
+//           height: 16rem;
+//           //background: lightblue;
+//           display: flex;
+//           justify-content: center;
+//           align-items: center;
+//           width: 48rem;
+//         }
+//       }
+
+//       .savings-tile {
+//         width: 50rem;
+
+//         .monthly-wrap {
+//           width: 25rem;
+//         }
+//         .charts {
+//           width: 25rem;
+//         }
+//       }
+
+//       .data-tile {
+//         width: 50rem;
+//         .employee-count {
+//           width: 18rem;
+//         }
+
+//         .withdraw-wrap {
+//           width: 32rem;
+//         }
+//       }
+//     }
+
+//     .top-notifications {
+//       width: 110rem;
+//     }
+//   }
+// }
+
+@media screen and (min-width: 1600px) {
+  .dashboard {
+    width: 69vw;
+    margin-right: 10vw;
+    .tiles {
+      // width: 70rem;
+      width: 60%;
+    }
+  }
+}
+// @media screen and (max-width: 1360px) {
+//   .dashboard {
+//     // width: 59vw;
+//     // margin-right: 10vw;
+//     .tiles {
+//       width: 50rem;
+//     }
+//   }
+// }
+
+@import "./addTodoModal";

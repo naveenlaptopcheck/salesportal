@@ -1,34 +1,25 @@
 import React from "react";
 import axios from "axios";
 import { connect, useDispatch } from "react-redux";
-import { SEARCH_TABLE_CHANGE } from "../../../redux/actions";
+import { SEARCH_TABLE_CHANGE_EMP } from "../../../redux/actions";
 import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
 
-const SearchTable = ({ handleSearchChange }) => {
+const SearchTable = ({ handleSearchChange,search }) => {
+ 
   let dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
+  
   const config = {
     headers: { Authorization: `${token}` },
+  
   };
 
-  const handleSearch = (searchValue) => {
-    axios
-      .get(`${process.env.REACT_APP_URL}/console/search?search_term=${searchValue}`, config)
-      .then(response => {
-        return dispatch({
-          type: EMPLOYEES_DATA_FETCHED,
-          payload: {
-            dataEmployee: response.data,
-            dataTotalPages: 1,
-          }
-        })
-      });
-  }
+  
 
   const getAllEmployees = () => {
     axios
-      .get(`${process.env.REACT_APP_URL}/console/employee?page=1`, config)
+      .get(`${process.env.REACT_APP_URL}/sales/employee?page=1`, config)
       .then(response => {
         return dispatch({
           type: EMPLOYEES_DATA_FETCHED,
@@ -42,17 +33,14 @@ const SearchTable = ({ handleSearchChange }) => {
 
   return (
     <>
-      <form action="" className="search-emp-form">
+      <form action="" className="search-emp-form" onSubmit={(e)=>e.preventDefault()}>
         <input
           type="text"
-          placeholder="Employee Name"
+          placeholder="Search"
           onChange={(e) => {
-            let search = e.target.value;
-            if (search) {
-              handleSearch(search);
-            } else {
-              getAllEmployees();
-            }
+            
+            let search1 = e.target.value;
+            handleSearchChange(search1,search);
             // handleSearchChange(search);
           }}
         />
@@ -65,8 +53,8 @@ const SearchTable = ({ handleSearchChange }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSearchChange: (search) => {
-      dispatch({ type: SEARCH_TABLE_CHANGE, payload: { search } });
+    handleSearchChange: (search,type) => {
+      dispatch({ type: SEARCH_TABLE_CHANGE_EMP, payload: { search ,type} });
     },
   };
 };

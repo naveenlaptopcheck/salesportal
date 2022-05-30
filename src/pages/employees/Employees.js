@@ -1,15 +1,17 @@
 import React from 'react';
+import { useState  } from 'react';
 import { AiFillDatabase, AiOutlineFileAdd } from "react-icons/ai";
 import { RiFileExcel2Fill } from "react-icons/ri";
-import { connect } from "react-redux";
+import { connect,useDispatch } from "react-redux";
 import SearchIcon from '@mui/icons-material/Search';
-import { saveAs } from "file-saver";
+//import { saveAs } from "file-saver";
 import axios from "axios";
-
+import { TextField } from '@mui/material';
 import {
     ADD_USER_FORM_OPEN,
     DATA_FETCHED,
     OPEN_CSV_MODAL,
+    SEARCH_TABLE_CHANGE_EMP
 } from "../../redux/actions";
 
 import AddUserForm from "./modals/AddUserForm";
@@ -24,15 +26,89 @@ import TableRecords from "./contents/TableRecords";
 
 import MsgModal from "../../components/MsgModal";
 import LocalLoader from "../../components/LocalLoader";
-import OverdueList from "./contents/OverdueList";
+//import OverdueList from "./contents/OverdueList";
+import Select from '@mui/material/Select';
+import { MenuItem } from '@mui/material';
+import { EMPLOYEES_DATA_FETCHED } from "../../redux/actions";
 
 
-function Employees({ handleCsvModal, handleAddFormOpen, apiDash }) {
+
+function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchChange}) {
     let { total_employees } = apiDash;
+    let [val ,setval]=useState("name")
+    let [tot,setot]=useState(0)
+    let [p,setp]=useState(3)
+    let [page,setpage]=useState(1)
+    let [val1,setval1]=useState("0")
+
+    const token = localStorage.getItem("token");
+    
+    const config = {
+      headers: { Authorization: `${token}` },
+    
+    };
+  
+    const dat=(e)=>{
+       
+         setpage(1)
+         handleSearchChange(e,"kyc")
+       
+    }
+    const getAllEmployees = () => {
+        setpage(1)
+        handleSearchChange("","")
+      }
+      const gp=(e)=>{
+        handleSearchChange(e,"status")
+
+
+      }
+    
+    
 
     return (
         <>
             <div className="employees">
+            <div className="emp1">
+                       <h1 style={{position:"relative",transform:"translateX(11px)"}}>{tot} EMPLOYEES FOUND</h1>
+                 
+                       <div className="emp2">
+                       <button className='header-btn' style={{border:p===3?" 2px solid #00C805":""}} onClick={(e)=>{setp(3);getAllEmployees()}} >ALL</button>
+                       <button className='header-btn' style={{border:p===1?" 2px solid #00C805":""}} onClick={(e)=>{ setp(1) ;dat(1)}}>PENDING</button>
+                       <button className='header-btn'  style={{border:p===2?" 2px solid #00C805":""}} onClick={(e)=>{ setp(2) ;dat(2)}} >COMPLETE</button>
+                       <button className='header-btn'  style={{border:p===0?" 2px solid #00C805":""}} onClick={(e)=>{ setp(0) ;dat(0)}}>INCOMPLETE</button>
+                       <div style={{position:"absolute",right:"420px",top:"10px"}}> 
+                 
+                       <Select value={val} onChange={(e)=>{setval(e.target.value);
+                       if(e.target.value==="status"){
+                           gp(0);
+                       }}
+                       } sx={{width:"150px",fontSize:"12px",}} defaultValue={val} >
+                               <MenuItem value="name" sx={{fontSize:"12px"}}>Employee Name</MenuItem>
+                               <MenuItem value="email"  sx={{fontSize:"12px"}}>Email Id</MenuItem>
+                               <MenuItem value="status"  sx={{fontSize:"12px"}}>Status</MenuItem>
+                              
+                              
+                           </Select>
+                      
+                           </div>
+                           <div style={{position:"absolute",right:"198px",top:"10px"}}>
+            
+            { val!="status"?(<div className='search-container'>
+                <SearchIcon className='search-icon' />
+                <SearchTable  search={val}/>
+            </div>):
+            (
+               <Select value={val1} onChange={(e)=>{setval1(e.target.value);gp(e.target.value);}} sx={{width:"150px",fontSize:"12px",}} defaultValue={val1} >
+               <MenuItem value="0"  sx={{fontSize:"12px"}}>Active</MenuItem>
+               <MenuItem value="1"  sx={{fontSize:"12px"}}>Inactive </MenuItem>
+           </Select>)
+            }
+           
+            </div>   
+                       </div>
+
+                   </div>
                 <div className='employees-wrap'>
                     <MsgModal /> {/* it pops up when the employee is deleted from the employee table or new employee is added */}
                     <CsvModal /> {/* to open 'Import Excel doc' form */}
@@ -40,8 +116,8 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash }) {
                     <ConfirmDeleteModal /> {/* to open delete user form under actions */}
                     <AddUserForm /> {/* to add user in 'Add User' beside 'Download List' */}
                     <EditUserForm /> {/* to open user form under actions */}
-                    <LocalLoader /> {/* This loading component appears for some of the async operations on the portal like adding and deleting the users, todos etc */}
-
+                     {/* This loading component appears for some of the async operations on the portal like adding and deleting the users, todos etc */}
+{/* 
                     <div className='nav-container'>
                         <div className='nav-container-left'>
                             <div className='search-container'>
@@ -55,7 +131,7 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash }) {
                                     <h2>Total Employees</h2>
                                 </div>
                                 <div className='employees-number'>
-                                    <h1>{total_employees}</h1>
+                                    <h1>{num}</h1>
                                 </div>
                             </div>
                             <div>
@@ -94,7 +170,7 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash }) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* ------- Removing old nav bar ------- */}
                     {/* <div className="nav-wrap">
@@ -126,8 +202,9 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash }) {
                     {/* </div> */}
                     {/* ------- Removing old nav bar till here ------- */}
                     {/* <div><OverdueList /></div> */}
+                   
                     <div className="table-container">
-                        <TableRecords />
+                        <TableRecords val={val} tot={(e)=>setot(e)} currentPage={page} setCurrentPage={setpage}  />
                     </div>
                 </div>
             </div>
@@ -137,7 +214,8 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash }) {
 
 const mapStateToProps = (state) => {
     const { apiDash } = state.recordReducer;
-    return { apiDash };
+  
+    return { apiDash};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -148,6 +226,9 @@ const mapDispatchToProps = (dispatch) => {
         handleAddFormOpen: () => {
             dispatch({ type: ADD_USER_FORM_OPEN });
         },
+        handleSearchChange: (search,type) => {
+            dispatch({ type: SEARCH_TABLE_CHANGE_EMP, payload: { search ,type} });
+          },
     };
 };
 

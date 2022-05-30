@@ -34,7 +34,9 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
   function onCaptchaChange(value) {
     // console.log("Captcha value:", value);
     setCaptchaFilled(true);
+    
   }
+
 
   return (
     <div className="login-main-wrap">
@@ -73,7 +75,7 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
               Invalid Username or Password
             </p>
           )}
-          <div>
+          <div >
             <ReCAPTCHA
               sitekey={process.env.REACT_APP_URL_CAPTCHA_KEY}
               onChange={onCaptchaChange}
@@ -264,7 +266,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     HandleLoginSubmit: (values, navigate) => {
       axios
-        .post(`${process.env.REACT_APP_URL}/console/login`, values)
+        .post(`${process.env.REACT_APP_URL}/sales/login`, values)
         .then((response) => {
           //console.log(response.data);
           localStorage.setItem("token", response.data.token);
@@ -273,50 +275,52 @@ const mapDispatchToProps = (dispatch) => {
           const config = {
             headers: { Authorization: `${token}` },
           };
-          navigate("/dashboard", { replace: true });
-          let url1 = `${process.env.REACT_APP_URL}/console/employee`;
-          let url2 = `${process.env.REACT_APP_URL}/console/dashboard`;
-          let url3 = `${process.env.REACT_APP_URL}/console/todo?checked=false`;
-          let url4 = `${process.env.REACT_APP_URL}/console/issue?status=initiated`;
-          let url5 = `${process.env.REACT_APP_URL}/console/record`;
-          let url6 = `${process.env.REACT_APP_URL}/console/employer`;
-          let url7 = `${process.env.REACT_APP_URL}/console/alert`;
-          let url8 = `${process.env.REACT_APP_URL}/console/whats_new`;
-          let url9 = `${process.env.REACT_APP_URL}/console/credit_given_graph?duration=weekly`;
-          let url10 = `${process.env.REACT_APP_URL}/console/usage_graph?duration=weekly`;
-          let url11 = `${process.env.REACT_APP_URL}/console/defaulter_list`;
+       
+          navigate("/employees", { replace: true });
+          let url1 = `${process.env.REACT_APP_URL}/sales/employee`;
+          // let url2 = `${process.env.REACT_APP_URL}/console/dashboard`;
+          // let url3 = `${process.env.REACT_APP_URL}/console/todo?checked=false`;
+          // let url4 = `${process.env.REACT_APP_URL}/console/issue?status=initiated`;
+          // let url5 = `${process.env.REACT_APP_URL}/console/record`;
+          // let url6 = `${process.env.REACT_APP_URL}/console/employer`;
+          // let url7 = `${process.env.REACT_APP_URL}/console/alert`;
+          // let url8 = `${process.env.REACT_APP_URL}/console/whats_new`;
+          // let url9 = `${process.env.REACT_APP_URL}/console/credit_given_graph?duration=weekly`;
+          // let url10 = `${process.env.REACT_APP_URL}/console/usage_graph?duration=weekly`;
+          // let url11 = `${process.env.REACT_APP_URL}/console/defaulter_list`;
 
           const promise1 = axios.get(url1, config);
-          const promise2 = axios.get(url2, config);
-          const promise3 = axios.get(url3, config);
-          const promise4 = axios.get(url4, config);
-          const promise5 = axios.get(url5, config);
-          const promise6 = axios.get(url6, config);
-          const promise7 = axios.get(url7, config);
-          const promise8 = axios.get(url8, config);
-          const promise9 = axios.get(url9, config);
-          const promise10 = axios.get(url10, config);
-          const promise11 = axios.get(url11, config);
+          // const promise2 = axios.get(url2, config);
+          // const promise3 = axios.get(url3, config);
+          // const promise4 = axios.get(url4, config);
+          // const promise5 = axios.get(url5, config);
+          // const promise6 = axios.get(url6, config);
+          // const promise7 = axios.get(url7, config);
+          // const promise8 = axios.get(url8, config);
+          // const promise9 = axios.get(url9, config);
+          // const promise10 = axios.get(url10, config);
+          // const promise11 = axios.get(url11, config);
 
           Promise.all([
             promise1,
-            promise2,
-            promise3,
-            promise4,
-            promise5,
-            promise6,
-            promise7,
-            promise8,
-            promise9,
-            promise10,
-            promise11,
+            // promise2,
+            // promise3,
+            // promise4,
+            // promise5,
+            // promise6,
+            // promise7,
+            // promise8,
+            // promise9,
+            // promise10,
+            // promise11,
           ]).then((response) => {
+            console.log(response)
             //console.log(resp.data);
             // navigate("/dashboard", { replace: true });
 
-            localStorage.setItem("dataIssue", JSON.stringify(response[3].data));
-            let { name } = response[1].data;
-            localStorage.setItem("name", name);
+            // localStorage.setItem("dataIssue", JSON.stringify(response[3].data));
+            // let { name } = response[1].data;
+            // localStorage.setItem("name", name);
 
             return dispatch({
               type: LOGIN_DATA_FETCHED,
@@ -324,20 +328,20 @@ const mapDispatchToProps = (dispatch) => {
                 data: {
                   dataRec: response[0].data.employee,
                   dataRecTotalPages: response[0].data.total_pages,
-                  dataDash: response[1].data,
-                  dataTodo: response[2].data.todos,
-                  dataTodoTotalPages: response[2].data.total_pages,
-                  dataTodoTotalEntries: response[2].data.total_entries,
-                  dataIssues: response[3].data.issues,
-                  dataIssuesTotalPages: response[3].data.total_pages,
-                  dataIssuesTotalEntries: response[3].data.total_entries,
-                  dataDefaulter: response[4].data,
-                  dataProfile: response[5].data,
-                  dataAlert: response[6].data,
-                  dataWhatsnew: response[7].data,
-                  dataCreditGivenGraph: response[8].data,
-                  dataUsageGraph: response[9].data,
-                  dataDefaulterList: response[10].data,
+                  // dataDash: response[1].data,
+                  // dataTodo: response[2].data.todos,
+                  // dataTodoTotalPages: response[2].data.total_pages,
+                  // dataTodoTotalEntries: response[2].data.total_entries,
+                  // dataIssues: response[3].data.issues,
+                  // dataIssuesTotalPages: response[3].data.total_pages,
+                  // dataIssuesTotalEntries: response[3].data.total_entries,
+                  // dataDefaulter: response[4].data,
+                  // dataProfile: response[5].data,
+                  // dataAlert: response[6].data,
+                  // dataWhatsnew: response[7].data,
+                  // dataCreditGivenGraph: response[8].data,
+                  // dataUsageGraph: response[9].data,
+                  // dataDefaulterList: response[10].data,
                 },
               },
             });
