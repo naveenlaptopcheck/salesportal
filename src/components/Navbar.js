@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { connect } from "react-redux";
+import { Button } from "@mui/material";
 import {
   OPEN_DROP_NOTIF,
   OPEN_PROFILE_DROP,
@@ -10,9 +11,9 @@ import {
 } from "../redux/actions";
 import { Link, useLocation } from "react-router-dom";
 import NavProfileModal from "./NavProfileModal";
-import WhatsNew from "./WhatsNew";
+ import WhatsNew from "./WhatsNew";
 import DropNotifications from "./DropNotifications";
-
+import {Navigate} from 'react-router-dom'
 function Navbar({
   handleProfileDrop,
   handleWhtsNew,
@@ -28,6 +29,11 @@ function Navbar({
   let location = useLocation();
   let pathname = location.pathname.substring(1);
   let pathvar = pathname.charAt(0).toUpperCase() + pathname.substring(1);
+  let user="John Doe "
+  const log=()=>{
+    localStorage.removeItem("token")
+    window.location.replace("/")
+  }
 
 
 
@@ -37,15 +43,39 @@ function Navbar({
       <NavProfileModal />
       <DropNotifications />
       <div className="navbar">
-        <h1 className="logo">
+      <h1 className="logo">
           <div className="page-link">
-            {pathvar}
+           FINSIRE
           </div>
         </h1>
-        <div className="nav-icons">
+        <div className="page-link1">
+        <h1  onClick={()=>{
+        
+          window.location.replace("/employees")
+        }} style={{ borderBottom:pathname==="employees"?"2px solid green":"",
+                                             paddingBottom:"2px",cursor:"grab"}}>
+          Employees
+        </h1>
+        <h1 onClick={()=>{
+                    window.location.replace("/transactions")
+
+        }} style={{ borderBottom:pathname==="transactions"?"2px solid green":"",
+                                             paddingBottom:"2px",cursor:"grab"}} >
+         Transactions
+        </h1>
+        
+        </div>
+       {pathname==="transactions"&& 
+       <div style={{ color: "#00394d",fontSize:"7px",position:"absolute",right:"120px"}}>
+       <h1>Welcome , {user}</h1>
+        </div>}
+        <h1 className="log-out" onClick={(e)=>log(e)}>
+          LOGOUT
+        </h1>
+        {/* <div className="nav-icons">
           <p>{username}</p>
           <AccountCircleOutlinedIcon className="nav-icon" onClick={handleProfileDrop} />
-        </div>
+        </div> */}
       </div>
     </>
   );
@@ -54,9 +84,10 @@ function Navbar({
 //Redux
 
 const mapStateToProps = (state) => {
-  const { whtsNewOpen } = state.reducer;
+ 
   const { apiDash, apiProfile, paydayValue } = state.recordReducer;
-  return { whtsNewOpen, apiDash, apiProfile, paydayValue };
+
+  return { apiDash, apiProfile, paydayValue };
 };
 
 const mapDispatchToProps = (dispatch) => {

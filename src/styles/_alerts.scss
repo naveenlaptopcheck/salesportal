@@ -1,0 +1,71 @@
+.alerts{
+    color: #00394d;
+    background-color: white;
+    height: 45vh;
+    width: 22vw;
+    position: fixed; // fixed in the page
+    top: 11vh;
+    right: 3vw;
+    border-radius: 5px;
+    box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.25);
+    // position: absolute; i.e. to move it along the page
+
+    .alerts-header{
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+    .alerts-body{
+        height: 38vh;
+        // background-color: pink;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .alerts-box{
+            margin: 10px;
+            padding: 5px;
+            box-shadow: 0.5px 1px 1px rgba(0,0,0,0.2);
+            position: relative;
+
+            .alerts--close-btn{
+                position: absolute;
+                top: 5px;
+                right: 0px;
+                color: #00394D;
+                background: white;
+                font-size: 20px;
+                border: none;
+                height: 20px;
+                cursor: pointer;
+            }
+
+            h2{
+                font-weight: 500;
+            }
+
+            p{
+                font-size: 11px;
+                font-weight: 400;
+            }
+        }
+        .alerts-box-issue{
+            border-left: 3px solid #FFAD4C;
+        }
+        .alerts-box-info{
+            border-left: 3px solid #00B5DD;
+        }
+        .alerts-box-error{
+            border-left: 3px solid #FF3535;
+        }
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .alerts{
+        margin-right: 10vw;
+        width: 20vw;
+        .alerts-body{
+            height: 39vh;
+        }
+    }
+}

@@ -1,0 +1,750 @@
+.workspace {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  // top: 4.8rem;
+  // overflow-y: scroll;
+  // min-width: 87vw;
+  // min-height: 90vh;
+  height: 92vh;
+  width: 87vw;
+  // background: #f4f2f2;
+  background: white;
+  border-width: 1px 0px 0px 0px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.2);
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  .workspace-container{
+      // background-color: red;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+
+      .issues-container{
+          // background-color: yellow;
+          width: 30%;
+
+          .issues-wrap {
+              //margin-left: 15rem;
+              width: 100%;
+              // background-color: green;
+              height: 100%;
+            
+              .issues-logo {
+                  color: #00394d;
+                  display: flex;
+                  gap: 1rem;
+                  font-size: 1.5rem;
+                  align-items: center;
+                  margin-bottom: 4px;
+                  justify-content: space-between;
+                .issues-icon {
+                  font-size: 2.2rem;
+                  margin-right: 10px;
+                }
+            
+                h3 {
+                  padding: 0.8rem;
+                  margin: 0.5rem;
+                  font-weight: 550;
+                  margin-left: 0.3rem;
+                  margin-right: 0.1rem;
+                  background: none;
+                  // border-radius: 18px;
+                }
+              }
+              .all-issues {
+                height: 85%;
+                background-color: white;
+                box-shadow: 0px 6px 32px rgba(0, 0, 0, 0.12);
+                border-radius: 12px;
+                scrollbar-width: thin;
+                  // margin-top: 40px;
+          
+                .header-btns{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 20px;
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                      // background-color: red;
+                    .active-btn{
+                        color: #53DF19;
+                        border: 2px solid #53DF19;
+                    }
+                    button{
+                        border: 1px solid lightgray;
+                        border-radius: 3px;
+                        background: none;
+                        padding: 0px 8px;
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #00394D;
+                        cursor: pointer;
+                    }
+                }
+                .issues-header{
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 15px;
+                    p{
+                        font-size: 16px;
+                        color: #00394D;
+                        font-weight: 600;
+                    }
+                }
+
+                .issues-box{
+                  height: 80%;
+                  .issue-ul {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    
+                    margin-left: auto;
+                    margin-right: auto;
+                    overflow-y: scroll;
+                    height: 90%;
+              
+                    li {
+                      list-style: none;
+                      font-size: 1.5rem;
+                      background: white;
+                      color: #00394d;
+                      font-weight: 400;
+                      margin: 0.8rem 0;
+                      border-radius: 5px;
+                      width: 90%;
+                      padding: 1rem;
+                      box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+                      text-transform: capitalize;
+                    //   cursor: pointer;
+              
+                      .head-id {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        // margin-bottom: 1.5rem;
+              
+                        .title-head {
+                          font-size: 1.7rem;
+                        }
+                        .head-right-div{
+                          display: flex;
+                          gap: 1rem;
+                          .head-right-new{
+                            background-color: #B4FF94;
+                            width: 5rem;
+                            border-radius: 10px;
+                            text-align: center;
+                          }
+                          .drop-icon{
+                              font-size: 24px;
+                              cursor: pointer;
+                          }
+                        }
+                        .up-icon{
+                          font-size: 24px;
+                          cursor: pointer;
+                      }
+                      }
+              
+                      .name-date {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                      }
+                      .issue-separation{
+                        height: 1px;
+                        background: #cccccc;
+                        width: 100%;
+                        margin: 10px 0px;
+                      }
+                      .issue-under{
+                          margin-top: 10px;
+                          display: flex;
+                          .issue-text{
+                              width: 60%;
+                              font-size: 12px;
+                          }
+                          .issue-btns{
+                              width: 40%;
+                              gap: 5px;
+                              display: flex;
+                              flex-direction: column;
+                              align-items: center;
+                              justify-content: center;
+                              .resolve-btn{
+                                width: 80px;
+                                padding: 3px 10px;
+                                color: #3CC300;
+                                background-color: #ebf7ee;
+                                border: none;
+                                cursor: pointer;
+                              }
+                              .reject-btn{
+                                width: 80px;
+                                padding: 3px 10px;
+                                color: red;
+                                background-color: #FFF2F2;
+                                border: none;
+                                cursor: pointer;
+                              }
+                          }
+                      }
+                    }
+                  }
+                  .issues-pagination{
+                    margin-top: 3%;
+                    // background-color: yellow;
+                    // width: 26%;
+                    // height: 40px;
+                    // bottom: 60px;
+                    // position: fixed;
+                    // margin-left: auto;
+                    // margin-right: auto;
+                    // display: flex;
+                    // justify-content: center;
+                  }
+                }
+              }
+            }
+
+      }
+      .todo-container{
+          // background-color: yellow;
+          width: 30%;
+
+          .todo-component{
+            height: 100%;
+              // width: 100%;
+              // background-color: red;
+              .todo-wrap{
+                height: 100%;
+                  // width: 100%;
+                  // background: black;
+
+                  .todo-logo{
+                      color: #00394d;
+                      display: flex;
+                      gap: 1rem;
+                      font-size: 1.5rem;
+                      align-items: center;
+                      margin-bottom: 4px;
+                      justify-content: space-between;
+                      .todo-icon {
+                          font-size: 2.2rem;
+                          margin-right: 10px;
+                        }
+                
+                    h3 {
+                      padding: 0.8rem;
+                      margin: 0.5rem;
+                      font-weight: 550;
+                      margin-left: 0.3rem;
+                      margin-right: 0.1rem;
+                      // background: #dfdfdf;
+                      // border-radius: 18px;
+                    }
+                  }
+                  .all-todos{
+                    height: 85%;
+                    background-color: white;
+                    box-shadow: 0px 6px 32px rgba(0, 0, 0, 0.12);
+                    border-radius: 12px;
+                    
+                      .todos-header-btns{
+                          display: flex;
+                          justify-content: space-between;
+                          // margin-top: 20px;
+                          width: 90%;
+                        //   height: 30%;
+                          margin-left: auto;
+                          margin-right: auto;
+                          //   background-color: red;
+                          .active-btn{
+                              color: #53DF19;
+                              border: 2px solid #53DF19;
+                          }
+                          button{
+                              border: 1px solid lightgray;
+                              border-radius: 3px;
+                              background: none;
+                              padding: 0px 8px;
+                              font-size: 16px;
+                              font-weight: 500;
+                              color: #00394D;
+                              cursor: pointer;
+                          }
+                          .addnew-btn{
+                              background-color: #B4FF94;
+                              border: none;
+                          }
+                      }
+              
+                    
+                    .todos-header{
+                        width: 90%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        margin-top: 15px;
+                        display: flex;
+                        justify-content: space-between;
+                        p{
+                            font-size: 16px;
+                            color: #00394D;
+                            font-weight: 600;
+                        }
+                        .header-delete-btn{
+                          font-size: 14px;
+                          width: 90px;
+                          padding: 3px 10px;
+                          color: red;
+                          font-weight: 500;
+                          background-color: #FFF2F2;
+                          border: 1px solid red;
+                          border-radius: 2px;
+                          cursor: pointer;
+                        }
+                    }
+                    .todos {
+                      // min-height: 40vh;
+                      // overflow-y: scroll;
+                      // scrollbar-width: thin;
+                      // background-color: pink;
+                      height: 80%;
+                      .todo-list {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        // background-color: yellow;
+                        overflow-y: scroll;
+                        height: 90%;
+                        li {
+                          // display: flex;
+                          // flex-direction: column;
+                          // align-items: center;
+                          // justify-content: space-between;
+                          //gap: 6rem;
+                          list-style: none;
+                          font-size: 18px;
+                          background: white;
+                          color: #00394d;
+                          font-weight: 400;
+                          margin: 0.8rem 0;
+                          border-radius: 5px;
+                          width: 90%;
+                          padding: 1rem;
+                          box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+
+                          .name-title-cont{
+                              display: flex;
+                              flex-direction: column;
+                              // background-color: yellow;
+                              width: 100%;
+                              .title-header{
+                                  display: flex;
+                                  justify-content: space-between;
+                                  // background-color: red;
+                                  height: 25px;
+                                  width: 100%;
+                                  .title-header-left{
+                                    display: flex;
+                                    gap: 10px;
+                                    // background-color: red;
+                                    input{
+                                      margin-top: auto;
+                                      margin-bottom: auto;
+                                    }
+                                    p{
+                                      font-size: 1.7rem;
+                                      text-transform: capitalize;
+                                    }
+                                  }
+                                  .drop-icon{
+                                      font-size: 24px;
+                                      cursor: pointer;
+                                  }
+                              }
+                              .title-body{
+                                  // background-color: yellow;
+                                  // margin-top: -5px;
+                                  height: 25px;
+                                  p{
+                                      color: #00394D;
+                                      font-weight: 400;
+                                      font-size: 14px;
+                                      // font-weight: 400;
+                                      margin-left: 25px;
+                                      text-transform: capitalize;
+                                  }
+                              }
+                              .title-separation{
+                                  height: 1px;
+                                  background: #cccccc;
+                                  width: 100%;
+                                  margin-top: 5px;
+                                  margin-bottom: 10px;
+                              }
+                              .title-under{
+                                  display: flex;
+                                  color: #00394D;
+                                  // background-color: pink;
+                                  .title-desc{
+                                      width: 60%;
+                                      p{
+                                          font-size: 12px;
+                                      }
+                                  }
+                                  .title-btns{
+                                      width: 40%;
+                                      gap: 5px;
+                                      display: flex;
+                                      flex-direction: column;
+                                      align-items: center;
+                                      justify-content: center;
+                                      
+                                      .title-edit-btn{
+                                          width: 90px;
+                                          padding: 3px 10px;
+                                          color: #3CC300;
+                                          background-color: #ebf7ee;
+                                          border: none;
+                                          cursor: pointer;
+                                      }
+                                      .title-complete-btn{
+                                          width: 90px;
+                                          padding: 3px 10px;
+                                          color: #00394d;
+                                          background-color: #eef1f8;
+                                          border: none;
+                                          cursor: pointer;
+                                      }
+                                  }
+                              }
+                          }
+                          
+                        }
+                      }
+                      .todo-pagination{
+                        margin-top: 3%;
+                        // background-color: green;
+                        // width: 26%;
+                        // height: 40px;
+                        // bottom: 60px;
+                        // position: fixed;
+                        // margin-bottom: auto;
+                        // display: flex;
+                        // justify-content: center;
+                      }
+                    }
+                  }
+                }
+            }
+      }
+      .overdue-container{
+          // background-color: yellow;
+          width: 30%;
+
+      }
+  }
+
+
+  .action-container {
+    min-height: 70vh;
+    //background: lightblue;
+    width: 65vw;
+    margin: 2rem auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .all-issues,
+    .attendance {
+      height: 68vh;
+      width: 25vw;
+      background: #dfdfdf;
+      border-radius: 5px;
+      padding: 1rem 1rem;
+    }
+  }
+
+  .csv-form {
+    background: red;
+    .csv-btns {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+  
+  
+  
+.csv-form {
+  .upload-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+    p {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .upload-btn {
+      border: none;
+      border-radius: 4px;
+      background: #00394d;
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      color: white;
+      font-weight: 500;
+      font-family: "Poppins", sans-serif;
+      cursor: pointer;
+    }
+  }
+} 
+  
+.attendance-wrap {
+    color: #00394D;
+    height: 100%;
+  .attendance-logo {
+    color: #00394d;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+    align-items: center;
+    margin-bottom: 4px;
+
+    h3 {
+      padding: 0.8rem;
+      margin: 0.5rem;
+      font-weight: 550;
+      margin-left: 0.3rem;
+      margin-right: 0.1rem;
+      background: none;
+      border-radius: 18px;
+    }
+    a{
+      font-size: 14px;
+      text-decoration: none;
+      margin-top: 2px;
+      color: #00394d;
+    }
+  }
+  .overdue-body{
+      background-color: white;
+      height: 85%;
+      box-shadow: 0px 6px 32px rgba(0, 0, 0, 0.12);
+      border-radius: 12px;
+      // display: flex;
+      // flex-direction: column;
+      // align-items: center;
+      .attendance{
+          .overdue-body-header{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-top: 14px;
+              width: 90%;
+              // background-color: teal;
+              margin-left: auto;
+              margin-right: auto;
+              p{
+                  font-size: 16px;
+                  font-weight: 600;
+              }
+          }
+          .overdue-amount{
+              // background-color: pink;
+              margin-top: 10px;
+              width: 90%;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-left: auto;
+              margin-right: auto;
+              .total-overdue{
+                  display: flex;
+              }
+              p{
+                  font-size: 24px;
+              }
+              span{
+                  font-size: 20px;
+                  margin-left: 7px;
+                  margin-top: 3px;
+              }
+              .overdue-btn{
+                  display: flex;
+                  align-items: center;
+                  color: #00394D;
+                  font-family: "Poppins", sans-serif;
+                  font-size: 1.5rem;
+                  padding: 0.5rem 4rem;
+                  font-weight: 500;
+                  // background: #B4FF94;
+                  background: lightgray;
+                  border: none;
+                  border-radius: 5px;
+                  // cursor: pointer;
+                  cursor: default;
+              }
+          }
+          .overdue-partition{
+              width: 90%;
+              height: 1px;
+              background-color: #D6D5D5;
+              margin-top: 15px;
+              margin-left: auto;
+              margin-right: auto;
+          }
+          .individual-header{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              // margin-top: 14px;
+              width: 90%;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: 30px;
+              p{
+                  font-size: 16px;
+                  font-weight: 600;
+              }
+              .nudge-btn{
+                  display: flex;
+                  align-items: center;
+                  font-family: "Poppins", sans-serif;
+                  font-size: 1.5rem;
+                  padding: 0.5rem 2.7rem;
+                  font-weight: 500;
+                  background: #B4FF94;
+                  border: none;
+                  border-radius: 5px;
+                  text-decoration: none;
+                  color: #00394D;
+                  cursor: pointer;
+              }
+          }
+      }
+  }
+
+  .attendance {
+    min-height: 40vh;
+    overflow-y: scroll;
+    .attendance-ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      li {
+        list-style: none;
+        font-size: 16px;
+        font-weight: 400;
+      //   background: #00394d;
+      //   color: #ffffff;
+        margin: 0.8rem 0;
+        border-radius: 2px;
+        width: 90%;
+        //padding: 1rem;
+        box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+      //   text-transform: capitalize;
+
+        .name-date {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem;
+          .def-date {
+            display: flex;
+            align-items: center;
+            color: #ffb100;
+            position: absolute;
+              margin-left: 150px;
+            p{
+                font-size: 12px;
+                color: #00394D;
+            }
+          }
+
+          .drop-icon {
+            font-size: 24px;
+
+            cursor: pointer;
+          }
+        }
+
+        .overdue-separation {
+          height: 1px;
+          background: #cccccc;
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .overdue-extra-det {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          padding: 1.5rem 0;
+          .overdue-control {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            p {
+              font-size: 1.35rem;
+            }
+            h2 {
+              font-weight: 500;
+              font-size: 1.7rem;
+              padding: 0.8rem 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .rec-illustration {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+  
+.msg-modal {
+  //background: white;
+  width: 30vw;
+  margin: 20rem auto;
+  min-height: 10vh;
+  text-align: center;
+  border: 1px solid #00394d;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  background: #00394d;
+  color: white;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-size: 1.6rem;
+  }
+}
+  
+@media screen and (min-width: 1600px) {
+  .workspace {
+    width: 69vw;
+    margin-right: 10vw;
+  }
+}
+  
+//@import "./csvModal";
+@import "./viewUserModal";
+@import "./deleteUserModal";
+@import "./addUserForm";
+  

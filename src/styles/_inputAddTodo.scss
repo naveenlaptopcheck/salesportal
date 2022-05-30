@@ -1,0 +1,64 @@
+.form-wrap-add-todo {
+  .search-user {
+    position: relative;
+    margin-bottom: 6.5rem;
+    label {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    .wrapper {
+      width: 280px;
+      position: absolute;
+      z-index: 5;
+      .search-input {
+        display: flex;
+        flex-direction: column;
+        //background: lightblue;
+        input {
+          height: 3.8rem;
+          border-radius: 4px;
+          background: #f4f2f2;
+          font-family: "Poppins", sans-serif;
+          //color: #00394d;
+          //font-weight: 500;
+          margin-top: 0.3rem;
+          padding: 0.3rem 1rem;
+          font-size: 1.4rem;
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          border: none;
+          outline: 1px solid gray;
+        }
+        .autocom-box {
+          background: rgb(213, 241, 200);
+          box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          max-height: 180px;
+          overflow-y: hidden;
+          opacity: 0;
+          li {
+            list-style: none;
+            padding: 0.5rem 1rem;
+            font-size: 1.3rem;
+            overflow-y: scroll;
+            cursor: default;
+            border-radius: 4px;
+            display: none;
+          }
+          li:hover {
+            background: #efefef;
+          }
+        }
+
+        .active {
+          opacity: 1;
+          li {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

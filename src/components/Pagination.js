@@ -23,7 +23,6 @@ const Pagination = props => {
     // console.log('here paginationRange is:-----------')
     // console.log(paginationRange)
 
-
     if (currentPage === 0 || paginationRange.length < 2) {
         return null;
     }
@@ -40,7 +39,7 @@ const Pagination = props => {
     // console.log(`last page is: ${lastPage}`);
     return (
         <ul
-            className={className}
+            className="employees-pagination"
         >
             <li
                 className={classnames('pagination-item', {

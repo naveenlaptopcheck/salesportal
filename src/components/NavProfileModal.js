@@ -57,6 +57,7 @@ const customStyles2 = {
 
 
 const NavProfileModal = ({ profileDropOpen, handleCloseUserDrop }) => {
+
   let navigate = useNavigate();
   const isBigScreen = useMediaQuery({ query: '(min-width: 1600px)' })
   const isSmallScreen = useMediaQuery({ query: '(max-width: 1600px)' })
@@ -157,9 +158,13 @@ const NavProfileModal = ({ profileDropOpen, handleCloseUserDrop }) => {
 
 //Redux
 const mapStateToProps = (state) => {
-  const { profileDropOpen } = state.reducer;
-  return { profileDropOpen };
+
+  return {  };
 };
+// const mapStateToProps = (state) => {
+//   const { profileDropOpen } = state.reducer;
+//   return { profileDropOpen };
+// };
 
 const mapDispatchToProps = (dispatch) => {
   return {

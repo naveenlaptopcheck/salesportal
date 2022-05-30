@@ -1,0 +1,119 @@
+.profile {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  // top: 4.8rem;
+  height: 92vh;
+  width: 87vw;
+  background: #fff;
+  border-width: 1px 0px 0px 0px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.2);
+  // overflow-y: scroll;
+  // min-width: 87vw;
+  // min-height: 94vh;
+  font-family: "Inter", sans-serif;
+
+  .profile-wrap {
+    // background: pink;
+    width: 100%;
+    height: 100%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-around;
+    // gap: 2rem;
+
+    .profile-details {
+      width: 40%;
+      //background: lightcoral;
+      min-height: 90vh;
+
+      .company-name-address {
+        height: 25%;
+        //background: lightblue;
+        border-radius: 8px;
+        box-shadow: -1px 2px 4px 2px rgba(0, 0, 0, 0.1);
+        .space-wrap {
+          background: #005371;
+          height: 6rem;
+          border-radius: 8px 8px 0 0;
+        }
+
+        .co-det {
+          padding: 3rem 5rem;
+          h1 {
+            font-size: 2.5rem;
+          }
+          p {
+            padding: 1rem 0;
+            font-size: 1.5rem;
+          }
+        }
+      }
+
+      .contact-person-profile {
+        //background: lightblue;
+        min-height: 70%;
+        margin-top: 3rem;
+
+        .comp-cont-wrap {
+          //background: lightcoral;
+          margin-top: 1rem;
+          min-height: 56vh;
+          border-radius: 8px;
+          box-shadow: -1px 2px 4px 2px rgba(0, 0, 0, 0.1);
+          padding-top: 2rem;
+
+          .details-control {
+            padding: 2rem 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .finscore-details {
+      width: 40%;
+      height: 75%;
+      //background: lightblue;
+      box-shadow: -1px 2px 4px 2px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      .finscore {
+        height: 6rem;
+        border-radius: 8px 8px 0 0;
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 500;
+      }
+
+      .fingraph {
+        //background: lightblue;
+        min-height: 48%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        p {
+          margin: 3.5rem 0rem 2rem 0rem;
+          font-size: 2.4rem;
+        }
+
+        .prog-bar {
+          margin-top: 4rem;
+        }
+      }
+
+      .finsteps {
+        background: lightblue;
+        padding: 0 4rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+.todo-desc-wrap {
+  //background: lightblue;
+  min-height: 220px;
+  width: 95%;
+  margin: auto;
+  position: relative;
+  .desc-details {
+    display: flex;
+    gap: 8rem;
+    align-items: center;
+    padding: 1rem 0;
+    padding-top: 2rem;
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 550;
+    }
+
+    .completed {
+      font-size: 1.2rem;
+      background: red;
+      font-weight: 600;
+      padding: 0.3rem;
+      border-radius: 3px;
+    }
+    .in-prog {
+      font-size: 1.2rem;
+      background: #53df19;
+      font-weight: 600;
+      padding: 0.3rem;
+      border-radius: 3px;
+    }
+  }
+  .close-desc-btn {
+    position: absolute;
+    right: 0;
+    top: 2rem;
+  }
+
+  .underline-desc {
+    height: 1px;
+    width: 100%;
+    margin: auto;
+    background: #9d9d9d;
+  }
+  .desc-contents {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+  }
+  .desc-control-one {
+    //background: lightblue;
+    p {
+      padding: 1rem 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+  }
+  .desc-control-two {
+    //background: lightcoral;
+    p {
+      padding: 1rem 0;
+      font-size: 1.3rem;
+      font-weight: 400;
+    }
+  }
+  .close-desc-btn {
+    border: none;
+    background: #005371;
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}

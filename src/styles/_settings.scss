@@ -1,0 +1,171 @@
+.settings-container {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    height: 92vh;
+    width: 87vw;
+    background: #fff;
+    border-width: 1px 0px 0px 0px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.2);
+    overflow-y: hidden;
+    overflow-x: hidden;
+    display: flex;
+
+    .settings-container-left{
+        width: 30%;
+        height: 100%;
+        // background-color: yellow;
+        .container-left-wrap{
+            width: 80%;
+            // background-color: pink;
+            margin-top: 60px;
+            margin-left: auto;
+            // margin-right: auto;
+            // height: 200px;
+            display: flex;
+            flex-direction: column;
+            button{
+                padding: 10px;
+                font-size: 16px;
+                color: #333333;
+                border: none;
+                background: none;
+                text-align: left;
+                cursor: pointer;   
+            }
+            .active{
+                font-weight: 600;
+            }
+        }
+    }
+    .settings-container-center{
+        height: 95%;
+        margin-top: auto;
+        margin-bottom: auto;
+        border: 1px solid #DDDDDD;
+    }
+    .settings-container-right{
+        width: 70%;
+        height: 100%;
+        // background-color: green;
+        .container-right-wrap{
+            margin-top: 45px;
+            margin-left: 45px;
+            .passwordchange-container{
+                h1{
+                    font-size: 20px;
+                    color: #333333;
+                }
+                .password-input-container{
+                    margin-top: 30px;
+                    display: flex;
+                    flex-direction: column;
+                    input{
+                        width: 350px;
+                        padding: 10px;
+                        margin: 10px 0px;
+                        background-color: #F7F9FA;
+                        border: none;
+                    }
+                }
+                .password-save-btn{
+                    margin-top: 30px;
+                    width: 350px;
+                    font-size: 18px;
+                    padding: 10px 0px;
+                    color: #7CEA51;
+                    background-color: #00394D;
+                    border: none;
+                    border-radius: 5px;
+                }
+            }
+            .newsletter-container{
+                .newsletter-p{
+                    font-size: 16px;
+                    margin-top: 10px;
+                }
+                .newsletter-names {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-top: 30px;
+                
+                    .news-control {
+                        margin-top: 20px;
+                      width: 40%;
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                
+                      p {
+                        font-size: 16px;
+                        // background-color: red;
+                        // font-weight: 500;
+                      }
+                
+                      .switch {
+                        position: relative;
+                        display: inline-block;
+                        width: 44px;
+                        height: 22px;
+                      }
+                
+                      .switch input {
+                        opacity: 0;
+                        width: 0;
+                        height: 0;
+                      }
+                
+                      .slider {
+                        position: absolute;
+                        cursor: pointer;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: #ccc;
+                        -webkit-transition: 0.4s;
+                        transition: 0.4s;
+                      }
+                
+                      .slider:before {
+                        position: absolute;
+                        content: "";
+                        height: 15px;
+                        width: 15px;
+                        left: 1px;
+                        bottom: 4px;
+                        background-color: white;
+                        -webkit-transition: 0.4s;
+                        transition: 0.4s;
+                      }
+                
+                      input:checked + .slider {
+                        background-color: #53DF19;
+                      }
+                
+                      input:focus + .slider {
+                        box-shadow: 0 0 1px #53DF19;
+                      }
+                
+                      input:checked + .slider:before {
+                        -webkit-transform: translateX(26px);
+                        -ms-transform: translateX(26px);
+                        transform: translateX(26px);
+                      }
+                
+                      /* Rounded sliders */
+                      .slider.round {
+                        border-radius: 34px;
+                      }
+                
+                      .slider.round:before {
+                        border-radius: 50%;
+                      }
+                    }
+                  }
+            }
+        }
+    }
+}
