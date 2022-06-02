@@ -110,12 +110,7 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
 
                    </div>
                 <div className='employees-wrap'>
-                    <MsgModal /> {/* it pops up when the employee is deleted from the employee table or new employee is added */}
-                    <CsvModal /> {/* to open 'Import Excel doc' form */}
-                    <ViewUserModal /> {/* to open user details form by clicking user row */}
-                    <ConfirmDeleteModal /> {/* to open delete user form under actions */}
-                    <AddUserForm /> {/* to add user in 'Add User' beside 'Download List' */}
-                    <EditUserForm /> {/* to open user form under actions */}
+                  
                      {/* This loading component appears for some of the async operations on the portal like adding and deleting the users, todos etc */}
 {/* 
                     <div className='nav-container'>

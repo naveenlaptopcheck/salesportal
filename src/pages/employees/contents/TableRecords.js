@@ -7,12 +7,12 @@ import Pagination from '../../../components/Pagination';
 import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
-
+import { Skeleton } from "@mui/material";
 function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
   let PageSize =5;
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
-  
+ 
  
 
  
@@ -44,6 +44,7 @@ function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurre
           }
         })
       });
+    
     }
     
     else{
@@ -90,8 +91,7 @@ function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurre
   // });
   let currentTableData=currentData
  return (
-    <>
-      <div className="employees-table-box">
+    <div className="employees-table-box">
         <div className="employees-table">
           <table className="records-table">
             <thead >
@@ -153,7 +153,8 @@ function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurre
             />}
         </div>
       </div>
-    </>
+     
+  
   );
 
 }

@@ -446,7 +446,7 @@
 
                 }
 
-                .name1 {}
+            
 
 
 
@@ -460,7 +460,7 @@
                   position: absolute;
                   left: 95%;
                   font-size: 30px;
-                  cursor: grab;
+                cursor: pointer;
                   display: flex;
                   z-index: 10;
                   align-items: center;
@@ -485,7 +485,7 @@
                   position: absolute;
                   transform: translateX(90px);
                   font-size: 30px;
-                  cursor: grab;
+              
                   top: -22px;
                 }
 
@@ -494,7 +494,7 @@
                   position: absolute;
                   transform: translateX(110px);
                   font-size: 30px;
-                  cursor: grab;
+                
                   top: -25px;
                   right: -900px;
                 }
@@ -503,7 +503,7 @@
                 .ddot1 {
                   position: absolute;
                   width: 200px;
-                  height: 200px;
+                  height: 130px;
                   border-radius: 20px;
                   align-items: center;
                   box-shadow: 0px 8px 44px 0px #0000001F;
@@ -553,16 +553,27 @@
                   color: #00394D;
                   font-size: 12px;
                   position: absolute;
-                  top: 61px;
+                  top: 25px;
                   left: 42px;
                 }
 
                 .ddot5 {
                   color: #00394D;
                   font-size: 10px;
-                  border-top: 1px solid #E5E6E8;
+                  border-top: 1px solid #00394D;
                   width: 80%;
-                  padding-top: 6px;
+                  padding-top: 5px;
+                    transform: translateY(13px);
+                  
+                  }
+                  
+                  .ddot55 {
+                    color: #00394D;
+                    font-size: 10px;
+                    border-top: 1px solid #00394D;
+                    width: 80%;
+                    padding-top: 4px;
+                    transform: translateY(17px);
 
                 }
 
@@ -570,7 +581,7 @@
                   color: #00394D;
                   font-size: 12px;
                   position: absolute;
-                  top: 110px;
+                  top: 65px;
                   left: 42px;
                 }
 
@@ -597,7 +608,7 @@
                   border-radius: 20px;
                   align-items: center;
                   box-shadow: 0px 8px 44px 0px #0000001F;
-
+                
                   background-color: white;
                   display: flex;
                   flex-direction: column;
@@ -628,7 +639,7 @@
                   justify-content: center;
 
 
-                  margin-top: 30px;
+                  margin-top: 0px;
                   margin-left: 6px;
 
 
