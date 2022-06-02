@@ -21,7 +21,7 @@ import Employees from './pages/employees/Employees';
 import Transactions from './pages/transactions/Transactions'
 // import Settings from "./pages/Settings/Settings";
 import LoginPage from "./pages/LoginPage";
-import { CurrencyExchange } from "@mui/icons-material";
+
 // import Profile from "./pages/Profile/Profile";
 // import SalesCalcPage from "./pages/SalesCalculator/SalesCalcPage";
 // import SecondPage from "./pages/SignUp/SecondPage";
@@ -38,8 +38,9 @@ function App({ isLoading, handleFetch, msgModalOpen }) {
     headers: { Authorization: `${token}` },
   };
   let location = useLocation();
+  let currentPath = location.pathname;
   useEffect(() => {
-    token !== null && handleFetch(config);
+    token !== null && handleFetch(config,currentPath);
   }, [handleFetch]);
   if (isLoading) {
     return (
@@ -59,11 +60,11 @@ function App({ isLoading, handleFetch, msgModalOpen }) {
       "/profile",
       "/transactions"
     ];
-    let currentPath = location.pathname;
+    
   
     let showPath = hideNavArr.find((path) => currentPath === path);
     //console.log(hidePath);
-
+   
     return (
       <>
        {showPath && <Navbar />}
@@ -157,10 +158,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleFetch: (config) => {
+    handleFetch: (config,currentPath) => {
       dispatch({ type: PAGE_LOAD_START });
    
       let url1 = `${process.env.REACT_APP_URL}/sales/employee`;
+      let url2= `${process.env.REACT_APP_URL}/sales/transaction`;
       // let url2 = `${process.env.REACT_APP_URL}/console/dashboard`;
       // let url3 = `${process.env.REACT_APP_URL}/console/todo?checked=false`;
       // let url4 = `${process.env.REACT_APP_URL}/console/issue?status=initiated`;
@@ -171,8 +173,8 @@ const mapDispatchToProps = (dispatch) => {
       // let url9 = `${process.env.REACT_APP_URL}/console/credit_given_graph?duration=weekly`;
       // let url10 = `${process.env.REACT_APP_URL}/console/usage_graph?duration=weekly`;
       // let url11 = `${process.env.REACT_APP_URL}/console/defaulter_list`;
-
-      const promise1 = axios.get(url1, config);
+      const y=currentPath==="/transactions"?url2:url1
+      const promise1 = axios.get(y, config);
       // const promise2 = axios.get(url2, config);
       // const promise3 = axios.get(url3, config);
       // const promise4 = axios.get(url4, config);
@@ -198,12 +200,13 @@ const mapDispatchToProps = (dispatch) => {
       ]).then((response) => {
         // console.log('logging response in app page');
         // console.log(response);
-      
+
+        const x=currentPath==="/transactions"?response[0].data.transactions:response[0].data.employee
         return dispatch({
           type: DATA_FETCHED,
           payload: {
             data: {
-              dataRec: response[0].data.employee,
+              dataRec: x,
               dataRecTotalPages: response[0].data.total_pages,
               // dataDash: response[1].data,
               // dataTodo: response[2].data.todos,

@@ -112,7 +112,7 @@ function ReadOnlyRowsT({
                
                 <div  className="name1">
                 <td
-                    onClick={handleOpenViewModal}
+                   
                     
          
                 >
@@ -185,23 +185,16 @@ function ReadOnlyRowsT({
                       </div>
                       <div className="ddot52">
 
-                              <MenuItem value="0" onClick={(e)=>upd(0)} sx={{fontSize:"12px"}}>Initiated </MenuItem>
-                               <MenuItem value="1" onClick={(e)=>upd(1)}  sx={{fontSize:"12px"}}>Pending</MenuItem>
-                               <MenuItem value="2" onClick={(e)=>upd(2)}  sx={{fontSize:"12px"}}>Completed </MenuItem>
-                               <MenuItem value="3" onClick={(e)=>upd(3)}  sx={{fontSize:"12px"}}>Failed</MenuItem>
-                               <MenuItem value="4" onClick={(e)=>upd(4)}  sx={{fontSize:"12px"}}>Settled </MenuItem>
-                               <MenuItem value="5" onClick={(e)=>upd(5)}  sx={{fontSize:"12px"}}>Refund initiated</MenuItem>
-                               <MenuItem value="6" onClick={(e)=>upd(6)}  sx={{fontSize:"12px"}}>Refund Settled</MenuItem>
-                         
+                            { status!=="initiated" &&<MenuItem value="0" onClick={(e)=>upd(0)} sx={{fontSize:"12px"}}>Initiated </MenuItem> }
+                             { status!=="pending" &&<MenuItem value="1" onClick={(e)=>upd(1)}  sx={{fontSize:"12px"}}>Pending</MenuItem>}
+                             { status!=="completed"&& <MenuItem value="2" onClick={(e)=>upd(2)}  sx={{fontSize:"12px"}}>Completed </MenuItem>}
+                              { status!=="failed"&&<MenuItem value="3" onClick={(e)=>upd(3)}  sx={{fontSize:"12px"}}>Failed</MenuItem>}
+                               { status!=="settled" && <MenuItem value="4" onClick={(e)=>upd(4)}  sx={{fontSize:"12px"}}>Settled </MenuItem>}
+                               {status!=="refund initiated"&&<MenuItem value="5" onClick={(e)=>upd(5)}  sx={{fontSize:"12px"}}>Refund initiated</MenuItem>}
+                             { status!="refund_settled" &&<MenuItem value="6" onClick={(e)=>upd(6)}  sx={{fontSize:"12px"}}>Refund Settled</MenuItem>}
+                             
                       </div>
-                  
-                   
-
-                   
-
-                     
-
-                </div>}
+                   </div>}
                 ...</td>
               </div>
                 {/* <td>

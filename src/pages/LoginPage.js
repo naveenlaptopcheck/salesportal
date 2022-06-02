@@ -102,10 +102,10 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
             Login
           </button>
 
-          <div className="sign-up">
+          {/* <div className="sign-up">
             <p>Don't have an account?</p>
             <Link to="/employer_create">Sign Up</Link>
-          </div>
+          </div> */}
         </form>
       </div>
       <div className="login-side-image">
@@ -268,7 +268,7 @@ const mapDispatchToProps = (dispatch) => {
       axios
         .post(`${process.env.REACT_APP_URL}/sales/login`, values)
         .then((response) => {
-          //console.log(response.data);
+         
           localStorage.setItem("token", response.data.token);
           const token = localStorage.getItem("token");
           //console.log(token);
@@ -314,7 +314,7 @@ const mapDispatchToProps = (dispatch) => {
             // promise10,
             // promise11,
           ]).then((response) => {
-            console.log(response)
+          
             //console.log(resp.data);
             // navigate("/dashboard", { replace: true });
 

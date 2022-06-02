@@ -156,21 +156,19 @@ function ReadOnlyRows({
                     {kyc}
                 </td>
               
-                <td style={{position:"absolute",left:"98%",fontSize:"30px",zIndex:10,cursor:"grab",top:"-4px"}} onClick={()=>{
+                <td style={{position:"absolute",left:"98%",fontSize:"30px",zIndex:10,cursor:"pointer",top:"-4px"}} onClick={()=>{
                     setmod(!mod)
                 }} >
        { mod&&<div className="ddot1">
-                      <div className="ddot3">
-                           Delete employee 
-                           </div>
+                     
                       <div className="ddot4">
                      Set Status
                       </div>
                       <div className="ddot5">
 
-                  <div className="dod"  onClick={(e)=>{handledit1(1)}}>Inactive</div>
+                  { status==="active"&&<div className="dod"  onClick={(e)=>{handledit1(1)}}>Inactive</div>}
           
-                  <div  className="dod" onClick={(e)=>{handledit1(0)}}>active</div>
+                  {status==="inactive"&&<div  className="dod" onClick={(e)=>{handledit1(0)}}>active</div>}
 
                       </div>
                       <div className="ddot6">
@@ -178,13 +176,10 @@ function ReadOnlyRows({
                       </div>
                    
                        
-                      <div className="ddot5">
-                      <div className="dod" onClick={(e)=>handledit(2)} > Completed
-                      </div>
+                      <div className="ddot55">
+                    {  kyc==="incomplete"&&<div className="dod" onClick={(e)=>handledit(2)} > Completed</div> }
                  
-                     <div className="dod" onClick={(e)=>handledit(1)} >Incomplete</div> 
-
-                     </div>
+                     { kyc==="complete" &&<div className="dod" onClick={(e)=>handledit(1)} >Incomplete</div>} </div> 
 
                      
 

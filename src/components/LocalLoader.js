@@ -27,7 +27,7 @@ const customStyles = {
 
 const LocalLoader = ({ localLoaderOpen }) => {
   return (
-    <Modal style={customStyles} isOpen={localLoaderOpen}>
+    <Modal isOpen={localLoaderOpen}>
       <Loader.Oval type="Oval" color="#8aff58" height={50} width={50} />
     </Modal>
   );
