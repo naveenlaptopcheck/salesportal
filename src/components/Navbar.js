@@ -65,10 +65,6 @@ function Navbar({
         </h1>
         
         </div>
-       {pathname==="transactions"&& 
-       <div style={{ color: "#00394d",fontSize:"7px",position:"absolute",right:"120px"}}>
-       <h1>Welcome , {user}</h1>
-        </div>}
         <h1 className="log-out" onClick={(e)=>log(e)}>
           LOGOUT
         </h1>
