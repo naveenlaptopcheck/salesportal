@@ -8,7 +8,9 @@ import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
 import { Skeleton } from "@mui/material";
-function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
+import { DataGrid } from '@mui/x-data-grid';
+
+function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
   let PageSize =5;
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
@@ -49,7 +51,7 @@ function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurre
     
     else{
       
-      
+      console.log(type,search)
       axios
       .post(`${process.env.REACT_APP_URL}/sales/employee/search`,{
         "search_field": type,
@@ -91,58 +93,18 @@ function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurre
   // });
   let currentTableData=currentData
   console.log(currentData)
- return (
-    <div className="employees-table-box">
-        <div className="employees-table">
-          <table className="records-table">
-            <thead >
-              <tr >
-            
-                 <div className="rec1"> 
-                  <div className="rec2">
-                <Checkbox size="large"  onChange={(e)=>setcheck(e.target.checked)}></Checkbox>
-               
-                {/* <th>Id</th> */}
-                </div>
-                {/* <th style={{position:"absolute",left:"155px",}} >Company </th> */}
-                <th style={{position:"absolute",left:"14%",}}>Name </th>
 
+  const columns = [{field:"name",headerName:"Name",width:120},{field:"phone",headerName:"Phone"},{field:"email",headerName:"Email",width:170},{field:"net_salary",headerName:"Salary",width:100},{field:"status",headerName:"Status"},{field:"kyc",headerName:"Kyc"}
+ 
+  ];
+  
+ return (<>
+ <div style={{display:"flex",flexDirection:"column",justifyContent:"center", width:"100%",minHeight:"800px",transform:"translateY(10px)",}}>
+<DataGrid rows={currentTableData}   hideFooter={true} columns={columns} rowHeight={40}  hideFooterPagination={true} sx={{fontSize:"14px",color:"#00394d"}}   
+>
 
-                <th style={{position:"absolute",left:"25%",}}>Phonenumber </th>
-                
-
-                <th style={{position:"absolute",left:"43.8%",}}>Email ID </th>
-                <th style={{position:"absolute",left:"59.9%",}}>Salary </th>
-               
-
-                {/* <th style={{position:"absolute",left:"575px",}}>Aadhar </th>
-
-                <th style={{position:"absolute",left:"720px",}}>PAN ID </th> */}
-
-                <th style={{position:"absolute",left:"69.2%",}}>Status </th>
-
-                <th style={{position:"absolute",left:"80%",}}>KYC</th>
-                <th style={{position:"absolute",left:"90%",}}>Actions</th>
-
-           </div>
-              </tr>
-            </thead>
-            <tbody>
-              {currentTableData.map((record) => {
-              
-                const { id } = record;
-                return (
-                  <>
-                    <ReadOnlyRows key={id}  className="read-only"  record={record} check={check} v={v} up={(x)=>setv(x)}/>
-                  </>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      <Divider ></Divider>
-      
-        <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",position:"absolute",bottom:"10px",left:"50%",right:"50%"}}>
+</DataGrid>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"center",transform:"translateY(-95px)"}}>
           {apiRec.length !== 0 &&
             <Pagination
               className="employees-pagination"
@@ -153,9 +115,8 @@ function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurre
               onPageChange={page => setCurrentPage(page)}
             />}
         </div>
-      </div>
-     
-  
+</div>
+</>
   );
 
 }
@@ -169,4 +130,4 @@ const mapStateToProps = (state) => {
   return { records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue1 };
 };
 // const mapDispatchToProps = (dispatch) => {};
-export default connect(mapStateToProps)(TableRecords);
+export default connect(mapStateToProps)(MRecords);

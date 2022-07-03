@@ -4,6 +4,7 @@ import { AiFillDatabase, AiOutlineFileAdd } from "react-icons/ai";
 import { RiFileExcel2Fill } from "react-icons/ri";
 import { connect,useDispatch } from "react-redux";
 import SearchIcon from '@mui/icons-material/Search';
+import Mrecords from "./contents/mobilerecord"
 //import { saveAs } from "file-saver";
 import axios from "axios";
 import { TextField } from '@mui/material';
@@ -40,6 +41,10 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
     let [p,setp]=useState(3)
     let [page,setpage]=useState(1)
     let [val1,setval1]=useState("0")
+    let [h,seth]=useState(window.innerWidth)
+    window.addEventListener("resize",()=>{
+        seth(window.innerWidth)
+    })
 
     const token = localStorage.getItem("token");
     
@@ -65,18 +70,21 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
       }
     
     
-
+if(h>1000){
     return (
         <>
             <div className="employees">
             <div className="emp1">
                        <h1 style={{position:"relative",transform:"translateX(11px)"}}>{tot} EMPLOYEES FOUND</h1>
                  
-                       <div className="emp2">
+                       <div className="emp2" >
+                    
                        <button className='header-btn' style={{border:p===3?" 2px solid #00C805":""}} onClick={(e)=>{setp(3);getAllEmployees()}} >ALL</button>
                        <button className='header-btn' style={{border:p===1?" 2px solid #00C805":""}} onClick={(e)=>{ setp(1) ;dat(1)}}>PENDING</button>
                        <button className='header-btn'  style={{border:p===2?" 2px solid #00C805":""}} onClick={(e)=>{ setp(2) ;dat(2)}} >COMPLETE</button>
                        <button className='header-btn'  style={{border:p===0?" 2px solid #00C805":""}} onClick={(e)=>{ setp(0) ;dat(0)}}>INCOMPLETE</button>
+                       
+                    
                        <div style={{position:"absolute",right:"420px",top:"10px"}}> 
                  
                        <Select value={val} onChange={(e)=>{setval(e.target.value);
@@ -109,7 +117,7 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
                        </div>
 
                    </div>
-                <div className='employees-wrap'>
+                <div className='employees-wrap' >
                   
                      {/* This loading component appears for some of the async operations on the portal like adding and deleting the users, todos etc */}
 {/* 
@@ -204,7 +212,35 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
                 </div>
             </div>
         </>
-    );
+    );}else{
+        return (<>
+        <div style={{display:"flex",flexDirection:"column"}}>
+         <div style={{width:"100%",display:"flex",alignItems:"center",flexDirection:"row",gap:"10px",paddingTop:"20px",justifyContent:"space-between"}}>
+                       {/* <h1 style={{position:"relative",transform:"translateX(11px)"}}>{tot} EMPLOYEES FOUND</h1> */}
+                  
+                       <div className='search-container'>
+                       <SearchIcon className='search-icon'  />
+                <SearchTable  search={val}/>
+            </div>
+                       <Select value={val} onChange={(e)=>{setval(e.target.value)}} sx={{width:"150px",fontSize:"12px",transform:"translateX(-20px)"}}  defaultValue={val} >
+                               <MenuItem value="name" sx={{fontSize:"12px"}}>Employee Name</MenuItem>
+                               <MenuItem value="email"  sx={{fontSize:"12px"}}>Email Id</MenuItem>
+                             
+                              
+                              
+                           </Select>
+                      
+               
+            </div>
+           
+              
+                    
+
+                  
+      <Mrecords val={val} tot={(e)=>setot(e)} currentPage={page} setCurrentPage={setpage}></Mrecords>
+      </div>
+        </>)
+    }
 }
 
 const mapStateToProps = (state) => {

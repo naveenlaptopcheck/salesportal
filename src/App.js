@@ -37,6 +37,7 @@ function App({ isLoading, handleFetch, msgModalOpen }) {
   const config = {
     headers: { Authorization: `${token}` },
   };
+ 
   let location = useLocation();
   let currentPath = location.pathname;
   useEffect(() => {

@@ -14,6 +14,7 @@ import NavProfileModal from "./NavProfileModal";
  import WhatsNew from "./WhatsNew";
 import DropNotifications from "./DropNotifications";
 import {Navigate} from 'react-router-dom'
+import Hamb from "./hamb"
 function Navbar({
   handleProfileDrop,
   handleWhtsNew,
@@ -29,19 +30,25 @@ function Navbar({
   let location = useLocation();
   let pathname = location.pathname.substring(1);
   let pathvar = pathname.charAt(0).toUpperCase() + pathname.substring(1);
-  let user="John Doe "
+ 
   const log=()=>{
     localStorage.removeItem("token")
     window.location.replace("/")
   }
+  let [h,seth]=useState(window.innerWidth)
+  window.addEventListener("resize",()=>{
+   seth(window.innerWidth)
+  })
 
 
 
-  return (
-    <>
+
+  if(h>600){
+    return(
+     <>
       {size !== 0 && <WhatsNew />}
-      <NavProfileModal />
-      <DropNotifications />
+      {/* <NavProfileModal />
+      <DropNotifications /> */}
       <div className="navbar">
       <h1 className="logo">
           <div className="page-link">
@@ -74,7 +81,15 @@ function Navbar({
         </div> */}
       </div>
     </>
-  );
+    )
+  }
+  else{
+    return(
+     <Hamb></Hamb>
+
+
+    )
+  }
 }
 
 //Redux

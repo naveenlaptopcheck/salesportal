@@ -14,8 +14,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
   let navigate = useNavigate();
+  let [h,seth]=useState(window.innerWidth)
+  window.addEventListener("resize",()=>{
+   seth(window.innerWidth)
+  })
 
-  const [captchaFilled, setCaptchaFilled] = useState(false);
+ 
+  const [captchaFilled, setCaptchaFilled] = useState(true);
 
   //Formik
   const formik = useFormik({
@@ -39,9 +44,9 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
 
 
   return (
-    <div className="login-main-wrap">
-      <div className="login-form-wrap">
-        <form className="login-form" onSubmit={formik.handleSubmit}>
+    <div className="login-main-wrap" style={{display:"flex",flexDirection:h<700?"column":""}}>
+      <div className="login-form-wrap" style={{width:h<700?"100%":"",}}>
+        <form className="login-form" onSubmit={formik.handleSubmit} style={{textAlign:"center",width:h<700?"80%":""}}>
           <h1>FINSIRE</h1>
           <div className="form-input">
             <input
@@ -108,7 +113,7 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
           </div> */}
         </form>
       </div>
-      <div className="login-side-image">
+      <div className="login-side-image" style={{width:h<700?"100%":""}}>
         <svg
           width="680"
           height="512"
