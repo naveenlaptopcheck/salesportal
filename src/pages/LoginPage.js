@@ -20,7 +20,7 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
   })
 
  
-  const [captchaFilled, setCaptchaFilled] = useState(true);
+  const [captchaFilled, setCaptchaFilled] = useState(false);
 
   //Formik
   const formik = useFormik({
@@ -80,10 +80,11 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
               Invalid Username or Password
             </p>
           )}
-          <div >
+          <div  style={{marginBottom:"20px"}}>
             <ReCAPTCHA
               sitekey={process.env.REACT_APP_URL_CAPTCHA_KEY}
               onChange={onCaptchaChange}
+             
             />
           </div>
           {/* <div className="forgot-pw">
@@ -100,6 +101,7 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
           </div> */}
           <button
             className="login-btn"
+         
             disabled={!captchaFilled}
             type="submit"
             style={captchaFilled?{}:{background:"gray", cursor:"default"}}

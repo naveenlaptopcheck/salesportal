@@ -6,7 +6,8 @@ import Pagination from '../../../components/Pagination';
 import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
-import { DataGrid } from '@mui/x-data-grid';
+
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
 import ReadOnlyRowsT from "./ReadonlyRowst"
 function  Mob2({ records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue,tot,currentPage,setCurrentPage }) {
@@ -94,14 +95,14 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, apiRecTotalPages,
   //     .includes(searchChangeValue.trim().toLowerCase());
   // });
   let currentTableData=currentData
-  const columns = [{field:"id",headerName:"ID",width:60},{field:"tranaction_type",headerName:"Type",width:70},{field:"ref_id",headerName:"Reference Id",width:170},{field:"amount",headerName:"Amount",width:100},{field:"status",headerName:"Status"},{field:"date",headerName:"Date",width:200}
+  const columns = [{field:"id",headerName:"ID",width:60},{field:"tranaction_type",headerName:"Type",width:70},{field:"ref_id",headerName:"Reference Id",width:170},{field:"amount",headerName:"Amount",width:100,valueGetter: (params: GridValueGetterParams) =>params.row.amount===null?"\xa0\xa0\xa0\xa0\xa0\xa0\xa0-":params.row.amount},{field:"status",headerName:"Status",width:100},{field:"date",headerName:"Date",width:200}]
+
  
-];
 
  return (
     <>
        <div style={{display:"flex",flexDirection:"column",justifyContent:"center", width:"100%",minHeight:"800px",transform:"translateY(10px)",}}>
-<DataGrid rows={currentTableData} checkboxSelection={true}   disableColumnFilter={true} headerHeight={50}  hideFooter={true} columns={columns} rowHeight={40}  hideFooterPagination={true} sx={{fontSize:"14px",color:"#00394d",}}   
+<DataGrid rows={currentTableData}  checkboxSelection={true}   rowSpacingType="border" disableColumnFilter={true} headerHeight={50}  hideFooter={true} columns={columns} rowHeight={40}  hideFooterPagination={true} sx={{fontSize:"14px",color:"#00394d",}}   
 >
 
 </DataGrid>
