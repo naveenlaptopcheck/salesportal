@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { usePagination, DOTS } from './usePagination';
 import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
+import { maxHeight } from '@mui/system';
 
 const Pagination = props => {
     const {
@@ -22,7 +23,7 @@ const Pagination = props => {
     });
     // console.log('here paginationRange is:-----------')
     // console.log(paginationRange)
-
+let h=window.innerWidth
     if (currentPage === 0 || paginationRange.length < 2) {
         return null;
     }
@@ -37,9 +38,10 @@ const Pagination = props => {
 
     let lastPage = paginationRange[paginationRange.length - 1];
     // console.log(`last page is: ${lastPage}`);
+
     return (
         <ul
-            className="employees-pagination"
+            className="employees-pagination" 
         >
             <li
                 className={classnames('pagination-item', {
@@ -52,6 +54,10 @@ const Pagination = props => {
                 </div>
             </li>
             {paginationRange.map(pageNumber => {
+                
+                if(pageNumber>2 & h<400 & pageNumber!=paginationRange[paginationRange.length-1]){
+                    return(<></>)
+                }               
 
                 if (pageNumber === DOTS) {
                     return <li className="pagination-item dots">&#8230;</li>;

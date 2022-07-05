@@ -14,19 +14,20 @@ import {
     OPEN_CSV_MODAL,
     SEARCH_TABLE_CHANGE_EMP
 } from "../../redux/actions";
+import "./mp.css"
+import Mob1 from "./contents/mobs"
+// import AddUserForm from "./modals/AddUserForm";
+// import ConfirmDeleteModal from "./modals/ConfirmDeleteModal";
+// import CsvModal from "./modals/CsvModal";
+// import EditUserForm from "./modals/EditUserForm";
+// import ViewUserModal from "./modals/ViewUserModal";
 
-import AddUserForm from "./modals/AddUserForm";
-import ConfirmDeleteModal from "./modals/ConfirmDeleteModal";
-import CsvModal from "./modals/CsvModal";
-import EditUserForm from "./modals/EditUserForm";
-import ViewUserModal from "./modals/ViewUserModal";
-
-import DownloadEmployees from "./contents/DownloadEmployees";
+// import DownloadEmployees from "./contents/DownloadEmployees";
 import SearchTable from "./contents/SearchTable";
 import TableRecords from "./contents/TableRecords";
 
-import MsgModal from "../../components/MsgModal";
-import LocalLoader from "../../components/LocalLoader";
+// import MsgModal from "../../components/MsgModal";
+// import LocalLoader from "../../components/LocalLoader";
 //import OverdueList from "./contents/OverdueList";
 import Select from '@mui/material/Select';
 import { MenuItem } from '@mui/material';
@@ -218,9 +219,9 @@ if(h>1000){
          <div style={{width:"100%",display:"flex",alignItems:"center",flexDirection:"row",gap:"10px",paddingTop:"20px",justifyContent:"space-between"}}>
                        {/* <h1 style={{position:"relative",transform:"translateX(11px)"}}>{tot} EMPLOYEES FOUND</h1> */}
                   
-                       <div className='search-container'>
-                       <SearchIcon className='search-icon'  />
-                <SearchTable  search={val}/>
+                       <div className='rt'>
+                       <SearchIcon sx={{marginLeft:"4px",width:"40px",fontSize:"20px",backgroundColor:"C0C0C0"}} />
+               <Mob1 search={val}></Mob1>
             </div>
                        <Select value={val} onChange={(e)=>{setval(e.target.value)}} sx={{width:"150px",fontSize:"12px",transform:"translateX(-20px)"}}  defaultValue={val} >
                                <MenuItem value="name" sx={{fontSize:"12px"}}>Employee Name</MenuItem>
