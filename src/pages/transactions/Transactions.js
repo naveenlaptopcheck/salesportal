@@ -14,13 +14,13 @@ import {
     EMPLOYEES_DATA_FETCHED,
     SEARCH_TABLE_CHANGE
 } from "../../redux/actions";
-
+import Mob2 from "./contents/mobilerecord"
 import AddUserForm from "./modals/AddUserForm";
 import ConfirmDeleteModal from "./modals/ConfirmDeleteModal";
 import CsvModal from "./modals/CsvModal";
 import EditUserForm from "./modals/EditUserForm";
 import ViewUserModal from "./modals/ViewUserModal";
-
+import Mob1 from './contents/mob1';
 import DownloadEmployees from "./contents/DownloadEmployees";
 import SearchTable from "./contents/SearchTable";
 import TransactionsRecords from "./contents/transactionrecord";
@@ -38,6 +38,10 @@ function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchC
     let [val1,setval1]=useState("0")
     let [tot,setot]=useState(0)
     let [p,setp]=useState(3)
+    let [h,seth]=useState(window.innerWidth)
+    window.addEventListener("resize",()=>{
+        seth(window.innerWidth)
+    })
     const [currentPage, setCurrentPage] = useState(1);
 
     const token = localStorage.getItem("token");
@@ -61,7 +65,7 @@ function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchC
 
     }
     
-
+  if(h>1000){
     return (
         <>
             <div className="employees">
@@ -214,6 +218,58 @@ function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchC
             </div>
         </>
     );
+}else{
+    return (<>
+        <div style={{display:"flex",flexDirection:"column"}}>
+         <div style={{width:"100%",display:"flex",alignItems:"center",flexDirection:"row",gap:"10px",paddingTop:"20px",justifyContent:"space-between"}}>
+                       {/* <h1 style={{position:"relative",transform:"translateX(11px)"}}>{tot} EMPLOYEES FOUND</h1> */}
+                  
+  
+           
+                     <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}> 
+                 
+                 <Select value={val} onChange={(e)=>{setval(e.target.value);
+                                                    if(e.target.value==="status"){
+                                                        gp(0)
+                                                        setval1(0)
+                                                    }}} 
+                  sx={{width:"150px",fontSize:"12px",transform:"translate(16px)"}} defaultValue={val} >
+                         <MenuItem value="ref_id"  sx={{fontSize:"12px"}}>Ref  </MenuItem>
+                         <MenuItem value="status"  sx={{fontSize:"12px"}}>status</MenuItem>
+                         
+                       
+                     </Select>
+                
+                     </div>
+                
+      
+                      { val!="status"?(<div className='rt' style={{paddingRight:"10px",width:"150px"}}>
+                          <SearchIcon  sx={{marginLeft:"4px",width:"40px",fontSize:"20px",backgroundColor:"C0C0C0"}}  />
+                         <Mob1 search={val}></Mob1>
+                      </div>):
+                      (
+                         <Select value={val1} onChange={(e)=>{setval1(e.target.value);gp(e.target.value);}} sx={{width:"150px",fontSize:"12px",transform:"translate(-16px)"}} defaultValue={val1} >
+                         <MenuItem value="0"  sx={{fontSize:"12px"}}>Initiated </MenuItem>
+                         <MenuItem value="1"  sx={{fontSize:"12px"}}>Pending</MenuItem>
+                         <MenuItem value="2"  sx={{fontSize:"12px"}}>Completed </MenuItem>
+                         <MenuItem value="3"  sx={{fontSize:"12px"}}>Failed</MenuItem>
+                         <MenuItem value="4"  sx={{fontSize:"12px"}}>Settled </MenuItem>
+                         <MenuItem value="5"  sx={{fontSize:"12px"}}>Refund initiated</MenuItem>
+                         <MenuItem value="6"  sx={{fontSize:"12px"}}>Refund Settled</MenuItem>
+                     </Select>)
+                      }
+                     
+                      </div>    
+
+                      <div >
+                
+               
+               
+            </div>
+<Mob2 tot={(e)=>setot(e)} currentPage={currentPage} setCurrentPage={(e)=>setCurrentPage(e)}></Mob2>
+</div>
+    </>)
+}
 }
 
 const mapStateToProps = (state) => {

@@ -1,0 +1,18 @@
+.rt {
+    height: 50px;
+    border: 1px solid #DDE3E5;
+    border-radius: 8px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.sea {
+    margin-left: 4px;
+    width: 40px;
+
+    font-size: 20px;
+    color: #C0C0C0;
+
+}

@@ -90,7 +90,7 @@ function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurre
   //     .includes(searchChangeValue.trim().toLowerCase());
   // });
   let currentTableData=currentData
-  console.log(currentData)
+
  return (
     <div className="employees-table-box">
         <div className="employees-table">
