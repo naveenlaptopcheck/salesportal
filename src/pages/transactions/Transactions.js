@@ -220,7 +220,7 @@ function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchC
     );
 }else{
     return (<>
-        <div style={{display:"flex",flexDirection:"column"}}>
+        <div style={{display:"flex",flexDirection:"column",overflow:"hidden"}}>
          <div style={{width:"100%",display:"flex",alignItems:"center",flexDirection:"row",gap:"10px",paddingTop:"20px",justifyContent:"space-between"}}>
                        {/* <h1 style={{position:"relative",transform:"translateX(11px)"}}>{tot} EMPLOYEES FOUND</h1> */}
                   
@@ -261,11 +261,7 @@ function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchC
                      
                       </div>    
 
-                      <div >
-                
-               
-               
-            </div>
+         
 <Mob2 tot={(e)=>setot(e)} currentPage={currentPage} setCurrentPage={(e)=>setCurrentPage(e)}></Mob2>
 </div>
     </>)
