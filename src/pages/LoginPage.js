@@ -20,7 +20,7 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
   })
 
  
-  const [captchaFilled, setCaptchaFilled] = useState(false);
+  const [captchaFilled, setCaptchaFilled] = useState(true);
 
   //Formik
   const formik = useFormik({
