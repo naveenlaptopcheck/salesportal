@@ -66,6 +66,7 @@ import {
   EDIT_USER_SALARY_OPEN,
   EDIT_USER_SALARY_CLOSE,
 } from "./actions";
+import { act } from "react-dom/test-utils";
 
 const { records } = empRecords;
 
@@ -97,6 +98,8 @@ const initialStore = {
   searchChangeValue1:{search:"",type:""},
   issueDescOpen: false,
   issueDescContent: [],
+  search:"name",
+  search2:"ref_id",
   resendmailData: {},
   isResend: true,
   overdueDropId: "",
@@ -501,6 +504,17 @@ function recordReducer(state = initialStore, action) {
   if (action.type === CLOSE_MSG_MODAL) {
     return { ...state, msgModalOpen: false };
   }
+  if(action.type==="SEARCH_EMP"){
+    return {
+      ...state,search:action.payload.search
+    }
+
+  }
+  if(action.type==="SEARCH_TRA"){
+    return {
+      ...state,search2:action.payload.search
+    }
+  }
   if (action.type === REFER_EMAIL) {
     return {
       ...state,
@@ -543,6 +557,7 @@ function recordReducer(state = initialStore, action) {
     return { ...state, searchChangeValue:{search:search,type:type}};
   }
   if(action.type==="SEARCH_TABLE_CHANGE_EMP"){
+    
     let { search,type } = action.payload;
     return { ...state, searchChangeValue1:{search:search,type:type}};
 

@@ -10,7 +10,7 @@ import Divider from '@mui/material/Divider';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
 import ReadOnlyRowsT from "./ReadonlyRowst"
-function  Mob2({ records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue,tot,currentPage,setCurrentPage }) {
+function  Mob2({ records, editContactId, apiRec, apiRecLength, se,apiRecTotalPages, searchChangeValue,tot,currentPage,setCurrentPage }) {
   let PageSize = 5;
 
   
@@ -18,7 +18,6 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, apiRecTotalPages,
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
 
-  
 
 
   let dispatch = useDispatch();
@@ -33,6 +32,7 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, apiRecTotalPages,
   useEffect(() => {
    
     const {type,search}=searchChangeValue
+   
 
   if(search===""){
    
@@ -75,7 +75,7 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, apiRecTotalPages,
         })
       }).catch(err=>console.log(err));
     }
-  }, [currentPage,searchChangeValue,v]);
+  }, [currentPage,searchChangeValue,v,se]);
 
 
   // apiRec?.sort((a, b) => a.name.localeCompare(b.name));
@@ -125,9 +125,10 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, apiRecTotalPages,
 
 //Redux
 const mapStateToProps = (state) => {
-  const { records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue } =
+  const { records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue ,search} =
     state.recordReducer;
-  return { records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue };
+    const se=search
+  return { records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue ,se};
 };
 // const mapDispatchToProps = (dispatch) => {};
 export default connect(mapStateToProps)(Mob2);

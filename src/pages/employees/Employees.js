@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState  } from 'react';
 import { AiFillDatabase, AiOutlineFileAdd } from "react-icons/ai";
 import { RiFileExcel2Fill } from "react-icons/ri";
@@ -35,7 +35,7 @@ import { EMPLOYEES_DATA_FETCHED } from "../../redux/actions";
 
 
 
-function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchChange}) {
+function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchChange,handleSearch}) {
     let { total_employees } = apiDash;
     let [val ,setval]=useState("name")
     let [tot,setot]=useState(0)
@@ -43,9 +43,14 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
     let [page,setpage]=useState(1)
     let [val1,setval1]=useState("0")
     let [h,seth]=useState(window.innerWidth)
+    useEffect(()=>{
+        handleSearch(val)
+        console.log(val)
+
+    },[val])
     window.addEventListener("resize",()=>{
         seth(window.innerWidth)
-    })
+    }, val)
 
     const token = localStorage.getItem("token");
     
@@ -219,11 +224,11 @@ if(h>1000){
          <div style={{width:"100%",display:"flex",alignItems:"center",flexDirection:"row",gap:"10px",paddingTop:"20px",justifyContent:"space-between"}}>
                        {/* <h1 style={{position:"relative",transform:"translateX(11px)"}}>{tot} EMPLOYEES FOUND</h1> */}
                   
-                       <div className='rt'>
+                       {/* <div className='rt'>
                        <SearchIcon sx={{marginLeft:"4px",width:"40px",fontSize:"20px",backgroundColor:"C0C0C0"}} />
                <Mob1 search={val}></Mob1>
-            </div>
-                       <Select value={val} onChange={(e)=>{setval(e.target.value)}} sx={{width:"150px",fontSize:"12px",transform:"translateX(-20px)"}}  defaultValue={val} >
+            </div> */}
+                       <Select value={val} onChange={(e)=>{setval(e.target.value)}} sx={{width:"150px",fontSize:"12px",transform:"translateX(20px)"}}  defaultValue={val} >
                                <MenuItem value="name" sx={{fontSize:"12px"}}>Employee Name</MenuItem>
                                <MenuItem value="email"  sx={{fontSize:"12px"}}>Email Id</MenuItem>
                              
@@ -261,6 +266,9 @@ const mapDispatchToProps = (dispatch) => {
         handleSearchChange: (search,type) => {
             dispatch({ type: SEARCH_TABLE_CHANGE_EMP, payload: { search ,type} });
           },
+          handleSearch:(search)=>{
+            dispatch({ type: "SEARCH_EMP", payload: { search} });
+          }
     };
 };
 

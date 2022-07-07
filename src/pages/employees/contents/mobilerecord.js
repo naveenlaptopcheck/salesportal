@@ -10,7 +10,7 @@ import Divider from '@mui/material/Divider';
 import { Skeleton } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import "./mob.css"
-function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
+function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1}) {
   let PageSize =5;
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
@@ -108,6 +108,7 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
           {apiRec.length !== 0 &&
             <Pagination
               className="employees-pagination"
+              
               currentPage={currentPage}
               //totalCount={Math.ceil(apiRec.length/PageSize)}
              totalCount={apiRecTotalPages}
