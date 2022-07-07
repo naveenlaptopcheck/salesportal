@@ -6,6 +6,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+    /* padding: 10px; */
+      padding-right: 10px;
 }
 
 .head {
@@ -15,15 +17,21 @@
 
 .menu {
   padding-right: 10px;
+  display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
 }
 
 .draw {
-  height: 200px;
+  
   display: flex;
   flex-direction: column;
   background-color: #00394d;
   padding-top: 20px;
-
+  width: 300px;
+    /* background: #7cea51; */
+    height: 100%;
 
 }
 
@@ -37,18 +45,151 @@
 
 
 }
+.w1 {
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  margin-bottom: 20px;
+}
 
 .login-btn {
-  width: 50%;
+  width: 100%;
   padding: 1rem 0;
   font-size: 1.6rem;
   font-family: "Poppins", sans-serif;
   font-weight: 550;
   border: none;
-  background: #7cea51;
+  /* background: #7cea51; */
   color: #00394d;
   cursor: pointer;
 }
 .MuiDataGrid-columnHeaderTitleContainer {
   display: none;
+}
+.g {
+
+  background-color: black;
+  color: white;
+}
+
+.n2 {
+
+  width: 100%;
+  height: 50px;
+  box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  gap: 20px;
+}
+
+/* .rp {
+
+  transform-origin: center;
+
+  animation: rk 400ms ease-in-out 50ms;
+}
+
+@keyframes rk {
+  from {}
+
+  to {
+    transform: rotate(360deg);
+  }
+} */
+.rg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+.r1 {
+  border: 2px solid black;
+  transition: all 0.4s ease-in-out;
+  width: 20px;
+  transform-origin: center;
+  border-radius: 2px;
+  background-color: black;
+}
+
+
+
+
+.rk {
+
+
+  transform: rotateZ(-24deg);
+  width: 10px;
+
+  border: 0.1px solid black;
+}
+
+.rf {
+  transform: rotateZ(24deg);
+  border: 0.1px solid black;
+  width: 10px;
+
+
+}
+
+.rg1 {
+
+
+
+  transform: translateX(3px);
+  border: 0.1px solid black;
+  width: 15px;
+
+
+}
+
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.hamRotate.active {
+  transform: rotate(45deg);
+}
+
+.hamRotate180.active {
+  transform: rotate(180deg);
+}
+
+.line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke: #000;
+  stroke-width: 5.5;
+  stroke-linecap: round;
+}
+
+.ham2 .top {
+  stroke-dasharray: 40 121;
+}
+
+.ham2 .bottom {
+  stroke-dasharray: 40 121;
+}
+
+.ham2.active .top {
+  stroke-dashoffset: -102px;
+}
+
+.ham2.active .bottom {
+  stroke-dashoffset: -102px;
 }

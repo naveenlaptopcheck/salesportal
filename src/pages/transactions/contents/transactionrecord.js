@@ -57,7 +57,7 @@ function TransactionsRecords({ records, editContactId, apiRec, apiRecLength, api
       .post(`${process.env.REACT_APP_URL}/sales/transaction/search`,{
         "search_field": type,
         "search_term": search,
-        "page":currentPage
+        "page":1
     }, config)
       .then(response => {
         tot(response.data.total_entries)

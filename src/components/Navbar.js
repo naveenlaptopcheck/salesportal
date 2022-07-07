@@ -14,6 +14,7 @@ import NavProfileModal from "./NavProfileModal";
  import WhatsNew from "./WhatsNew";
 import DropNotifications from "./DropNotifications";
 import {Navigate} from 'react-router-dom'
+
 import Hamb from "./hamb"
 function Navbar({
   handleProfileDrop,
@@ -28,6 +29,7 @@ function Navbar({
   let size = Object.keys(apiDash).length;
   let username = localStorage.getItem("name");
   let location = useLocation();
+  
   let pathname = location.pathname.substring(1);
   let pathvar = pathname.charAt(0).toUpperCase() + pathname.substring(1);
  
@@ -85,8 +87,9 @@ function Navbar({
   }
   else{
     return(
-     <Hamb></Hamb>
-
+   <>
+   <Hamb></Hamb>
+</>
 
     )
   }

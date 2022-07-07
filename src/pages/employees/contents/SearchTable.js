@@ -17,19 +17,6 @@ const SearchTable = ({ handleSearchChange,search }) => {
 
   
 
-  const getAllEmployees = () => {
-    axios
-      .get(`${process.env.REACT_APP_URL}/sales/employee?page=1`, config)
-      .then(response => {
-        return dispatch({
-          type: EMPLOYEES_DATA_FETCHED,
-          payload: {
-            dataEmployee: response.data.employee,
-            dataTotalPages: response.data.total_pages,
-          }
-        })
-      });
-  }
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState  } from 'react';
 import { AiFillDatabase, AiOutlineFileAdd } from "react-icons/ai";
 import { RiFileExcel2Fill } from "react-icons/ri";
@@ -32,7 +32,7 @@ import Select from '@mui/material/Select';
 import { MenuItem } from '@mui/material';
 
 
-function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchChange }) {
+function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchChange,handleSearch }) {
     let { total_employees } = apiDash;
     let [val,setval]=useState("ref_id")
     let [val1,setval1]=useState("0")
@@ -50,6 +50,12 @@ function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchC
       headers: { Authorization: `${token}` },
     
     };
+    
+    useEffect(()=>{
+          handleSearch(val)
+          handleSearchChange("",val)
+         
+    },[val])
   
     const dat=(e)=>{
        handleSearchChange(e,"tranaction_type")
@@ -243,7 +249,7 @@ function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchC
                      </div>
                 
       
-                      { val!="status"?(<div className='rt' style={{paddingRight:"10px",width:"150px"}}>
+                      { val!="status"?(<div className='rt' style={{paddingRight:"10px",width:"150px",display:"none"}}>
                           <SearchIcon  sx={{marginLeft:"4px",width:"40px",fontSize:"20px",backgroundColor:"C0C0C0"}}  />
                          <Mob1 search={val}></Mob1>
                       </div>):
@@ -286,6 +292,9 @@ const mapDispatchToProps = (dispatch) => {
         handleSearchChange: (search,type) => {
               dispatch({ type: SEARCH_TABLE_CHANGE, payload: { search:search,type:type } });
             },
+            handleSearch:(search)=>{
+                dispatch({ type: "SEARCH_EMP", payload: { search:search } });
+            }
         
     };
 };
