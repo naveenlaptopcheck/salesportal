@@ -14,7 +14,7 @@ import NavProfileModal from "./NavProfileModal";
  import WhatsNew from "./WhatsNew";
 import DropNotifications from "./DropNotifications";
 import {Navigate} from 'react-router-dom'
-
+import Hamb1 from "./hamb1";
 import Hamb from "./hamb"
 function Navbar({
   handleProfileDrop,
@@ -32,7 +32,6 @@ function Navbar({
   
   let pathname = location.pathname.substring(1);
   let pathvar = pathname.charAt(0).toUpperCase() + pathname.substring(1);
- 
   const log=()=>{
     localStorage.removeItem("token")
     window.location.replace("/")
@@ -88,7 +87,7 @@ function Navbar({
   else{
     return(
    <>
-   <Hamb></Hamb>
+   {pathname==="transactions"?(<Hamb1></Hamb1>):(<Hamb></Hamb>)}
 </>
 
     )
