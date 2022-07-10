@@ -1,38 +1,34 @@
 import "./ham.css"
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
+import { SEARCH_TABLE_CHANGE } from "../redux/actions";
 import { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
-import CloseIcon from '@mui/icons-material/Close';
-import { Divider } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import Fab from '@mui/material/Fab';
-import LogoutIcon from '@mui/icons-material/Logout';
 import Button from '@mui/material/Button';
+import LogoutIcon from '@mui/icons-material/Logout';
 import PaidIcon from '@mui/icons-material/Paid';
 import PeopleIcon from '@mui/icons-material/People';
-const Hamb=({ handleSearchChange,search })=>{
+
+const Hamb1=({ handleSearchChange,search })=>{
   let [x,setx]=useState(false)
   let [e1,sete1]=useState(false)
   let [p,setp]=useState(false)
-  
   const log=()=>{
     localStorage.removeItem("token")
     window.location.replace("/")
   }
-  
  
   const token = localStorage.getItem("token");
-  useEffect(()=>{
-    handleSearchChange("","")
-    
-
-  },[e1])
+  
   const config = {
     headers: { Authorization: `${token}` },
   
   };
+  useEffect(()=>{
+    handleSearchChange("","")
+
+  },[e1])
 useEffect(()=>{
   if(e1===true){
     setTimeout(()=>document.getElementById("ty").classList.toggle("active"),100)
@@ -46,7 +42,7 @@ useEffect(()=>{
           <div className="n1">
          
             
-          <div className="menu" >
+          <div className="menu">
   
         
           <div className="rg">
@@ -90,18 +86,18 @@ useEffect(()=>{
                        <div className="w">
            
             {/* <button  className="login-btn rh" >Employees</button> */}
-            <Button onClick={()=>window.location.replace("/employees")}  startIcon={<PeopleIcon></PeopleIcon>} sx={{width:"150px"}} variant="contained" size="large"  color="success"> Employees</Button>
+            <Button onClick={()=>window.location.replace("/employees")} sx={{width:"150px"}}  startIcon={<PeopleIcon></PeopleIcon>} variant="contained" size="large"  color="info"> Employees</Button>
 
             </div>
             
             <div className="w">
          
             {/* <button  className="login-btn rh" onClick={()=>window.location.replace("/transactions")}>Transactions</button> */}
-       <Button onClick={()=>window.location.replace("/transactions")} startIcon={<PaidIcon></PaidIcon>} sx={{width:"150px"}} variant="contained" size="large"> Transactions</Button>
+       <Button onClick={()=>window.location.replace("/transactions")} sx={{width:"150px"}} startIcon={<PaidIcon></PaidIcon>} variant="contained" size="large" color="success"> Transactions</Button>
 </div> 
         
              <div className="w" >
-             <Button onClick={()=>log()} variant="contained"   startIcon={<LogoutIcon></LogoutIcon>}  sx={{width:"150px"}} size="large"> Logout</Button>
+             <Button onClick={()=>log()} variant="contained"  sx={{width:"150px"}} size="large" startIcon={<LogoutIcon></LogoutIcon>}> Logout</Button>
 
             </div>
             
@@ -114,7 +110,7 @@ useEffect(()=>{
             <div className="n2">
             <div className="rg">
 
-<svg class="ham ham2" viewBox="0 0 100 100" width="50" height="50" id="ty" onClick={()=>{
+<svg class="ham ham2" viewBox="0 0 100 100" width="40" height="40" id="ty" onClick={()=>{
   sete1(false)
 }}>
   <path
@@ -134,7 +130,7 @@ useEffect(()=>{
         
             let search1 = e.target.value;
             handleSearchChange(search1,search);
-          
+            
             // handleSearchChange(search);
           }} style={{outline:"none",border:"none", color:"black",}} placeholder={"search"}></input>
                      </div>
@@ -151,9 +147,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleSearchChange: (search,type) => {
-      dispatch({ type: "SEARCH_TABLE_CHANGE_EMP", payload: { search ,type} });
+      dispatch({ type: SEARCH_TABLE_CHANGE, payload: { search ,type} });
     },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Hamb);
+export default connect(mapStateToProps, mapDispatchToProps)(Hamb1);

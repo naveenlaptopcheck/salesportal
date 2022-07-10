@@ -45,7 +45,7 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
     let [h,seth]=useState(window.innerWidth)
     useEffect(()=>{
         handleSearch(val)
-        console.log(val)
+        
 
     },[val])
     window.addEventListener("resize",()=>{

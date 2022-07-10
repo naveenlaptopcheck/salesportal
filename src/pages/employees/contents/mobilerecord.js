@@ -99,8 +99,8 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
   ];
   
  return (<>
- <div style={{display:"flex",flexDirection:"column",justifyContent:"center", width:"100%",minHeight:"800px",transform:"translateY(10px)",}}>
-<DataGrid rows={currentTableData} checkboxSelection={true}   disableColumnFilter={true} headerHeight={50}  hideFooter={true} columns={columns} rowHeight={40}  hideFooterPagination={true} sx={{fontSize:"14px",color:"#00394d",}}   
+ <div style={{display:"flex",flexDirection:"column",justifyContent:"center",width:"100%",minHeight:"800px",transform:"translateY(10px)",}}>
+<DataGrid   rows={currentTableData} checkboxSelection={true}   disableColumnFilter={true} headerHeight={50}  hideFooter={true} columns={columns} rowHeight={40}  hideFooterPagination={true} sx={{fontSize:"14px",color:"#00394d",boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)" }}
 >
 
 </DataGrid>
