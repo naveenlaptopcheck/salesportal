@@ -231,6 +231,9 @@ if(h>1000){
                        <SearchIcon sx={{marginLeft:"4px",width:"40px",fontSize:"20px",backgroundColor:"C0C0C0"}} />
                <Mob1 search={val}></Mob1>
             </div> */}
+            <div style={{display:"flex",flexDirection:"column",gap:"10px",color:"#00394d"}}>
+            <h1 style={{position:"relative",transform:"translateX(20px)"}}>{tot} EMPLOYEES FOUND</h1>
+
                        <Select value={val} onChange={(e)=>{setval(e.target.value)}} sx={{width:"150px",fontSize:"12px",transform:"translateX(20px)"}}  defaultValue={val} >
                                <MenuItem value="name" sx={{fontSize:"12px"}}>Employee Name</MenuItem>
                                <MenuItem value="email"  sx={{fontSize:"12px"}}>Email Id</MenuItem>
@@ -239,7 +242,7 @@ if(h>1000){
                               
                            </Select>
                           
-                  
+                           </div>
                            {/* <div style={{display:"flex",flexDirection:"row",padding:"10px",alignItems:"center",justifyContent:"center"}}>
                                  
                        <button className='header1' style={{border:p===3?" 2px solid #00C805":""}} onClick={(e)=>{setp(3);getAllEmployees()}} >ALL</button>

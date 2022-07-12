@@ -16,6 +16,7 @@ const Hamb=({ handleSearchChange,search })=>{
   let [x,setx]=useState(false)
   let [e1,sete1]=useState(false)
   let [p,setp]=useState(false)
+
   
   const log=()=>{
     localStorage.removeItem("token")
@@ -56,7 +57,7 @@ useEffect(()=>{
         
           <div className="rg">
 
-<svg class="ham ham2" viewBox="0 0 100 100" width="40" height="40" id="tk" onClick={()=>{
+<svg class="ham ham2"  viewBox="0 0 100 100" width="40" height="40" id="tk" onClick={()=>{
   setx(true)
 }}>
   <path
@@ -72,13 +73,13 @@ useEffect(()=>{
 
 
         </div>       
-        <h1>FINSIRE</h1>
+        <h1 style={{color:"#00394d"}}>FINSIRE</h1>
         
               </div>
               
         
       
-              <SearchIcon fontSize="large" onClick={()=>{sete1(true);}}></SearchIcon>
+              <SearchIcon fontSize="large" sx={{color:"#00394d"}} onClick={()=>{sete1(true);}}></SearchIcon>
               
            
         
@@ -136,12 +137,13 @@ useEffect(()=>{
 
         </div>  
                    <input type="text"  onChange={(e) => {
-        
+            setp(true)
             let search1 = e.target.value;
             handleSearchChange(search1,search);
           
             // handleSearchChange(search);
           }} style={{outline:"none",border:"none", color:"black",}} placeholder={"search"}></input>
+        
                      </div>
           )}
           </>

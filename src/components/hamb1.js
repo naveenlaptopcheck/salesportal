@@ -68,13 +68,13 @@ useEffect(()=>{
 
 
         </div>       
-        <h1>FINSIRE</h1>
+        <h1 style={{color:"#00394d"}}>FINSIRE</h1>
         
               </div>
               
         
       
-              <SearchIcon fontSize="large" onClick={()=>{sete1(true);}}></SearchIcon>
+              <SearchIcon fontSize="large" sx={{color:"#00394d"}} onClick={()=>{sete1(true);}}></SearchIcon>
               
            
         
@@ -83,7 +83,7 @@ useEffect(()=>{
           <div  className="draw">
           
           <div className="heading1">
-          <h1>FINSIRE</h1>
+          <h1 style={{marginBottom:"10px"}}>FINSIRE</h1>
           </div>
           <div className="box1" onClick={()=>window.location.replace("/transactions")} style={{backgroundColor:"white",borderTopRightRadius:"15px",borderBottomRightRadius:"15px"}}>
           <div className="log2"  >
