@@ -16,3 +16,21 @@
     color: #C0C0C0;
 
 }
+.header1 {
+    background-color: white;
+    border: 1px solid lightgray;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #00394D;
+    padding: 0.3rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.rty {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}

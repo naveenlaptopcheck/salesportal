@@ -29,10 +29,10 @@
   
   display: flex;
   flex-direction: column;
-width: 100%;
-  height: 50%;
+width: 230px;
+  height: 100%;
   justify-content: flex-start;
-  gap: 10px;
+  /* gap: 10px; */
   padding-bottom: 20px;
   background-color: #00394d;
 
@@ -206,4 +206,43 @@ width: 100%;
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+.a3 {
+  color: white;
+}
+
+.heading1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+  margin-top: 20px;
+  font-size: 10px;
+}
+
+.log2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding-left: 20px;
+}
+
+.ll1 {
+  color: white;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-weight: lighter;
+
+}
+
+.box1 {
+  width: 80%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
 }

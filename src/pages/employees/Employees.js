@@ -5,6 +5,7 @@ import { RiFileExcel2Fill } from "react-icons/ri";
 import { connect,useDispatch } from "react-redux";
 import SearchIcon from '@mui/icons-material/Search';
 import Mrecords from "./contents/mobilerecord"
+import {Button} from '@mui/material';
 //import { saveAs } from "file-saver";
 import axios from "axios";
 import { TextField } from '@mui/material';
@@ -42,7 +43,9 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
     let [p,setp]=useState(3)
     let [page,setpage]=useState(1)
     let [val1,setval1]=useState("0")
+
     let [h,seth]=useState(window.innerWidth)
+  
     useEffect(()=>{
         handleSearch(val)
         
@@ -235,6 +238,17 @@ if(h>1000){
                               
                               
                            </Select>
+                          
+                  
+                           {/* <div style={{display:"flex",flexDirection:"row",padding:"10px",alignItems:"center",justifyContent:"center"}}>
+                                 
+                       <button className='header1' style={{border:p===3?" 2px solid #00C805":""}} onClick={(e)=>{setp(3);getAllEmployees()}} >ALL</button>
+                       <button className='header1' style={{border:p===1?" 2px solid #00C805":""}} onClick={(e)=>{ setp(1) ;dat(1)}}>PENDING</button>
+                      
+                       <button className='header1'  style={{border:p===2?" 2px solid #00C805":""}} onClick={(e)=>{ setp(2) ;dat(2)}} >COMPLETE</button>
+                       <button className='header1'  style={{border:p===0?" 2px solid #00C805":""}} onClick={(e)=>{ setp(0) ;dat(0)}}>INCOMPLETE</button>
+                       </div>
+                        */}
                       
                
             </div>

@@ -18,7 +18,12 @@ const Hamb1=({ handleSearchChange,search })=>{
     localStorage.removeItem("token")
     window.location.replace("/")
   }
- 
+ const drt=(e)=>{
+  if(e.clientX>225){
+    setx(false)
+  }
+
+ }
   const token = localStorage.getItem("token");
   
   const config = {
@@ -74,35 +79,36 @@ useEffect(()=>{
            
         
           {/* <input type="text" style={{outline:"none",border:"none", color:"black",}} placeholder={"search"}></input> */}
-          <Drawer anchor="bottom" open={x}    onTouchMove={()=>setx(false)}>
-            <div  className="draw">
-            <div  className="w1" >
-            {/* <h1 style={{marginLeft:"5px"}}>FINSIRE</h1> */}
+          <Drawer anchor="left" open={x}  onClick={drt}  onTouchMove={()=>setx(false)}>
+          <div  className="draw">
           
-           {/* <CloseIcon fontSize="large" onClick={()=>setx(false)} sx={{marginRight:"10px",fontSize:"40px"}}></CloseIcon> */}
-
+          <div className="heading1">
+          <h1>FINSIRE</h1>
+          </div>
+          <div className="box1" onClick={()=>window.location.replace("/transactions")} style={{backgroundColor:"white",borderTopRightRadius:"15px",borderBottomRightRadius:"15px"}}>
+          <div className="log2"  >
+          <PaidIcon   sx={{color:"#00394d",fontSize:"20px"}}></PaidIcon>
+           <a  href="/transactions" className="ll1"  style={{color:"#00394d"}}>Transactions</a>
+          </div>
+          </div>
+          <div className="box1"  onClick={()=>window.location.replace("/employees")} >
+          <div className="log2">
+           <PeopleIcon fontSize="large" sx={{color:"white",fontSize:"20px"}}></PeopleIcon>
+           <a  href="/employees" className="ll1" style={{color:"white"}} >Employees</a>
+          </div>
+          </div>
        
-           </div>
-                       <div className="w">
-           
-            {/* <button  className="login-btn rh" >Employees</button> */}
-            <Button onClick={()=>window.location.replace("/employees")} sx={{width:"150px"}}  startIcon={<PeopleIcon></PeopleIcon>} variant="contained" size="large"  color="info"> Employees</Button>
-
-            </div>
-            
-            <div className="w">
-         
-            {/* <button  className="login-btn rh" onClick={()=>window.location.replace("/transactions")}>Transactions</button> */}
-       <Button onClick={()=>window.location.replace("/transactions")} sx={{width:"150px"}} startIcon={<PaidIcon></PaidIcon>} variant="contained" size="large" color="success"> Transactions</Button>
-</div> 
+          <div className="box1" onClick={log}>
+          <div className="log2">
+          <LogoutIcon sx={{color:"white",fontSize:"20px"}} ></LogoutIcon>
         
-             <div className="w" >
-             <Button onClick={()=>log()} variant="contained"  sx={{width:"150px"}} size="large" startIcon={<LogoutIcon></LogoutIcon>}> Logout</Button>
-
-            </div>
-            
-           
-            </div>
+           <h2 onClick={log}  className="ll1">Logout</h2>
+          </div>
+          </div>
+         
+        
+         </div>
+         
             
           </Drawer>
         
