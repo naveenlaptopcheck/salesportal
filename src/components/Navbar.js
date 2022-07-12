@@ -61,14 +61,14 @@ function Navbar({
         
           window.location.replace("/employees")
         }} style={{ borderBottom:pathname==="employees"?"2px solid green":"",
-                                             paddingBottom:"2px",cursor:"grab"}}>
+                                             paddingBottom:"2px",cursor:"pointer"}}>
           Employees
         </h1>
         <h1 onClick={()=>{
                     window.location.replace("/transactions")
 
         }} style={{ borderBottom:pathname==="transactions"?"2px solid green":"",
-                                             paddingBottom:"2px",cursor:"grab"}} >
+                                             paddingBottom:"2px",cursor:"pointer"}} >
          Transactions
         </h1>
         
