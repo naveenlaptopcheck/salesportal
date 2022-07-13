@@ -47,7 +47,16 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
     let [h,seth]=useState(window.innerWidth)
   
     useEffect(()=>{
+        if(val=="status"){
+            gp("1")
+            return
+        }
+        if(val==="kyc"){
+            dat("1")
+            return 
+        }
         handleSearch(val)
+        handleSearchChange("",val)
         
 
     },[val])
@@ -73,6 +82,7 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
         handleSearchChange("","")
       }
       const gp=(e)=>{
+        e=parseInt(e)
         handleSearchChange(e,"status")
 
 
@@ -233,25 +243,37 @@ if(h>1000){
             </div> */}
             <div style={{display:"flex",flexDirection:"column",gap:"10px",color:"#00394d"}}>
             <h1 style={{position:"relative",transform:"translateX(20px)"}}>{tot} EMPLOYEES FOUND</h1>
-
-                       <Select value={val} onChange={(e)=>{setval(e.target.value)}} sx={{width:"150px",fontSize:"12px",transform:"translateX(20px)"}}  defaultValue={val} >
+                        <div style={{display:"flex",justifyContent:"space-between",gap:"70px"}}>
+                       <Select value={val} onChange={(e)=>{setval(e.target.value)
+                      
+                
+                       }}sx={{width:"150px",fontSize:"12px",transform:"translateX(20px)"}}  defaultValue={val} >
                                <MenuItem value="name" sx={{fontSize:"12px"}}>Employee Name</MenuItem>
                                <MenuItem value="email"  sx={{fontSize:"12px"}}>Email Id</MenuItem>
-                             
-                              
+                               <MenuItem value="status"  sx={{fontSize:"12px"}}>Status</MenuItem>
+                               <MenuItem value="kyc"  sx={{fontSize:"12px"}}>Kyc</MenuItem>
                               
                            </Select>
-                          
+                           {val==="status"&&      <Select  onChange={(e)=>gp(e.target.value)} defaultValue={1} sx={{width:"130px",fontSize:"12px",transform:"translateX(-10px)"}}  >
+                               <MenuItem value="1" sx={{fontSize:"12px"}}>Active</MenuItem>
+                               <MenuItem value="0"  sx={{fontSize:"12px"}}>Inactive</MenuItem>
+                               
+                              
+                           </Select>
+
+                           } {val==="kyc"&&      <Select  onChange={(e)=>dat(e.target.value)} defaultValue={1} sx={{width:"130px",fontSize:"12px",transform:"translateX(-10px)"}}  >
+                              
+                       <MenuItem  value="1">Pending</MenuItem >
+                       <MenuItem  value="2" >Complete</MenuItem >
+                       <MenuItem  value="0" >Incomplete</MenuItem >
+                               
+                              
+                           </Select>
+
+                           }
                            </div>
-                           {/* <div style={{display:"flex",flexDirection:"row",padding:"10px",alignItems:"center",justifyContent:"center"}}>
-                                 
-                       <button className='header1' style={{border:p===3?" 2px solid #00C805":""}} onClick={(e)=>{setp(3);getAllEmployees()}} >ALL</button>
-                       <button className='header1' style={{border:p===1?" 2px solid #00C805":""}} onClick={(e)=>{ setp(1) ;dat(1)}}>PENDING</button>
-                      
-                       <button className='header1'  style={{border:p===2?" 2px solid #00C805":""}} onClick={(e)=>{ setp(2) ;dat(2)}} >COMPLETE</button>
-                       <button className='header1'  style={{border:p===0?" 2px solid #00C805":""}} onClick={(e)=>{ setp(0) ;dat(0)}}>INCOMPLETE</button>
-                       </div>
-                        */}
+                           </div>
+                   
                       
                
             </div>
