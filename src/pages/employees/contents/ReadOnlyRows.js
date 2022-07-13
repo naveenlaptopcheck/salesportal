@@ -177,9 +177,10 @@ function ReadOnlyRows({
                    
                        
                       <div className="ddot55">
+                  
                     {  kyc==="incomplete"&&<div className="dod" onClick={(e)=>handledit(2)} > Completed</div> }
                  
-                     { kyc==="complete" &&<div className="dod" onClick={(e)=>handledit(1)} >Incomplete</div>} </div> 
+                     { kyc==="complete" &&<div className="dod" onClick={(e)=>handledit(0)} >Incomplete</div>} </div> 
 
                      
 

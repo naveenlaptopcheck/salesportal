@@ -66,7 +66,7 @@ export default function At({status,id,kyc,v,up}){
           
         sx={{borderRadius:"50%",cursor:"pointer"}}
         >
-          <div style={{width:"200px",color:"#00394d",height:"100px",paddingTop:"10px",display:"flex",flexDirection:"column",alignItems:"center",gap:"20px"}}>
+          <div style={{width:"150px",color:"#00394d",height:"100px",paddingTop:"10px",display:"flex",flexDirection:"column",alignItems:"center",gap:"20px"}}>
     
                      
                <div id="status" >
