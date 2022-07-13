@@ -120,7 +120,7 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
 
     {columns.map((x)=>{
       return(
-      <TableCell  sx={{width:x.width,fontSize:"18px",color:"#00394d",textAlign:"center"}}> {x.headerName}</TableCell>
+      <TableCell  sx={{width:x.width,fontSize:"18px",color:"#00394d",textAlign:"center",fontWeight:"bold"}}> {x.headerName}</TableCell>
       )
     })}
 
@@ -130,7 +130,7 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
     {currentTableData.map((y)=>{
      
       return (
-        <TableRow  hover={true} sx={{alignItems:"center"}}>
+        <TableRow  hover={true} sx={{alignItems:"center",}}>
       
        <TableCell> <Checkbox size="large"></Checkbox></TableCell>
 
