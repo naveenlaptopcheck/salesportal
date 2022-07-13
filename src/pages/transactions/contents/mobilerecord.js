@@ -139,7 +139,7 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, se,apiRecTotalPag
     {currentTableData.map((y)=>{
      
       return (
-        <TableRow   sx={{height:"30px",alignItems:"center"}}>
+        <TableRow hover={true}  sx={{height:"30px",alignItems:"center"}}>
       
        <TableCell > <Checkbox size="large"></Checkbox></TableCell>
 

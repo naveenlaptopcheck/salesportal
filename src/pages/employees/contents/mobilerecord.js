@@ -100,9 +100,9 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
   let currentTableData=currentData
 
 
-  const columns = [{field:"name",headerName:"Name",width:120},{field:"phone",headerName:"Phone",width:120},
-  {field:"email",headerName:"Email",width:150},{field:"net_salary",headerName:"Salary",width:100},
-  {field:"status",headerName:"Status",width:100},{field:"kyc",headerName:"Kyc",width:100},{field:"actions",headerName:"Actions",width:100}];
+  const columns = [{field:"name",headerName:"Name",width:200},{field:"phone",headerName:"Phone",width:150},
+  {field:"email",headerName:"Email",width:200},{field:"net_salary",headerName:"Salary",width:150},
+  {field:"status",headerName:"Status",width:150},{field:"kyc",headerName:"Kyc",width:150},{field:"actions",headerName:"Actions",width:100}];
   
  return (<>
  <div style={{display:"flex",flexDirection:"column",justifyContent:"flex-start",width:"100%",minHeight:"800px",transform:"translateY(10px)",}}>
@@ -112,7 +112,7 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
 </DataGrid> */}
 
 <TableContainer component={Paper} sx={{boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)"}} >
-<Table sx={{minWidth:"800px",}} padding="checkbox">
+<Table sx={{minWidth:"800px"}} padding="checkbox">
   <TableHead sx={{backgroundColor:"#E6F7FF",}}>
   <TableRow  selected="true">
   <TableCell> <Checkbox size="large"></Checkbox></TableCell>
@@ -125,15 +125,15 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
 
     </TableRow>
   </TableHead>
-  <TableBody>
+  <TableBody >
     {currentTableData.map((y)=>{
      
       return (
-        <TableRow   sx={{alignItems:"center"}}>
+        <TableRow  hover={true} sx={{alignItems:"center"}}>
       
        <TableCell> <Checkbox size="large"></Checkbox></TableCell>
 
-      <TableCell sx={{fontSize:"15px",color:"#00394d",whiteSpace:"wrap"}}>{y.name}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d",whiteSpace:"nowrap"}}>{y.name}</TableCell>
       <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.phone}</TableCell>
       <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.email}</TableCell>
       <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.net_salary}</TableCell>
