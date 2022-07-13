@@ -8,13 +8,27 @@ import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
 import { Skeleton } from "@mui/material";
+import { FaxTwoTone } from "@mui/icons-material";
 function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
   let PageSize =5;
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
- 
- 
+  const[h,seth]=useState(window.innerWidth)
 
+ useEffect(()=>{
+seth(window.innerWidth)
+ },[window.innerWidth])
+const ft=()=>{
+  if(h<1500){
+    return "14%"
+  }else if(h<1600){
+    return "12.8%"
+  }
+  else{
+  let y=9+(h-1400)/300
+    return `${y}%`
+  }
+}
  
   let dispatch = useDispatch();
 
@@ -22,6 +36,7 @@ function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurre
   const config = {
     headers: { Authorization: `${token}` },
   };
+
 
   useEffect(() => {
    
@@ -105,7 +120,7 @@ function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurre
                 {/* <th>Id</th> */}
                 </div>
                 {/* <th style={{position:"absolute",left:"155px",}} >Company </th> */}
-                <th style={{position:"absolute",left:"14%",}}>Name </th>
+                <th style={{position:"absolute",left:ft()}}>Name </th>
 
 
                 <th style={{position:"absolute",left:"25%",}}>Phonenumber </th>

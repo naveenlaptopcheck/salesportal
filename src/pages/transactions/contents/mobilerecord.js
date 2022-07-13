@@ -129,7 +129,7 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, se,apiRecTotalPag
 
     {columns.map((x)=>{
       return(
-      <TableCell  sx={{width:x.width,fontSize:"18px",color:"#00394d"}}>{x.headerName}</TableCell>
+      <TableCell  sx={{width:x.width,fontSize:"18px",color:"#00394d",fontWeight:"bolder"}}>{x.headerName}</TableCell>
       )
     })}
 

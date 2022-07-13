@@ -93,7 +93,7 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
 if(h>1000){
     return (
         <>
-            <div className="employees" >
+            <div className="employees"  >
             <div className="emp1">
                        <h1 style={{position:"relative",transform:"translateX(11px)"}}>{tot} EMPLOYEES FOUND</h1>
                  
@@ -105,7 +105,7 @@ if(h>1000){
                        <button className='header-btn'  style={{border:p===0?" 2px solid #00C805":""}} onClick={(e)=>{ setp(0) ;dat(0)}}>INCOMPLETE</button>
                        
                     
-                       <div style={{position:"absolute",right:"420px",top:"10px"}}> 
+                       <div style={{position:"absolute",right:"31%",top:"7%"}}> 
                  
                        <Select value={val} onChange={(e)=>{setval(e.target.value);
                        if(e.target.value==="status"){
@@ -120,7 +120,7 @@ if(h>1000){
                            </Select>
                       
                            </div>
-                           <div style={{position:"absolute",right:"198px",top:"10px"}}>
+                           <div style={{position:"absolute",right:"15%",top:"8%"}}>
             
             { val!="status"?(<div className='search-container'>
                 <SearchIcon className='search-icon' />
