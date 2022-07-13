@@ -135,6 +135,7 @@ function TransactionsRecords({ records, editContactId, apiRec, apiRecLength, api
             <tbody>
               {currentTableData.map((record) => {
                 const { id } = record;
+                
                 return (
                   <>
                     <ReadOnlyRowsT key={id} className="read-only" record={record} check={check} cur={(f)=>setv(f)} v={v} />

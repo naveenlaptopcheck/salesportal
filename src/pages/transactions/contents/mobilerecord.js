@@ -5,10 +5,14 @@ import TableLoader from "./TableLoader";
 import Pagination from '../../../components/Pagination';
 import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
 import Checkbox from '@mui/material/Checkbox';
-import Divider from '@mui/material/Divider';
-
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import { Paper } from "@mui/material";
+import At from "./act";
 import ReadOnlyRowsT from "./ReadonlyRowst"
 function  Mob2({ records, editContactId, apiRec, apiRecLength, se,apiRecTotalPages, searchChangeValue,tot,currentPage,setCurrentPage }) {
   let PageSize = 5;
@@ -19,7 +23,18 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, se,apiRecTotalPag
   const [v,setv]=useState(0)
 
 
+  let rp=(e)=>{
+   
+    if(e==="refund_settled"){
+      return "Refund Settled"
 
+    }else if (e==="refund_initiated"){
+      return "Refund Initiated"
+
+    }else{
+      return e
+    }
+  }
   let dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
@@ -95,18 +110,58 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, se,apiRecTotalPag
   //     .includes(searchChangeValue.trim().toLowerCase());
   // });
   let currentTableData=currentData
-  const columns = [{field:"id",headerName:"ID",width:60},{field:"tranaction_type",headerName:"Type",width:70},{field:"ref_id",headerName:"Reference Id",width:170},{field:"amount",headerName:"Amount",width:100,valueGetter: (params: GridValueGetterParams) =>params.row.amount===null?"\xa0\xa0\xa0\xa0\xa0\xa0\xa0-":params.row.amount},{field:"status",headerName:"Status",width:100},{field:"date",headerName:"Date",width:200}]
+  const columns = [{field:"id",headerName:"ID",width:60},{field:"tranaction_type",headerName:"Type",width:70},{field:"ref_id",headerName:"Reference Id",width:170},{field:"amount",headerName:"Amount",width:100},{field:"status",headerName:"Status",width:100},{field:"date",headerName:"Date",width:200},{field:"Actions",headerName:"Actions",width:100}]
 
  
 
  return (
     <>
-       <div style={{display:"flex",flexDirection:"column",justifyContent:"center", width:"100%",minHeight:"800px",transform:"translateY(10px)",}}>
-<DataGrid rows={currentTableData}  checkboxSelection={true}   rowSpacingType="border" disableColumnFilter={true} headerHeight={50}  hideFooter={true} columns={columns} rowHeight={40}  hideFooterPagination={true} sx={{fontSize:"14px",color:"#00394d",}}   
->
+       <div style={{display:"flex",flexDirection:"column",justifyContent:"center", width:"100%",minHeight:"1000px",transform:"translateY(10px)",overflow:"scroll"}}>
 
-</DataGrid>
-      <div style={{display:"flex",alignItems:"center",justifyContent:"center",transform:"translateY(-95px)"}}>
+
+
+
+       <TableContainer component={Paper} sx={{boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)"}} >
+<Table sx={{minWidth:"800px",}}>
+  <TableHead sx={{backgroundColor:"#E6F7FF",}}>
+  <TableRow  selected="true">
+  <TableCell> <Checkbox size="large"></Checkbox></TableCell>
+
+    {columns.map((x)=>{
+      return(
+      <TableCell  sx={{width:x.width,fontSize:"18px",color:"#00394d"}}>{x.headerName}</TableCell>
+      )
+    })}
+
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    {currentTableData.map((y)=>{
+     
+      return (
+        <TableRow   sx={{height:"30px",alignItems:"center"}}>
+      
+       <TableCell > <Checkbox size="large"></Checkbox></TableCell>
+
+      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.id}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.tranaction_type}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.ref_id}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d",textAlign:"center"}}>{y.amount===null?"-":y.amount}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{rp(y.status)}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d",whiteSpace:"nowrap"}}>{y.date}</TableCell>
+    
+      <TableCell >
+    <At status={y.status}  id={y.id} v={v} cur={(x)=>setv(x)}></At>
+      </TableCell>
+   
+        </TableRow>
+      )
+    })}
+  </TableBody>
+</Table>
+
+</TableContainer>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100px"}}>
       {apiRec.length !== 0 &&
             <Pagination
               className="employees-pagination"

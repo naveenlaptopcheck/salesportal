@@ -19,6 +19,7 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
   let PageSize =5;
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
+ 
   
  
 
@@ -110,10 +111,10 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
 
 </DataGrid> */}
 
-<TableContainer component={Paper} sx={{boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)"}}>
+<TableContainer component={Paper} sx={{boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)"}} >
 <Table sx={{minWidth:"800px",}}>
-  <TableHead sx={{backgroundColor:"#E6F7FF"}}>
-  <TableRow sx={{height:"50px"}} selected="true">
+  <TableHead sx={{backgroundColor:"#E6F7FF",}}>
+  <TableRow  selected="true">
   <TableCell> <Checkbox size="large"></Checkbox></TableCell>
 
     {columns.map((x)=>{
@@ -128,11 +129,11 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
     {currentTableData.map((y)=>{
      
       return (
-        <TableRow   sx={{height:"30px",alignItems:"center"}}>
+        <TableRow   sx={{alignItems:"center"}}>
       
        <TableCell> <Checkbox size="large"></Checkbox></TableCell>
 
-      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.name}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d",whiteSpace:"wrap"}}>{y.name}</TableCell>
       <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.phone}</TableCell>
       <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.email}</TableCell>
       <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.net_salary}</TableCell>
@@ -151,7 +152,7 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
 
 </TableContainer>
 
-      <div style={{display:"flex",alignItems:"center",justifyContent:"center",transform:"translateY(20px)"}}>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"center",transform:"translateY(30px)"}}>
           {apiRec.length !== 0 &&
             <Pagination
               className="employees-pagination"
