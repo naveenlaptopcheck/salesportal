@@ -2,13 +2,16 @@
   position: fixed;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   right: 0;
   bottom: 0;
   height: 80vh;
 
+
   width: 100vw;
 
   background: white;
+
   //border-width: 1px 0px 0px 0px;
   //border-style: solid;
   border-color: rgba(0, 0, 0, 0.2);
@@ -18,13 +21,13 @@
 
   .emp1 {
     position: fixed;
-    left: 91px;
+    left: 7%;
     top: 75px;
     color: #00394d;
     width: 100%;
     overflow: hidden;
-    height: 100px;
-
+      height: 100px;
+// background-color: gainsboro;
 
   }
 
@@ -98,6 +101,7 @@
     bottom: 10px;
     height: 100%;
     width: 85%;
+    background-color: gray;
     background: white;
     margin-left: auto;
     margin-right: auto;
