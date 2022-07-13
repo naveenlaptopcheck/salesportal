@@ -112,7 +112,7 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
 </DataGrid> */}
 
 <TableContainer component={Paper} sx={{boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)"}} >
-<Table sx={{minWidth:"800px",}}>
+<Table sx={{minWidth:"800px",}} padding="checkbox">
   <TableHead sx={{backgroundColor:"#E6F7FF",}}>
   <TableRow  selected="true">
   <TableCell> <Checkbox size="large"></Checkbox></TableCell>
@@ -152,7 +152,7 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
 
 </TableContainer>
 
-      <div style={{display:"flex",alignItems:"center",justifyContent:"center",transform:"translateY(30px)"}}>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"center",marginBottom:"100px",transform:"translateY(30px)"}}>
           {apiRec.length !== 0 &&
             <Pagination
               className="employees-pagination"

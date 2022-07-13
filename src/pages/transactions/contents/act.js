@@ -46,7 +46,7 @@ export default function At({status,id,v,cur}){
           
         sx={{borderRadius:"50%",cursor:"pointer"}}
         >
-          <div style={{width:"200px",color:"#00394d",height:"250px",paddingTop:"10px",display:"flex",flexDirection:"column",alignItems:"center",gap:"10px"}}>
+          <div style={{width:"200px",color:"#00394d",minHeight:"250px",paddingTop:"10px",display:"flex",flexDirection:"column",alignItems:"center",gap:"10px"}}>
                     <div style={{justifyContent:"flex-start",transform:"translateX(-20px)"}}>
                      <h2 >Set Status</h2>
                      </div>
