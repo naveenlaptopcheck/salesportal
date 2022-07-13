@@ -116,13 +116,13 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, se,apiRecTotalPag
 
  return (
     <>
-       <div style={{display:"flex",flexDirection:"column",justifyContent:"center", width:"100%",minHeight:"1000px",transform:"translateY(10px)",overflow:"scroll"}}>
+       <div style={{display:"flex",flexDirection:"column", width:"100%",minHeight:"700px",transform:"translateY(10px)",overflow:"scroll"}}>
 
 
 
 
        <TableContainer component={Paper} sx={{boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)"}} >
-<Table sx={{minWidth:"800px",}}>
+<Table sx={{minWidth:"800px"}}  padding="checkbox">
   <TableHead sx={{backgroundColor:"#E6F7FF",}}>
   <TableRow  selected="true">
   <TableCell> <Checkbox size="large"></Checkbox></TableCell>
@@ -161,7 +161,7 @@ function  Mob2({ records, editContactId, apiRec, apiRecLength, se,apiRecTotalPag
 </Table>
 
 </TableContainer>
-      <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100px"}}>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"150px"}}>
       {apiRec.length !== 0 &&
             <Pagination
               className="employees-pagination"
