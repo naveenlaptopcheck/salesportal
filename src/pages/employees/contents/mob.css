@@ -1,3 +1,10 @@
 .MuiDataGrid-columnHeaders {
     background-color: #E6F7FF;
 }
+.act {
+    font-size: 20px;
+}
+
+.ry:hover {
+    background-color: lightgray;
+}
