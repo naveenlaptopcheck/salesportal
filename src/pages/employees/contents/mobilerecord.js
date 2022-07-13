@@ -100,9 +100,9 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
   let currentTableData=currentData
 
 
-  const columns = [{field:"name",headerName:"Name",width:200},{field:"phone",headerName:"Phone",width:150},
+  const columns = [{field:"name",headerName:"Name",width:200},{field:"phone",headerName:"Phone",width:200},
   {field:"email",headerName:"Email",width:200},{field:"net_salary",headerName:"Salary",width:150},
-  {field:"status",headerName:"Status",width:150},{field:"kyc",headerName:"Kyc",width:150},{field:"actions",headerName:"Actions",width:100}];
+  {field:"status",headerName:"Status",width:400},{field:"kyc",headerName:"Kyc",width:150},{field:"actions",headerName:"Actions",width:100}];
   
  return (<>
  <div style={{display:"flex",flexDirection:"column",justifyContent:"flex-start",width:"100%",minHeight:"800px",transform:"translateY(10px)",}}>
@@ -119,7 +119,7 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
 
     {columns.map((x)=>{
       return(
-      <TableCell  sx={{width:x.width,fontSize:"18px",color:"#00394d"}}>{x.headerName}</TableCell>
+      <TableCell  sx={{width:x.width,fontSize:"18px",color:"#00394d",textAlign:"center"}}>{x.headerName}</TableCell>
       )
     })}
 
@@ -133,12 +133,12 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
       
        <TableCell> <Checkbox size="large"></Checkbox></TableCell>
 
-      <TableCell sx={{fontSize:"15px",color:"#00394d",whiteSpace:"nowrap"}}>{y.name}</TableCell>
-      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.phone}</TableCell>
-      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.email}</TableCell>
-      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.net_salary}</TableCell>
-      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.status}</TableCell>
-      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.kyc}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d",whiteSpace:"nowrap",textAlign:"center"}}>{y.name}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d",textAlign:"center"}}>{y.phone}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d",textAlign:"center"}}>{y.email}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d",textAlign:"center"}}>{y.net_salary}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d",textAlign:"center"}}>{y.status}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d",textAlign:"center"}}>{y.kyc}</TableCell>
     
       <TableCell >
     <At status={y.status} kyc={y.kyc} id={y.id} v={v} up={(x)=>setv(x)}></At>
