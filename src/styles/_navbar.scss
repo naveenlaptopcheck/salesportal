@@ -4,7 +4,8 @@
   align-items: center;
   // margin-left: 13vw;
   position: absolute;
-  z-index: -1;
+  font-size: large;
+    top: 0px;
   right: 0px;
   // min-height: 4.8rem;
   height: 8vh;
@@ -118,7 +119,8 @@
 //Media queries
 @media screen and (min-width: 1600px) {
   .navbar {
-    width: 69vw;
-    margin-right: 10vw;
+    width: 100vw;
+      z-index: 100;
+      // margin-right: 10vw;
   }
 }

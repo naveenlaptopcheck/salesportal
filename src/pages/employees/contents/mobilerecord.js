@@ -11,6 +11,8 @@ import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
+import TableSortLabel from '@mui/material/TableSortLabel';
+
 import TableRow from '@mui/material/TableRow';
 import { Paper } from "@mui/material";
 import At from "./act";
@@ -19,7 +21,6 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
   let PageSize =5;
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
- 
   
  
 
@@ -111,15 +112,15 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
 
 </DataGrid> */}
 
-<TableContainer component={Paper} sx={{boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)"}} >
-<Table sx={{minWidth:"800px"}} padding="checkbox">
+<TableContainer component={Paper} sx={{boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)"}}  >
+<Table sx={{minWidth:"800px"}} padding="checkbox" >
   <TableHead sx={{backgroundColor:"#E6F7FF",}}>
   <TableRow  selected="true">
   <TableCell> <Checkbox size="large"></Checkbox></TableCell>
 
     {columns.map((x)=>{
       return(
-      <TableCell  sx={{width:x.width,fontSize:"18px",color:"#00394d",textAlign:"center"}}>{x.headerName}</TableCell>
+      <TableCell  sx={{width:x.width,fontSize:"18px",color:"#00394d",textAlign:"center"}}> {x.headerName}</TableCell>
       )
     })}
 

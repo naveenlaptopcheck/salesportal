@@ -44,7 +44,7 @@ function Navbar({
 
 
 
-  if(h>800){
+  if(h>1000){
     return(
      <>
       {size !== 0 && <WhatsNew />}

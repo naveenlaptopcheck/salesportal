@@ -43,6 +43,7 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
     let [p,setp]=useState(3)
     let [page,setpage]=useState(1)
     let [val1,setval1]=useState("0")
+   
 
     let [h,seth]=useState(window.innerWidth)
   
@@ -92,7 +93,7 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
 if(h>1000){
     return (
         <>
-            <div className="employees">
+            <div className="employees" >
             <div className="emp1">
                        <h1 style={{position:"relative",transform:"translateX(11px)"}}>{tot} EMPLOYEES FOUND</h1>
                  
@@ -255,8 +256,8 @@ if(h>1000){
                               
                            </Select>
                            {val==="status"&&      <Select  onChange={(e)=>gp(e.target.value)} defaultValue={1} sx={{width:"130px",fontSize:"12px",transform:"translateX(-10px)"}}  >
-                               <MenuItem value="1" sx={{fontSize:"12px"}}>Active</MenuItem>
-                               <MenuItem value="0"  sx={{fontSize:"12px"}}>Inactive</MenuItem>
+                               <MenuItem value="0" sx={{fontSize:"12px"}}>Active</MenuItem>
+                               <MenuItem value="1"  sx={{fontSize:"12px"}}>Inactive</MenuItem>
                                
                               
                            </Select>

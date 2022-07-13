@@ -52,6 +52,13 @@ function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchC
     };
     
     useEffect(()=>{
+        if(val==="status"){
+            return 
+        }
+        if(val==="tranaction_type"){
+            dat(0)
+            return 
+        }
           handleSearch(val)
           handleSearchChange("",val)
          
@@ -242,21 +249,17 @@ function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchC
                                                         setval1(0)
                                                     }}} 
                   sx={{width:"150px",fontSize:"12px",transform:"translate(16px)"}} defaultValue={val} >
-                         <MenuItem value="ref_id"  sx={{fontSize:"12px"}}>Ref  </MenuItem>
-                         <MenuItem value="status"  sx={{fontSize:"12px"}}>status</MenuItem>
-                         
                        
+                         <MenuItem value="transaction_type"  sx={{fontSize:"12px"}}>Transaction Type</MenuItem>
+                         <MenuItem value="status"  sx={{fontSize:"12px"}}>status</MenuItem>
+                         <MenuItem value="ref_id"  sx={{fontSize:"12px"}}>Ref  </MenuItem>
+
                      </Select>
                 
                      </div>
                 
       
-                      { val!="status"?(<div className='rt' style={{paddingRight:"10px",width:"150px",display:"none"}}>
-                          <SearchIcon  sx={{marginLeft:"4px",width:"40px",fontSize:"20px",backgroundColor:"C0C0C0"}}  />
-                         <Mob1 search={val}></Mob1>
-                      </div>):
-                      (
-                         <Select value={val1} onChange={(e)=>{setval1(e.target.value);gp(e.target.value);}} sx={{width:"150px",fontSize:"12px",transform:"translate(-16px)"}} defaultValue={val1} >
+                     {  val==="status"&&<Select  onChange={(e)=>{gp(e.target.value);}} sx={{width:"150px",fontSize:"12px",transform:"translate(-16px)"}} defaultValue={"0"} >
                          <MenuItem value="0"  sx={{fontSize:"12px"}}>Initiated </MenuItem>
                          <MenuItem value="1"  sx={{fontSize:"12px"}}>Pending</MenuItem>
                          <MenuItem value="2"  sx={{fontSize:"12px"}}>Completed </MenuItem>
@@ -264,8 +267,18 @@ function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchC
                          <MenuItem value="4"  sx={{fontSize:"12px"}}>Settled </MenuItem>
                          <MenuItem value="5"  sx={{fontSize:"12px"}}>Refund initiated</MenuItem>
                          <MenuItem value="6"  sx={{fontSize:"12px"}}>Refund Settled</MenuItem>
-                     </Select>)
-                      }
+                     </Select>}
+                  
+                      
+
+
+                      
+                     {  val==="transaction_type"&&<Select  onChange={(e)=>{dat(e.target.value);}} sx={{width:"150px",fontSize:"12px",transform:"translate(-16px)"}} defaultValue={"0"} >
+                         <MenuItem value="0"  sx={{fontSize:"12px"}}>Debit</MenuItem>
+                         <MenuItem value="2"  sx={{fontSize:"12px"}}>Refund</MenuItem>
+                         <MenuItem value="1"  sx={{fontSize:"12px"}}>Credit </MenuItem>
+                      
+                     </Select>}
                       </div>
                       </div>
 
