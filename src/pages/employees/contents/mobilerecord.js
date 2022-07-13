@@ -2,20 +2,26 @@ import React, { useState, useMemo, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import axios from "axios";
 import ReadOnlyRows from "./ReadOnlyRows";
-import TableLoader from "./TableLoader";
 import Pagination from '../../../components/Pagination';
 import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
 import Checkbox from '@mui/material/Checkbox';
-import Divider from '@mui/material/Divider';
-import { Skeleton } from "@mui/material";
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import { Paper } from "@mui/material";
+import At from "./act";
 import "./mob.css"
 function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1}) {
   let PageSize =5;
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
+  
  
- 
+
 
  
   let dispatch = useDispatch();
@@ -28,6 +34,7 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
   useEffect(() => {
    
     const {type,search}=searchChangeValue1
+
 
   if(search===""){
    
@@ -74,8 +81,6 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
     }
   }, [currentPage,searchChangeValue1,v]);
 
-
-
   // apiRec?.sort((a, b) => a.name.localeCompare(b.name));
 
   const currentData = useMemo(() => {
@@ -94,17 +99,59 @@ function MRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPa
   let currentTableData=currentData
 
 
-  const columns = [{field:"name",headerName:"Name",width:120},{field:"phone",headerName:"Phone",width:120},{field:"email",headerName:"Email",width:170},{field:"net_salary",headerName:"Salary",width:100},{field:"status",headerName:"Status"},{field:"kyc",headerName:"Kyc"}
- 
-  ];
+  const columns = [{field:"name",headerName:"Name",width:120},{field:"phone",headerName:"Phone",width:120},
+  {field:"email",headerName:"Email",width:150},{field:"net_salary",headerName:"Salary",width:100},
+  {field:"status",headerName:"Status",width:100},{field:"kyc",headerName:"Kyc",width:100},{field:"actions",headerName:"Actions",width:100}];
   
  return (<>
- <div style={{display:"flex",flexDirection:"column",justifyContent:"center",width:"100%",minHeight:"800px",transform:"translateY(10px)",}}>
-<DataGrid   rows={currentTableData} checkboxSelection={true}   disableColumnFilter={true} headerHeight={50}  hideFooter={true} columns={columns} rowHeight={40}  hideFooterPagination={true} sx={{fontSize:"14px",color:"#00394d",boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)" }}
+ <div style={{display:"flex",flexDirection:"column",justifyContent:"flex-start",width:"100%",minHeight:"800px",transform:"translateY(10px)",}}>
+{/* <DataGrid  rows={currentTableData} checkboxSelection={true}   disableColumnFilter={true} headerHeight={50}   hideFooter={true} columns={columns} rowHeight={40}  hideFooterPagination={true} sx={{fontSize:"14px",color:"#00394d",boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)" }}
 >
 
-</DataGrid>
-      <div style={{display:"flex",alignItems:"center",justifyContent:"center",transform:"translateY(-95px)"}}>
+</DataGrid> */}
+
+<TableContainer component={Paper} sx={{boxShadow:"0px 3px 32px rgb(0 0 0 / 12%)"}}>
+<Table sx={{minWidth:"800px",}}>
+  <TableHead sx={{backgroundColor:"#E6F7FF"}}>
+  <TableRow sx={{height:"50px"}} selected="true">
+  <TableCell> <Checkbox size="large"></Checkbox></TableCell>
+
+    {columns.map((x)=>{
+      return(
+      <TableCell  sx={{width:x.width,fontSize:"18px",color:"#00394d"}}>{x.headerName}</TableCell>
+      )
+    })}
+
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    {currentTableData.map((y)=>{
+     
+      return (
+        <TableRow   sx={{height:"30px",alignItems:"center"}}>
+      
+       <TableCell> <Checkbox size="large"></Checkbox></TableCell>
+
+      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.name}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.phone}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.email}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.net_salary}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.status}</TableCell>
+      <TableCell sx={{fontSize:"15px",color:"#00394d"}}>{y.kyc}</TableCell>
+    
+      <TableCell >
+    <At status={y.status} kyc={y.kyc} id={y.id} v={v} up={(x)=>setv(x)}></At>
+      </TableCell>
+   
+        </TableRow>
+      )
+    })}
+  </TableBody>
+</Table>
+
+</TableContainer>
+
+      <div style={{display:"flex",alignItems:"center",justifyContent:"center",transform:"translateY(20px)"}}>
           {apiRec.length !== 0 &&
             <Pagination
               className="employees-pagination"
