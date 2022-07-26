@@ -10,9 +10,9 @@ import {
   LOGIN_DATA_FETCHED,
   LOGIN_ERROR,
 } from "../redux/actions";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
-const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
+const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick ,test=false}) => {
   let navigate = useNavigate();
   let [h,seth]=useState(window.innerWidth)
   window.addEventListener("resize",()=>{
@@ -20,7 +20,7 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick }) => {
   })
 
  
-  const [captchaFilled, setCaptchaFilled] = useState(true);
+  const [captchaFilled, setCaptchaFilled] = useState(test);
 
   //Formik
   const formik = useFormik({
@@ -371,3 +371,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+
+

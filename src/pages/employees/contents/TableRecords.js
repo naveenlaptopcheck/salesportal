@@ -9,13 +9,14 @@ import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
 import { Skeleton } from "@mui/material";
 import { FaxTwoTone } from "@mui/icons-material";
-function TableRecords({ records,tot, editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
+function TableRecords({ records,tot,editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
   let PageSize =5;
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
   const[h,seth]=useState(window.innerWidth)
 
  useEffect(()=>{
+
 seth(window.innerWidth)
  },[window.innerWidth])
 const ft=()=>{

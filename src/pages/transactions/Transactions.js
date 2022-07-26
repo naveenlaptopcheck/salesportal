@@ -32,7 +32,7 @@ import Select from '@mui/material/Select';
 import { MenuItem } from '@mui/material';
 
 
-function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchChange,handleSearch }) {
+function Transactions({ handleCsvModal, handleAddFormOpen, apiDash,handleSearchChange,handleSearch ,fn}) {
     let { total_employees } = apiDash;
     let [val,setval]=useState("ref_id")
     let [val1,setval1]=useState("0")

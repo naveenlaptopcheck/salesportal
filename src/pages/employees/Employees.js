@@ -36,7 +36,7 @@ import { EMPLOYEES_DATA_FETCHED } from "../../redux/actions";
 
 
 
-function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchChange,handleSearch}) {
+function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchChange,handleSearch,fn}) {
     let { total_employees } = apiDash;
     let [val ,setval]=useState("name")
     let [tot,setot]=useState(0)
@@ -52,6 +52,7 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
             gp("1")
             return
         }
+       
         if(val==="kyc"){
             dat("1")
             return 
@@ -227,7 +228,7 @@ if(h>1000){
                     {/* <div><OverdueList /></div> */}
                    
                     <div className="table-container">
-                        <TableRecords val={val} tot={(e)=>setot(e)} currentPage={page} setCurrentPage={setpage}  />
+                        <TableRecords  val={val} tot={(e)=>setot(e)} currentPage={page} setCurrentPage={setpage}  />
                     </div>
                 </div>
             </div>
