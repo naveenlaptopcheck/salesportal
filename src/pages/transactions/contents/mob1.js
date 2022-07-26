@@ -3,7 +3,7 @@ import axios from "axios";
 import { connect, useDispatch } from "react-redux";
 import { SEARCH_TABLE_CHANGE } from "../../../redux/actions";
 import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
-import { responsiveProperty } from "@mui/material/styles/cssUtils";
+
 
 const SearchTable = ({ handleSearchChange ,search}) => {
   let dispatch = useDispatch();

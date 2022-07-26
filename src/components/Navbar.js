@@ -25,6 +25,7 @@ function Navbar({
   handleOpenPaydayDialog,
   handleTempPaydayValueChange,
   paydayValue,
+  fn
 }) {
   let size = Object.keys(apiDash).length;
   let username = localStorage.getItem("name");
@@ -33,6 +34,9 @@ function Navbar({
   let pathname = location.pathname.substring(1);
   let pathvar = pathname.charAt(0).toUpperCase() + pathname.substring(1);
   const log=()=>{
+    if(fn!==undefined & fn!==null){
+      fn()
+    }
     localStorage.removeItem("token")
     window.location.replace("/")
   }
