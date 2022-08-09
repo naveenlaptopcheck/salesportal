@@ -17,14 +17,14 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
+  width: 5px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #005371;
-  height: 0px;
-  border-radius: 7px;
+  height: 10px;
+    border-radius: 4px;
 }
 .ReactModalPortal {
 

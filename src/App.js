@@ -41,7 +41,11 @@ function App({ isLoading, handleFetch, msgModalOpen }) {
   let location = useLocation();
   let currentPath = location.pathname;
   useEffect(() => {
-    token !== null && handleFetch(config,currentPath);
+    if( token !== null){
+    
+      handleFetch(config,currentPath);
+    }
+    
   }, [handleFetch]);
   if (isLoading) {
     return (
@@ -201,7 +205,7 @@ const mapDispatchToProps = (dispatch) => {
       ]).then((response) => {
         // console.log('logging response in app page');
         // console.log(response);
-
+       
         const x=currentPath==="/transactions"?response[0].data.transactions:response[0].data.employee
         return dispatch({
           type: DATA_FETCHED,
@@ -226,7 +230,9 @@ const mapDispatchToProps = (dispatch) => {
             },
           },
         });
-      });
+        
+
+      }).catch((err)=>console.log(err))
     },
   };
 };

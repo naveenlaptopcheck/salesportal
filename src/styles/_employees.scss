@@ -340,7 +340,17 @@
       .employees-table-box {
         width: 100%;
         height: 89%;
+.employees-table::-webkit-scrollbar {
+    width: 1px;
+    height: 5px;
+  }
 
+  .employees-table::-webkit-scrollbar-thumb {
+    background: #005371;
+    height: 0px;
+    border-radius: 0px;
+  }
+                              
         // background-color: red;
         .employees-table {
           width: 100%;
@@ -348,7 +358,26 @@
           overflow-x: hidden;
           // background-color: pink;
           overflow-y: scroll;
+.tablebox::-webkit-scrollbar {
+    width: 1px;
+    height: 5px;
+  }
 
+  .tablebox {
+    height: 100%;
+
+    .textsize {
+      font-size: 15px;
+    }
+
+    @media (min-width:1460px) {
+      .textsize {
+        font-size: 30px;
+      }
+
+    }
+  }
+                                                          
           .records-table {
             // background: yellow;
             // overflow-y: scroll;

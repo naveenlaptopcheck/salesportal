@@ -36,7 +36,7 @@ import { EMPLOYEES_DATA_FETCHED } from "../../redux/actions";
 
 
 
-function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchChange,handleSearch,fn}) {
+function Employees({  apiDash ,handleSearchChange,handleSearch,fn}) {
     let { total_employees } = apiDash;
     let [val ,setval]=useState("name")
     let [tot,setot]=useState(0)
@@ -47,24 +47,26 @@ function Employees({ handleCsvModal, handleAddFormOpen, apiDash ,handleSearchCha
 
     let [h,seth]=useState(window.innerWidth)
   
-    useEffect(()=>{
+    useEffect( ()=>{
+    
         if(val=="status"){
             gp("1")
             return
         }
        
         if(val==="kyc"){
-            dat("1")
+             dat("1")
             return 
         }
-        handleSearch(val)
-        handleSearchChange("",val)
-        
+         handleSearch(val)
+         handleSearchChange("",val)
+ 
 
     },[val])
+
     window.addEventListener("resize",()=>{
         seth(window.innerWidth)
-    }, val)
+    })
 
     const token = localStorage.getItem("token");
     
@@ -96,7 +98,7 @@ if(h>1000){
         <>
             <div className="employees"  >
             <div className="emp1">
-                       <h1 style={{position:"relative",transform:"translateX(11px)"}}>{tot} EMPLOYEES FOUND</h1>
+                       <h1 style={{position:"relative",transform:"translateX(11px)"}}> {tot}  EMPLOYEES FOUND</h1>
                  
                        <div className="emp2" >
                     
@@ -138,7 +140,7 @@ if(h>1000){
                        </div>
 
                    </div>
-                <div className='employees-wrap' >
+                <div className='employees-wrap'  >
                   
                      {/* This loading component appears for some of the async operations on the portal like adding and deleting the users, todos etc */}
 {/* 
@@ -298,12 +300,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleCsvModal: () => {
-            dispatch({ type: OPEN_CSV_MODAL });
-        },
-        handleAddFormOpen: () => {
-            dispatch({ type: ADD_USER_FORM_OPEN });
-        },
         handleSearchChange: (search,type) => {
             dispatch({ type: SEARCH_TABLE_CHANGE_EMP, payload: { search ,type} });
           },

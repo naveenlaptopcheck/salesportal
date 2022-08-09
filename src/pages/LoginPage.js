@@ -355,7 +355,7 @@ const mapDispatchToProps = (dispatch) => {
           });
         })
         .catch((err) => {
-          console.log(err);
+         
           return dispatch({ type: LOGIN_ERROR });
         });
     },

@@ -4,11 +4,18 @@ import axios from "axios";
 import ReadOnlyRows from "./ReadOnlyRows";
 import TableLoader from "./TableLoader";
 import Pagination from '../../../components/Pagination';
+import TableRow from '@mui/material/TableRow';
+import { Paper } from "@mui/material";
 import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
 import Checkbox from '@mui/material/Checkbox';
-import Divider from '@mui/material/Divider';
-import { Skeleton } from "@mui/material";
-import { FaxTwoTone } from "@mui/icons-material";
+import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableSortLabel from '@mui/material/TableSortLabel';
+import At from "./act.js"
 function TableRecords({ records,tot,editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
   let PageSize =5;
   const [check,setcheck]=useState(false)
@@ -106,57 +113,56 @@ const ft=()=>{
   //     .includes(searchChangeValue.trim().toLowerCase());
   // });
   let currentTableData=currentData
-
+  const columns = [{field:"name",headerName:"Name",width:200},{field:"phone",headerName:"Phone",width:200},
+  {field:"email",headerName:"Email",width:200},{field:"net_salary",headerName:"Salary",width:150},
+  {field:"status",headerName:"Status",width:200},{field:"kyc",headerName:"Kyc",width:150},{field:"actions",headerName:"Actions",width:100}];
+  
  return (
     <div className="employees-table-box">
         <div className="employees-table">
-          <table className="records-table">
-            <thead >
-              <tr >
-            
-                 <div className="rec1"> 
-                  <div className="rec2">
-                <Checkbox size="large"  onChange={(e)=>setcheck(e.target.checked)}></Checkbox>
-               
-                {/* <th>Id</th> */}
-                </div>
-                {/* <th style={{position:"absolute",left:"155px",}} >Company </th> */}
-                <th style={{position:"absolute",left:ft()}}>Name </th>
+        <TableContainer component={Paper} className="tablebox" sx={{overflowX:"scroll"}} >
+<Table sx={{minWidth:"900px",overflowX:"scroll",fontSize:"20px"}} padding="checkbox" >
+  <TableHead sx={{backgroundColor:"#E6F7FF",}}>
+  <TableRow  selected={true} key={"employee"}> 
+  <TableCell> <Checkbox size="large"></Checkbox></TableCell>
+
+    {columns.map((x)=>{
+      return(
+      <TableCell key={x.headerName}  sx={{width:x.width,fontSize:"18px",color:"#00394d",textAlign:"center",fontWeight:"bold"}}> {x.headerName}</TableCell>
+      )
+    })}
+
+    </TableRow>
+  </TableHead>
+  <TableBody >
+    {currentTableData.map((y)=>{
+        return (
+        <TableRow  hover={true} sx={{alignItems:"center",}} key={y.id}>
+      
+       <TableCell> <Checkbox size="large"></Checkbox></TableCell>
+
+      <TableCell className="textsize" sx={{color:"#00394d",whiteSpace:"nowrap",textAlign:"center"}}><em>{y.name}</em></TableCell>
+      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.phone}</TableCell>
+      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.email===null?"-":y.email}</TableCell>
+      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.net_salary}</TableCell>
+      <TableCell className="textsize"sx={{color:"#00394d",textAlign:"center"}}>{y.status}</TableCell>
+      <TableCell className="textsize"sx={{color:"#00394d",textAlign:"center"}}>{y.kyc}</TableCell>
+       <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>    <At status={y.status} kyc={y.kyc} id={y.id} v={v} up={(x)=>setv(x)}></At>
 
 
-                <th style={{position:"absolute",left:"25%",}}>Phonenumber </th>
-                
+</TableCell>
+      
 
-                <th style={{position:"absolute",left:"43.8%",}}>Email ID </th>
-                <th style={{position:"absolute",left:"59.9%",}}>Salary </th>
-               
+   
+   
+        </TableRow>
+      )
+    })}
+  </TableBody>
+</Table>
 
-                {/* <th style={{position:"absolute",left:"575px",}}>Aadhar </th>
-
-                <th style={{position:"absolute",left:"720px",}}>PAN ID </th> */}
-
-                <th style={{position:"absolute",left:"69.2%",}}>Status </th>
-
-                <th style={{position:"absolute",left:"80%",}}>KYC</th>
-                <th style={{position:"absolute",left:"90%",}}>Actions</th>
-
-           </div>
-              </tr>
-            </thead>
-            <tbody>
-              {currentTableData.map((record) => {
-              
-                const { id } = record;
-                return (
-                  <>
-                    <ReadOnlyRows key={id}  className="read-only"  record={record} check={check} v={v} up={(x)=>setv(x)}/>
-                  </>
-                );
-              })}
-            </tbody>
-          </table>
+</TableContainer>
         </div>
-      <Divider ></Divider>
       
         <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",position:"absolute",bottom:"10px",left:"50%",right:"50%"}}>
           {apiRec.length !== 0 &&
