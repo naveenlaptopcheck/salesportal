@@ -151,7 +151,7 @@ function TransactionsRecords({ records, editContactId, apiRec, apiRecLength, api
   <TableBody>
     {currentTableData.map((y)=>{
       return (
-        <TableRow hover={true}  sx={{height:"30px",alignItems:"center"}} key={y.id}>
+        <TableRow hover={true}  sx={{height:"30px",alignItems:"center",cursor:"pointer"}} key={y.id}>
       
        <TableCell > <Checkbox size="large"></Checkbox></TableCell>
 
