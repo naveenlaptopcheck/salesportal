@@ -125,7 +125,7 @@ const ft=()=>{
   // });
   let currentTableData=currentData
   const columns = [{field:"name",headerName:"Name",width:200},{field:"phone",headerName:"Phone",width:200},
-  {field:"email",headerName:"Email",width:200},{field:"account_number",headerName:"Account Number",width:200},{field:"net_salary",headerName:"Salary",width:150},
+  {field:"email",headerName:"Email",width:200},{field:"Company ",headerName:"Company",width:250},{field:"Aadhar Id",headerName:"Aadhar Id",width:250},{field:"pan id ",headerName:"pan id ",width:200},{field:"account_number",headerName:"Account Number",width:200},{field:"net_salary",headerName:"Salary",width:150},
   {field:"status",headerName:"Status",width:200},{field:"kyc",headerName:"Kyc",width:150},{field:"actions",headerName:"Actions",width:100}];
   
  return (
@@ -137,9 +137,9 @@ const ft=()=>{
     </Modal>
         <div className="employees-table" >
         <TableContainer component={Paper} className="tablebox"  >
-<Table sx={{fontSize:"20px"}} padding="checkbox" >
+<Table sx={{fontSize:"20px",overflowX:"scroll",minWidth:"1750px"}} padding="checkbox" >
   <TableHead sx={{backgroundColor:"#E6F7FF",}}>
-  <TableRow  selected={true} key={"employee"}> 
+  <TableRow selected={true} key={"employee"}> 
   <TableCell> <Checkbox size="large"></Checkbox></TableCell>
 
     {columns.map((x)=>{
@@ -150,7 +150,7 @@ const ft=()=>{
 
     </TableRow>
   </TableHead>
-  <TableBody >
+  <TableBody sx={{cursor:'pointer'}} >
     {currentTableData.map((y)=>{
      
         return (
@@ -161,10 +161,14 @@ const ft=()=>{
       <TableCell onClick={(e)=>display_data(y)} className="textsize" sx={{cursor:"pointer",color:"#00394d",whiteSpace:"nowrap",textAlign:"center"}}>{y.name}</TableCell>
       <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.phone}</TableCell>
       <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.email===null?"-":y.email}</TableCell>
+      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.company_name===null?"-":y.company_name}</TableCell>
+      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.aadhar===undefined?"-":y.aadhar}</TableCell>
+      <TableCell className="textsize"sx={{color:"#00394d",textAlign:"center"}}>{y.pan_card===undefined?"-":y.pan_card}</TableCell>
       <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}> {y.account_number}</TableCell>
 
      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.net_salary}</TableCell>
       <TableCell className="textsize"sx={{color:"#00394d",textAlign:"center"}}>{y.status}</TableCell>
+ 
       <TableCell className="textsize"sx={{color:"#00394d",textAlign:"center"}}>{y.kyc}</TableCell>
        <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>    <At status={y.status} kyc={y.kyc} id={y.id} v={v} up={(x)=>setv(x)}></At></TableCell>
 
