@@ -29,6 +29,7 @@ export default function At({status,id,kyc,v,up}){
         }
        const response =await axios
        .put(`${process.env.REACT_APP_URL}/sales/employee/${id}`,body,config ).catch((err)=>console.log(err))
+       
        up(v+0.01)
      
      }

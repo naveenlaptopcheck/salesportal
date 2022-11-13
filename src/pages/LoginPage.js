@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { replace, useFormik } from "formik";
 import { connect } from "react-redux";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import HomeIcon from '@mui/icons-material/Home';
+import FormControl from '@mui/material/FormControl';
 
+import { Button, InputLabel, MenuItem, Select } from "@mui/material";
 import {
   DATA_FETCH_REMAINING,
   LOGIN_CLICKED,
@@ -18,10 +23,13 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick ,test=fals
   window.addEventListener("resize",()=>{
    seth(window.innerWidth)
   })
-
+var [s2,sets2]=useState("Male")
  
   const [captchaFilled, setCaptchaFilled] = useState(test);
-
+ const onchange1=(e)=>{
+  
+  sets2(e.target.value)
+ }
   //Formik
   const formik = useFormik({
     initialValues: {
@@ -47,10 +55,11 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick ,test=fals
     <div className="login-main-wrap" style={{display:"flex",flexDirection:h<700?"column":""}}>
       <div className="login-form-wrap" style={{width:h<700?"100%":"",}}>
         <form className="login-form" onSubmit={formik.handleSubmit} style={{textAlign:"center",width:h<700?"80%":""}}>
-          <h1>FINSIRE</h1>
+                    <h1>FINSIRE</h1>
           <div className="form-input">
+        
             <input
-              type="email"
+              type="Email"
               name="email"
               id="email"
               onChange={formik.handleChange}
@@ -58,6 +67,7 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick ,test=fals
               placeholder="Username or Email"
               required
             />
+          
             <input
               type="password"
               name="password"
@@ -67,6 +77,8 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick ,test=fals
               placeholder="Password"
               required
             />
+          
+
           </div>
           {invalidCred && (
             <p
@@ -99,19 +111,19 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick ,test=fals
               <p>Forgot Password?</p>
             </button>
           </div> */}
+       
           <button
             className="login-btn"
-         
             disabled={!captchaFilled}
             type="submit"
             style={captchaFilled?{}:{background:"gray", cursor:"default"}}
           >
-            Login
+          Login
           </button>
-
+      
           {/* <div className="sign-up">
             <p>Don't have an account?</p>
-            <Link to="/employer_create">Sign Up</Link>
+            <Link to="/employer_create" style={{color:"gray"}}> Sign Up</Link>
           </div> */}
         </form>
       </div>

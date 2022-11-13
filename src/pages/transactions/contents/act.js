@@ -21,6 +21,7 @@ export default function At({status,id,v,cur}){
        const response =await axios
        .put(`${process.env.REACT_APP_URL}/sales/transaction/${id}`,body,config )
        .catch(err=>console.log(err))
+       console.log(response)
        cur(v+0.01)
      
        

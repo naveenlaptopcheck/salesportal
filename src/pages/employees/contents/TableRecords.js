@@ -14,14 +14,25 @@ import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TableSortLabel from '@mui/material/TableSortLabel';
+import Modal1 from "./usermodal"
+import Modal from "@mui/material/Modal"
 import At from "./act.js"
 function TableRecords({ records,tot,editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
   let PageSize =5;
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
   const[h,seth]=useState(window.innerWidth)
+  const [show_modal,set_modal]=useState(false)
+  const [modal_data,set_modald]=useState({})
+const display_data=(y)=>{
+set_modal(true)
+set_modald(y)
+}
+const close_modal=()=>{
+  set_modal(false)
+  
 
+}
  useEffect(()=>{
 
 seth(window.innerWidth)
@@ -114,14 +125,19 @@ const ft=()=>{
   // });
   let currentTableData=currentData
   const columns = [{field:"name",headerName:"Name",width:200},{field:"phone",headerName:"Phone",width:200},
-  {field:"email",headerName:"Email",width:200},{field:"net_salary",headerName:"Salary",width:150},
+  {field:"email",headerName:"Email",width:200},{field:"account_number",headerName:"Account Number",width:200},{field:"net_salary",headerName:"Salary",width:150},
   {field:"status",headerName:"Status",width:200},{field:"kyc",headerName:"Kyc",width:150},{field:"actions",headerName:"Actions",width:100}];
   
  return (
     <div className="employees-table-box">
-        <div className="employees-table">
-        <TableContainer component={Paper} className="tablebox" sx={{overflowX:"scroll"}} >
-<Table sx={{minWidth:"900px",overflowX:"scroll",fontSize:"20px"}} padding="checkbox" >
+    <Modal   style={{display:"flex",alignItems:"center",justifyContent:"center"}} open={show_modal} >
+   
+      <Modal1 data={modal_data} change={()=>close_modal()} ></Modal1>
+   
+    </Modal>
+        <div className="employees-table" >
+        <TableContainer component={Paper} className="tablebox"  >
+<Table sx={{fontSize:"20px"}} padding="checkbox" >
   <TableHead sx={{backgroundColor:"#E6F7FF",}}>
   <TableRow  selected={true} key={"employee"}> 
   <TableCell> <Checkbox size="large"></Checkbox></TableCell>
@@ -136,21 +152,24 @@ const ft=()=>{
   </TableHead>
   <TableBody >
     {currentTableData.map((y)=>{
+     
         return (
-        <TableRow  hover={true} sx={{alignItems:"center",}} key={y.id}>
+        <TableRow  hover={true} sx={{alignItems:"center",}} key={y.id} > 
       
        <TableCell> <Checkbox size="large"></Checkbox></TableCell>
 
-      <TableCell className="textsize" sx={{color:"#00394d",whiteSpace:"nowrap",textAlign:"center"}}><em>{y.name}</em></TableCell>
+      <TableCell onClick={(e)=>display_data(y)} className="textsize" sx={{cursor:"pointer",color:"#00394d",whiteSpace:"nowrap",textAlign:"center"}}>{y.name}</TableCell>
       <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.phone}</TableCell>
       <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.email===null?"-":y.email}</TableCell>
-      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.net_salary}</TableCell>
+      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}> {y.account_number}</TableCell>
+
+     <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.net_salary}</TableCell>
       <TableCell className="textsize"sx={{color:"#00394d",textAlign:"center"}}>{y.status}</TableCell>
       <TableCell className="textsize"sx={{color:"#00394d",textAlign:"center"}}>{y.kyc}</TableCell>
-       <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>    <At status={y.status} kyc={y.kyc} id={y.id} v={v} up={(x)=>setv(x)}></At>
+       <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>    <At status={y.status} kyc={y.kyc} id={y.id} v={v} up={(x)=>setv(x)}></At></TableCell>
 
 
-</TableCell>
+
       
 
    

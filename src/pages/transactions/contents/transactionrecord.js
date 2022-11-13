@@ -14,6 +14,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Paper } from "@mui/material";
+import Modal1 from "./usermodal"
+import Modal from "@mui/material/Modal"
 import At from "./act";
 function TransactionsRecords({ records, editContactId, apiRec, apiRecLength, apiRecTotalPages, searchChangeValue,tot,currentPage,setCurrentPage }) {
   let PageSize = 5;
@@ -22,9 +24,18 @@ function TransactionsRecords({ records, editContactId, apiRec, apiRecLength, api
 
   const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
-
+  const [show_modal,set_modal]=useState(false)
+  const [modal_data,set_modald]=useState({})
   const columns = [{field:"id",headerName:"ID",width:60},{field:"tranaction_type",headerName:"Type",width:70},{field:"ref_id",headerName:"Reference Id",width:170},{field:"amount",headerName:"Amount",width:100},{field:"status",headerName:"Status",width:100},{field:"date",headerName:"Date",width:200},{field:"Actions",headerName:"Actions",width:100}]
-
+  const display_data=(y)=>{
+    set_modal(true)
+    set_modald(y)
+    }
+    const close_modal=()=>{
+      set_modal(false)
+      
+    
+    }
 
   let rp=(e)=>{
    
@@ -51,16 +62,15 @@ function TransactionsRecords({ records, editContactId, apiRec, apiRecLength, api
   useEffect(() => {
    
     const {type,search}=searchChangeValue
-
+    
   if(search===""){
-   
+    
     axios
       .get(`${process.env.REACT_APP_URL}/sales/transaction?page=${currentPage}`, config)
       .then(response => {
         tot(response.data.total_entries)
             
-        
-       
+               
         return dispatch({
           type: EMPLOYEES_DATA_FETCHED,
           payload: {
@@ -78,7 +88,7 @@ function TransactionsRecords({ records, editContactId, apiRec, apiRecLength, api
       .post(`${process.env.REACT_APP_URL}/sales/transaction/search`,{
         "search_field": type,
         "search_term": search,
-        "page":1
+        "page":currentPage
     }, config)
       .then(response => {
         tot(response.data.total_entries)
@@ -117,6 +127,11 @@ function TransactionsRecords({ records, editContactId, apiRec, apiRecLength, api
  return (
     <>
       <div className="employees-table-box">
+      <Modal   style={{display:"flex",alignItems:"center",justifyContent:"center"}} open={show_modal} >
+   
+      <Modal1 data={modal_data} change={()=>close_modal()} ></Modal1>
+   
+    </Modal>
         <div className="employees-table">
         
        <TableContainer component={Paper} className="tablebox" >
@@ -135,13 +150,12 @@ function TransactionsRecords({ records, editContactId, apiRec, apiRecLength, api
   </TableHead>
   <TableBody>
     {currentTableData.map((y)=>{
-     
       return (
         <TableRow hover={true}  sx={{height:"30px",alignItems:"center"}} key={y.id}>
       
        <TableCell > <Checkbox size="large"></Checkbox></TableCell>
 
-      <TableCell  sx={{fontSize:"15px",color:"#00394d",width:60,textAlign:"center"}}>{y.id}</TableCell>
+      <TableCell  onClick={(e)=>display_data(y)} sx={{fontSize:"15px",color:"#00394d",width:60,textAlign:"center"}}>{y.id}</TableCell>
       <TableCell sx={{fontSize:"15px",color:"#00394d",width:70,textAlign:"center"}}>{y.tranaction_type}</TableCell>
       <TableCell sx={{fontSize:"15px",color:"#00394d",width:170,textAlign:"center"}}>{y.ref_id} </TableCell>
       <TableCell sx={{fontSize:"15px",color:"#00394d",width:100,textAlign:"center"}}>{y.amount===null?"-":y.amount}</TableCell>
