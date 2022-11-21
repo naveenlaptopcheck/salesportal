@@ -5,7 +5,7 @@ import ReadOnlyRows from "./ReadOnlyRows";
 import Pagination from '../../../components/Pagination';
 import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
 import Checkbox from '@mui/material/Checkbox';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+// import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
