@@ -3,7 +3,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Button } from '@mui/material';
 import Transactions from '../Transactions';
 export default function Modal1({ data,change}){
-  const {id,amount,date,ref_id,status,tranaction_type
+  const {id,amount,date,ref_id,status,tranaction_type,tranaction_mode
+
   }=data
 
     return (<>
@@ -40,6 +41,13 @@ export default function Modal1({ data,change}){
                 <p style={{color:date===null || date===undefined?"red":"black"}}>{date===null || date===undefined?"date not available":date}</p>
               </div>
              
+              <div className="view-control">
+                <h3 style={{fontWeight:"bolder"}}>Transaction Mode</h3>
+                <br></br>
+                
+               
+                <p >{tranaction_mode===undefined?"not available":tranaction_mode}</p>
+              </div>
              
             </div>
           </div>

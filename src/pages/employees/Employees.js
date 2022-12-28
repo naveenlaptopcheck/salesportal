@@ -5,10 +5,15 @@ import { RiFileExcel2Fill } from "react-icons/ri";
 import { connect,useDispatch } from "react-redux";
 import SearchIcon from '@mui/icons-material/Search';
 import Mrecords from "./contents/mobilerecord"
-import {Button} from '@mui/material';
+import {Button, Menu} from '@mui/material';
 //import { saveAs } from "file-saver";
+import SendIcon from '@mui/icons-material/Send';
 import axios from "axios";
+import Chip from '@mui/material/Chip';
+import CancelIcon from '@mui/icons-material/Cancel';
 import { TextField } from '@mui/material';
+import Popper from '@mui/material/Popper';
+
 import {
     ADD_USER_FORM_OPEN,
     DATA_FETCHED,
@@ -16,6 +21,7 @@ import {
     SEARCH_TABLE_CHANGE_EMP
 } from "../../redux/actions";
 import "./mp.css"
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Mob1 from "./contents/mobs"
 // import AddUserForm from "./modals/AddUserForm";
 // import ConfirmDeleteModal from "./modals/ConfirmDeleteModal";
@@ -26,13 +32,14 @@ import Mob1 from "./contents/mobs"
 // import DownloadEmployees from "./contents/DownloadEmployees";
 import SearchTable from "./contents/SearchTable";
 import TableRecords from "./contents/TableRecords";
-
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 // import MsgModal from "../../components/MsgModal";
 // import LocalLoader from "../../components/LocalLoader";
 //import OverdueList from "./contents/OverdueList";
 import Select from '@mui/material/Select';
 import { MenuItem } from '@mui/material';
 import { EMPLOYEES_DATA_FETCHED } from "../../redux/actions";
+import Checkbox from '@mui/material/Checkbox';
 
 
 
@@ -43,10 +50,13 @@ function Employees({  apiDash ,handleSearchChange,handleSearch,fn}) {
     let [p,setp]=useState(3)
     let [page,setpage]=useState(1)
     let [val1,setval1]=useState("0")
-   
-
+    let  [ n1, setn1]=useState(false)
+    let [n2,setn2]=useState(false)
+    let [n3,setn3]=useState([])
+    let [check,setcheck]=useState(false)
+    let [text,settext]=useState("")
     let [h,seth]=useState(window.innerWidth)
-  
+
     useEffect( ()=>{
     
         if(val=="status"){
@@ -91,16 +101,69 @@ function Employees({  apiDash ,handleSearchChange,handleSearch,fn}) {
 
 
       }
+    const notification= async ()=>{
+        const token = localStorage.getItem("token");
+        const config = {
+          headers: { Authorization: `${token}` },
+        };
+        var id=[]
+        for (var i=0;i<n3.length;i++){
+            id.push(n3[i][1])
+        } 
+        
+        var body={
+            "id":id,
+            "title":"NOTIFICATION",
+            "description":text
+        }
+      
+        const response =await axios
+        .post(`${process.env.REACT_APP_URL}/sales/push_notifications`,body,config ).catch((err)=>console.log(err))
+    
+      
+    }
     
     
 if(h>1000){
     return (
         <>
             <div className="employees"  >
+            
             <div className="emp1">
                        <h1 style={{position:"relative",transform:"translateX(11px)"}}> {tot}  EMPLOYEES FOUND</h1>
                  
-                       <div className="emp2" >
+                       <div className="emp2"  >
+                       <div style={{display:"flex",flexDirection:"row",alignItems:"center"}}>
+                       <Checkbox size='large'  checked={check} onClick={()=>setcheck(!check)}> </Checkbox>
+                       <div id="arrow" onClick={()=>setn1(!n1)} style={{cursor:"pointer"}}>
+                       <ArrowDropDownIcon   fontSize='large'> </ArrowDropDownIcon>
+                       </div>
+                       </div>
+                       <Popper   anchorEl={document.getElementById("arrow") } sx={{backgroundColor:"white",padding:"10px",boxShadow:"0px 3px 32px rgba(0, 0, 0, 0.12)",borderRadius:"5px"}}  open={n1}>
+          
+                       <div id="arrow1">
+                        <MenuItem onClick={()=>{setn2(true)}} >PUSH NOTIFICATION</MenuItem>
+                        </div>
+
+                       </Popper>
+                       <Menu  sx={{transform:"Translate(0px,-8px)",marginLeft:"15px"}} anchorEl={document.getElementById("arrow1") } anchorOrigin={{horizontal:"right"}}  open={n2}>
+                    
+<div style={{display:"flex",flexDirection:"column",padding:"20px",gap:"20px",alignItems:"center"}}>
+<div style={{display:"flex",flexDirection:"row",justifyContent:"flex-start",width:"100%",cursor:"pointer"}}>
+<ArrowBackIcon fontSize='large' onClick={()=>setn2(false)} ></ArrowBackIcon>
+      </div> 
+    <div style={{display:"flex",maxHeight:"200px",overflow:"scroll",flexDirection:"row",borderRadius:"5px",border:"1px solid  #1565C0",borderStyle:"dashed ",flexWrap:"wrap",width:"400px",gap:"5px",padding:"10px"}}>
+        {n3.map((x)=><Chip  sx={{fontSize:"12px"}} label={<div style={{cursor:"pointer",display:"flex",gap:"4px",alignItems:"center"}}>{x[0]}<CancelIcon onClick={()=>setn3(n3.filter((y)=>y[1]!=x[1]))}> </CancelIcon></div>}></Chip>)}
+    </div>
+    <TextField rows={5} label="Notification" onChange={(x)=>settext(x.currentTarget.value)}  multiline size='large' sx={{width:"400px"}}  inputProps={{style: {fontSize: 15,padding:"8px"}}}  ></TextField>
+      <div style={{display:"flex",flexDirection:"row",justifyContent:"flex-end",width:"100%",cursor:"pointer"}}>
+      <SendIcon fontSize='large' onClick={()=>{setn2(false);setn1(false);notification();}}></SendIcon>
+      </div> 
+
+    
+
+</div>                 
+                   </Menu>
                     
                        <button className='header-btn' style={{border:p===3?" 2px solid #00C805":""}} onClick={(e)=>{setp(3);getAllEmployees()}} >ALL</button>
                        <button className='header-btn' style={{border:p===1?" 2px solid #00C805":""}} onClick={(e)=>{ setp(1) ;dat(1)}}>PENDING</button>
@@ -230,7 +293,7 @@ if(h>1000){
                     {/* <div><OverdueList /></div> */}
                    
                     <div className="table-container">
-                        <TableRecords  val={val} tot={(e)=>setot(e)} currentPage={page} setCurrentPage={setpage}  />
+                        <TableRecords  check={check} n3={n3} setn3={setn3} setn2={setn2} val={val} tot={(e)=>setot(e)} currentPage={page} setCurrentPage={setpage}  />
                     </div>
                 </div>
             </div>
@@ -286,7 +349,7 @@ if(h>1000){
                     
 
                   
-      <Mrecords val={val} tot={(e)=>setot(e)} currentPage={page} setCurrentPage={setpage}></Mrecords>
+      <Mrecords  val={val} tot={(e)=>setot(e)} currentPage={page} setCurrentPage={setpage}></Mrecords>
       </div>
         </>)
     }

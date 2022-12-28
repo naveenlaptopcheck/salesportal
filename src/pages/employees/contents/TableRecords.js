@@ -1,29 +1,33 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import axios from "axios";
-import ReadOnlyRows from "./ReadOnlyRows";
-import TableLoader from "./TableLoader";
 import Pagination from '../../../components/Pagination';
 import TableRow from '@mui/material/TableRow';
 import { Paper } from "@mui/material";
 import { EMPLOYEES_DATA_FETCHED } from "../../../redux/actions";
-import Checkbox from '@mui/material/Checkbox';
-import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
+import Select from '@mui/material/Select';
+import SendIcon from '@mui/icons-material/Send';
+import MenuItem from '@mui/material/MenuItem';
+import CancelIcon from '@mui/icons-material/Cancel';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import Menu from "@mui/material/menu";
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import Modal1 from "./usermodal"
 import Modal from "@mui/material/Modal"
+import CHECK from "./checkbox";
 import At from "./act.js"
-function TableRecords({ records,tot,editContactId, apiRec, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
+import EmailIcon from '@mui/icons-material/Email';
+
+function TableRecords({ records,tot,editContactId, setn2,n3,setn3,apiRec,check, currentPage,setCurrentPage,apiRecLength, apiRecTotalPages, searchChangeValue1 }) {
   let PageSize =5;
-  const [check,setcheck]=useState(false)
   const [v,setv]=useState(0)
   const[h,seth]=useState(window.innerWidth)
   const [show_modal,set_modal]=useState(false)
   const [modal_data,set_modald]=useState({})
+
 const display_data=(y)=>{
 set_modal(true)
 set_modald(y)
@@ -33,22 +37,28 @@ const close_modal=()=>{
   
 
 }
- useEffect(()=>{
+useEffect(()=>{
+  if(check===true){
+    var y=[]
+       for (var i=0;i<currentData.length;i++){
 
+        y.push([currentData[i].name,currentData[i].id])
+
+       }
+       setn3([...n3,...y])
+  }else{
+    setn3([])
+  }
+   },[check])
+const disp1=()=>{
+
+  setn2(true)
+}
+ useEffect(()=>{
 seth(window.innerWidth)
  },[window.innerWidth])
-const ft=()=>{
-  if(h<1500){
-    return "14%"
-  }else if(h<1600){
-    return "12.8%"
-  }
-  else{
-  let y=9+(h-1400)/300
-    return `${y}%`
-  }
-}
- 
+
+
   let dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
@@ -124,9 +134,10 @@ const ft=()=>{
   //     .includes(searchChangeValue.trim().toLowerCase());
   // });
   let currentTableData=currentData
+ 
   const columns = [{field:"name",headerName:"Name",width:200},{field:"phone",headerName:"Phone",width:200},
-  {field:"email",headerName:"Email",width:200},{field:"Company ",headerName:"Company",width:250},{field:"Aadhar Id",headerName:"Aadhar Id",width:250},{field:"pan id ",headerName:"pan id ",width:200},{field:"account_number",headerName:"Account Number",width:200},{field:"net_salary",headerName:"Salary",width:150},
-  {field:"status",headerName:"Status",width:200},{field:"kyc",headerName:"Kyc",width:150},{field:"actions",headerName:"Actions",width:100}];
+  {field:"email",headerName:"Email",width:200},{field:"Company ",headerName:"Company",width:180},{field:"Aadhar Id",headerName:"Aadhar Id",width:200},{field:"pan id ",headerName:"pan id ",width:200},{field:"account_number",headerName:"Account Number",width:200},{field:"net_salary",headerName:"Salary",width:150},
+  {field:"status",headerName:"Status",width:200},{field:"Enach",headerName:"Enach",width:150},{field:"kyc",headerName:"Kyc",width:150},{field:"actions",headerName:"Actions",width:100}];
   
  return (
     <div className="employees-table-box">
@@ -137,40 +148,49 @@ const ft=()=>{
     </Modal>
         <div className="employees-table" >
         <TableContainer component={Paper} className="tablebox"  >
-<Table sx={{fontSize:"20px",overflowX:"scroll",minWidth:"1750px"}} padding="checkbox" >
-  <TableHead sx={{backgroundColor:"#E6F7FF",}}>
+<Table sx={{fontSize:"20px",overflowX:"scroll",}} padding="checkbox" >
+  <TableHead sx={{backgroundColor:"#E6F7FF",minheight:"30px"}}>
   <TableRow selected={true} key={"employee"}> 
-  <TableCell> <Checkbox size="large"></Checkbox></TableCell>
+
+  <TableCell> 
+  <div id="notific" style={{padding:"8px",opacity:0}}>
+  <EmailIcon   fontSize="large"  ></EmailIcon>
+  
+  </div>
+
+
+  </TableCell>
 
     {columns.map((x)=>{
       return(
-      <TableCell key={x.headerName}  sx={{width:x.width,fontSize:"18px",color:"#00394d",textAlign:"center",fontWeight:"bold"}}> {x.headerName}</TableCell>
+      <TableCell key={x.headerName}  sx={{borderRight:"1px solid lightgray",minWidth:x.width,fontSize:"18px",color:"#00394d",textAlign:"center",fontWeight:"bold",paddingLeft:"10px",paddingRight:"10px"}}> {x.headerName}</TableCell>
       )
     })}
 
     </TableRow>
   </TableHead>
+  
   <TableBody sx={{cursor:'pointer'}} >
     {currentTableData.map((y)=>{
-     
         return (
         <TableRow  hover={true} sx={{alignItems:"center",}} key={y.id} > 
       
-       <TableCell> <Checkbox size="large"></Checkbox></TableCell>
+       <TableCell><CHECK check={check} s3={setn3} s4={n3} emp={y.name} id={y.id} ></CHECK></TableCell>
 
       <TableCell onClick={(e)=>display_data(y)} className="textsize" sx={{cursor:"pointer",color:"#00394d",whiteSpace:"nowrap",textAlign:"center"}}>{y.name}</TableCell>
-      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.phone}</TableCell>
-      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.email===null?"-":y.email}</TableCell>
-      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.company_name===null?"-":y.company_name}</TableCell>
-      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.aadhar===undefined?"-":y.aadhar}</TableCell>
-      <TableCell className="textsize"sx={{color:"#00394d",textAlign:"center"}}>{y.pan_card===undefined?"-":y.pan_card}</TableCell>
-      <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}> {y.account_number}</TableCell>
+      <TableCell className="textsize" sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.phone}</TableCell>
+      <TableCell className="textsize" sx={{paddingLeft:"20px",paddingRight:"20px",border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.email===null?"-":y.email}</TableCell>
+      <TableCell className="textsize" sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.company_name===null?"-":y.company_name}</TableCell>
+      <TableCell className="textsize" sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.aadhar===undefined?"-":y.aadhar}</TableCell>
+      <TableCell className="textsize"sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.pan_card===undefined?"-":y.pan_card}</TableCell>
+      <TableCell className="textsize" sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}> {y.account_number}</TableCell>
 
-     <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>{y.net_salary}</TableCell>
-      <TableCell className="textsize"sx={{color:"#00394d",textAlign:"center"}}>{y.status}</TableCell>
- 
-      <TableCell className="textsize"sx={{color:"#00394d",textAlign:"center"}}>{y.kyc}</TableCell>
-       <TableCell className="textsize" sx={{color:"#00394d",textAlign:"center"}}>    <At status={y.status} kyc={y.kyc} id={y.id} v={v} up={(x)=>setv(x)}></At></TableCell>
+     <TableCell className="textsize" sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.net_salary}</TableCell>
+      <TableCell className="textsize"sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.status}</TableCell>
+      <TableCell className="textsize"sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.enach?"True":"False"}</TableCell>
+
+      <TableCell className="textsize"sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.kyc}</TableCell>
+       <TableCell className="textsize" sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>    <At status={y.status} kyc={y.kyc} enach={y.enach} id={y.id} v={v} up={(x)=>setv(x)}></At></TableCell>
 
 
 

@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import { Button } from "@mui/material";
-export default function At({status,id,kyc,v,up}){
+export default function At({status,id,kyc,enach,v,up}){
     let [m,setm]=useState(false)
     let [ac,setac]=useState(null)
     const rt=(e)=>{
@@ -55,7 +55,29 @@ export default function At({status,id,kyc,v,up}){
         
       
       }
+      const handledit2=async (e)=>{
+        
  
+        const token = localStorage.getItem("token");
+        const config = {
+          headers: { Authorization: `${token}` },
+        };
+        if(enach==="true"){
+           var c=0
+       }else{
+           var c=1
+       }
+       
+        const body={
+            
+            enach:c
+ 
+        }
+       const response =await axios
+       .put(`${process.env.REACT_APP_URL}/sales/employee/${id}`,body,config ).catch((err)=>console.log(err))
+       up(v+0.01)
+     
+     }
     return (
         <div style={{display:"flex",flexDirection:"row",justifyContent:"center",cursor:"pointer"}} onClick={rt}>
         <SettingsApplicationsIcon sx={{fontSize:"30px"}}></SettingsApplicationsIcon>
@@ -67,7 +89,7 @@ export default function At({status,id,kyc,v,up}){
           
         sx={{borderRadius:"50%",cursor:"pointer"}}
         >
-          <div style={{width:"150px",color:"#00394d",height:"100px",paddingTop:"10px",display:"flex",flexDirection:"column",alignItems:"center",gap:"20px"}}>
+          <div style={{width:"150px",color:"#00394d",height:"150px",paddingTop:"10px",display:"flex",flexDirection:"column",alignItems:"center",gap:"20px"}}>
     
                      
                <div id="status" >
@@ -84,7 +106,12 @@ export default function At({status,id,kyc,v,up}){
                     </div>
                </div>
 
-                    
+               <div id="enach">
+               <h2>Set Enach</h2>
+                    <div className="ry"  onClick={handledit2}  style={{borderTop:"1px solid #00394d",width:"100px",textAlign:"center",color:"#00394d"}}>
+                       {enach==="true"?<h3>False</h3>:<h3>True</h3>}
+                    </div>
+               </div>
 
                
           </div>
