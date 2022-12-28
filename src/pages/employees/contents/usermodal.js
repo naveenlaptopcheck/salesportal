@@ -14,11 +14,12 @@ export default function Modal1({ data,change}){
   kyc,
   status,
   ifsc,
+  enach,
   company_name,dob,
   nbfc_name,
   upi,
   email}=data
-console.log(data)
+
     return (<>
    
     <div style={{width:"90%",height:"95%",overflow:"hidden",backgroundColor:"white",}} >
@@ -74,6 +75,12 @@ console.log(data)
                                 <br></br>
 
                 <p>{kyc}</p>
+              </div>
+              <div className="view-control">
+                <h3 style={{fontWeight:"bolder"}}>Enach status  </h3>
+                                <br></br>
+
+                <p>{enach===true?"true":"false"}</p>
               </div>
             </div>
           </div>

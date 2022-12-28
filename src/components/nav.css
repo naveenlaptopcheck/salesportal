@@ -1,0 +1,21 @@
+.notifi:hover {
+    background-color: lightgray;
+}
+
+/* .rgt12 {
+
+    animation: rto 2s infinite;
+} */
+
+@keyframes rto {
+    from {
+        /* transform: rotate(0deg); */
+        opacity: 0;
+    }
+
+    to {
+        /* transform: rotate(360deg); */
+        opacity: 1;
+
+    }
+}
