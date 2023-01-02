@@ -12,7 +12,6 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import Menu from "@mui/material/menu";
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import Modal1 from "./usermodal"
@@ -177,7 +176,7 @@ seth(window.innerWidth)
       
        <TableCell><CHECK check={check} s3={setn3} s4={n3} emp={y.name} id={y.id} ></CHECK></TableCell>
 
-      <TableCell onClick={(e)=>display_data(y)} className="textsize" sx={{cursor:"pointer",color:"#00394d",whiteSpace:"nowrap",textAlign:"center"}}>{y.name}</TableCell>
+      <TableCell onClick={(e)=>display_data(y)} className="textsize" sx={{cursor:"pointer",color:"#00394d",whiteSpace:"nowrap",textAlign:"center",paddingLeft:"20px",paddingRight:"20px"}}>{y.name}</TableCell>
       <TableCell className="textsize" sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.phone}</TableCell>
       <TableCell className="textsize" sx={{paddingLeft:"20px",paddingRight:"20px",border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.email===null?"-":y.email}</TableCell>
       <TableCell className="textsize" sx={{border:"1px solid lightgray",color:"#00394d",textAlign:"center"}}>{y.company_name===null?"-":y.company_name}</TableCell>
