@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import {Menu} from '@mui/material';
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import { Button } from "@mui/material";
 export default function At({status,id,kyc,enach,v,up}){

@@ -23,9 +23,11 @@ const LoginPage = ({ HandleLoginSubmit, invalidCred, handleLoginClick ,test=fals
   window.addEventListener("resize",()=>{
    seth(window.innerWidth)
   })
+
+ 
 var [s2,sets2]=useState("Male")
  
-  const [captchaFilled, setCaptchaFilled] = useState(test);
+  const [captchaFilled, setCaptchaFilled] = useState(true);
  const onchange1=(e)=>{
   
   sets2(e.target.value)
@@ -93,11 +95,11 @@ var [s2,sets2]=useState("Male")
             </p>
           )}
           <div  style={{marginBottom:"20px"}}>
-            <ReCAPTCHA
+            {/* <ReCAPTCHA
               sitekey={process.env.REACT_APP_URL_CAPTCHA_KEY}
               onChange={onCaptchaChange}
              
-            />
+            /> */}
           </div>
           {/* <div className="forgot-pw">
             <button
