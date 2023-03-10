@@ -9,11 +9,9 @@ import {
     OPEN_DELETE_DIALOGUE,
     OPEN_VIEW_USER_MODAL,
 } from "../../../redux/actions";
-import { MdOutlineModeEdit, MdDeleteOutline } from "react-icons/md";
 import { BsDot } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import SwitchUser from "./SwitchUser";
 import SwitchButton from "./SwitchButton";
 import { useNavigate } from "react-router-dom";
 import Checkbox from '@mui/material/Checkbox';
