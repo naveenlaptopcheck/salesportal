@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sales-deployment
+  namespace: default
+  labels:
+    app: sales
+spec:
+  replicas: 3 #Copies of each pod
+  selector:  #Pods managed by this deployment
+    matchLabels:  #This must match labels we set on pod
+      app: sales
+  template:   #This template field is a regular pod configuration nested inside the deployment spec
+    metadata:
+      labels:  #set labels on the pod this is used in deployment selector
+        app: sales
+    spec:
+      containers:
+      - name: sales
+        image: sales:latest
+        ports:
+        - containerPort: 80
