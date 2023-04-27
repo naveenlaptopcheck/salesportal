@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sales-service
+  namespace: website
+  labels:
+    app: sales-service
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 84
+    protocol: TCP
+    targetPort: 86
+  selector:
+    app: sales
