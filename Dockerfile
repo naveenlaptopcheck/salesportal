@@ -1,7 +1,8 @@
 FROM node:16.20.0-alpine as builder
 
+
 RUN mkdir /app
-WORKDIR .
+WORKDIR /app
 
 
 COPY . /app
@@ -16,7 +17,7 @@ FROM nginx:1.15.7-alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 
-COPY --from=builder /app/git/build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
 
 
 COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
