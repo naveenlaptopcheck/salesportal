@@ -22,29 +22,5 @@ pipeline {
         }
       }
     }
-    stage('Push Docker Image') {
-
-            steps {
-
-                script {
-                 docker.withRegistry('https://641972036343.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:aws-credentials') {
-                 app.push("${env.BUILD_NUMBER}")
-                 app.push("latest")
-                    }
-
-                }
-
-            }
-
-        }
-   
-    stage('Deploy to EKS Cluster') {
-      steps {
-        script {
-          sh "kubectl apply -f kubernetes/deployment.yaml"
-          sh "kubectl apply -f kubernetes/service.yaml"
-        }
-      }
-    }
   }
 }
